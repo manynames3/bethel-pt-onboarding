@@ -26,8 +26,8 @@
     const currentMonth = date.getMonth() + 1;
     const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
     return [
-      { label: "이번 달", ...getMonthSchedule(currentMonth) },
-      { label: "다음 달", ...getMonthSchedule(nextMonth) }
+      { label: "이번 달", isCurrent: true, ...getMonthSchedule(currentMonth) },
+      { label: "다음 달", isCurrent: false, ...getMonthSchedule(nextMonth) }
     ];
   }
 
@@ -50,7 +50,7 @@
         ${getCurrentAndNext()
           .map(
             (item) => `
-              <article class="practice-strip-card">
+              <article class="practice-strip-card${item.isCurrent ? " is-current" : ""}"${item.isCurrent ? ' aria-current="date"' : ""}>
                 <span>${item.label}</span>
                 <h2>${monthName(item.month)}</h2>
                 <div>${serviceMarkup(item.services)}</div>

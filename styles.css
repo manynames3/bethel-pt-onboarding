@@ -191,10 +191,23 @@ header.site-shell {
   padding: 9px 12px;
 }
 
+.practice-strip-card.is-current {
+  border-color: rgba(23, 23, 23, 0.52);
+  background: #fffdf8;
+  box-shadow: 0 14px 32px rgba(35, 30, 22, 0.1), inset 4px 0 0 var(--brass);
+}
+
 .practice-strip-card > span {
   color: var(--quiet);
   font-size: 0.76rem;
   font-weight: 900;
+}
+
+.practice-strip-card.is-current > span {
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fffdf8;
+  padding: 3px 8px;
 }
 
 .practice-strip-card h2 {
@@ -219,6 +232,12 @@ header.site-shell {
   font-weight: 800;
   padding: 3px 8px;
   white-space: nowrap;
+}
+
+.practice-strip-card.is-current div span {
+  border-color: var(--line-strong);
+  background: #fff;
+  color: var(--ink-soft);
 }
 
 .practice-strip-card div strong {
