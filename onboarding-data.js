@@ -17,6 +17,26 @@ window.ABCPRAISE_ROLES = [
       "찬양 인도자와 리드 보컬을 중앙에 두고 본인 기타는 필요한 만큼만 올립니다.",
       "베이스와 킥은 박자를 확인할 정도로만 넣어 전체 믹스를 가볍게 유지합니다."
     ],
+    references: [
+      {
+        label: "Opus preset",
+        title: "Two Notes Opus 어쿠스틱 프리셋",
+        image: "assets/opus-acoustic-presets.webp",
+        alt: "Two Notes Opus DI에 부착된 Bethel acoustic preset 번호표",
+        note: "사진 기준 현재 선택된 프리셋은 06 - BETHEL GIBSON J-45입니다.",
+        columns: ["번호", "프리셋"],
+        rows: [
+          ["01", "BETHEL DI DRY"],
+          ["02", "BETHEL DI PIEZO"],
+          ["03", "BETHEL MARTIN HD-28"],
+          ["04", "BETHEL YAMAHA L16"],
+          ["05", "BETHEL TAYLOR 816"],
+          ["06", "BETHEL GIBSON J-45"],
+          ["07", "BETHEL GIBSON SJ-200"],
+          ["08", "BETHEL MCP HOLY GRAIL"]
+        ]
+      }
+    ],
     checklist: [
       "튜닝 완료",
       "Opus 프리셋 확인",
@@ -191,6 +211,34 @@ window.ABCPRAISE_ROLES = [
       "가장 먼저 찬양 인도자와 리드 보컬을 명확히 둡니다.",
       "그 다음 tempo source와 본인 악기 또는 보컬을 올립니다.",
       "전체 band를 크게 듣기보다 cue와 tempo를 놓치지 않는 믹스를 만듭니다."
+    ],
+    references: [
+      {
+        label: "Aviom A-16II",
+        title: "Aviom 채널 번호표",
+        image: "assets/aviom-a16ii-channel-map.webp",
+        alt: "Aviom A-16II 개인 모니터 믹서와 하단 채널 번호표",
+        note: "사진 하단 라벨 기준입니다. 각 스테이션의 실제 라벨이 다르면 현장 라벨을 우선합니다.",
+        columns: ["채널", "라벨", "용도"],
+        rows: [
+          ["1", "PASTOR", "목회자/말씀 마이크"],
+          ["2", "LEAD", "찬양 인도자"],
+          ["3", "2ND P", "보조 인도/마이크"],
+          ["4", "A.G", "어쿠스틱 기타"],
+          ["5", "KEY", "메인 건반"],
+          ["6", "2KEY", "세컨 건반"],
+          ["7", "E.G1", "일렉 기타 1"],
+          ["8", "E.G2", "일렉 기타 2"],
+          ["9", "BASS", "베이스"],
+          ["10", "KICK", "킥"],
+          ["11", "S.N", "스네어"],
+          ["12", "L-R", "메인 L/R"],
+          ["13", "PGM", "프로그램"],
+          ["14", "EX/WH", "외부/무선"],
+          ["15", "TALK", "토크백"],
+          ["16", "C", "클릭"]
+        ]
+      }
     ],
     checklist: [
       "Master 낮게 시작",

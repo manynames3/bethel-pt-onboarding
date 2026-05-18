@@ -23,6 +23,53 @@ function renderList(selector, items) {
   target.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
 }
 
+function assetPath(path) {
+  if (!path) return "";
+  return location.pathname.includes("/onboarding/") ? `../${path}` : path;
+}
+
+function renderReferenceTable(reference) {
+  return `
+    <table class="reference-table">
+      <thead>
+        <tr>${reference.columns.map((column) => `<th>${column}</th>`).join("")}</tr>
+      </thead>
+      <tbody>
+        ${reference.rows
+          .map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`)
+          .join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderReferences() {
+  const content = document.querySelector(".role-content");
+  if (!content || !currentRole.references?.length) return;
+
+  const markup = currentRole.references
+    .map(
+      (reference) => `
+        <article class="detail-card reference-detail">
+          <span class="practice-label">${reference.label}</span>
+          <h2>${reference.title}</h2>
+          <div class="reference-media-grid">
+            <figure class="reference-photo">
+              <img src="${assetPath(reference.image)}" alt="${reference.alt}" loading="lazy">
+              <figcaption>${reference.note}</figcaption>
+            </figure>
+            <div class="reference-table-wrap">
+              ${renderReferenceTable(reference)}
+            </div>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+
+  content.insertAdjacentHTML("afterbegin", markup);
+}
+
 function renderRolePage() {
   if (!currentRole) return;
 
@@ -39,6 +86,7 @@ function renderRolePage() {
   renderList("#setupList", currentRole.setup);
   renderList("#monitoringList", currentRole.monitoring);
   renderList("#checklist", currentRole.checklist);
+  renderReferences();
   renderRoleNav();
 }
 
