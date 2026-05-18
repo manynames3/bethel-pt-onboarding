@@ -57,7 +57,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 18px 0;
+  padding: 18px 0 12px;
 }
 
 header.site-shell {
@@ -151,6 +151,80 @@ header.site-shell {
 .admin-form button:hover,
 .admin-lock button:hover {
   background: #000;
+}
+
+.practice-strip {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+  padding: 0 0 14px;
+}
+
+.practice-strip-label {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--brass);
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 0 13px;
+  white-space: nowrap;
+}
+
+.practice-strip-months {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.practice-strip-card {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.74);
+  padding: 9px 12px;
+}
+
+.practice-strip-card > span {
+  color: var(--quiet);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.practice-strip-card h2 {
+  color: var(--ink);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.practice-strip-card div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.practice-strip-card div span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fbf8f1;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.practice-strip-card div strong {
+  color: var(--ink);
 }
 
 .hero-band {
@@ -930,6 +1004,27 @@ hr {
 
   .hero-band {
     min-height: 250px;
+  }
+
+  .practice-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-strip-label {
+    min-height: 38px;
+  }
+
+  .practice-strip-months {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-strip-card {
+    grid-template-columns: auto auto;
+  }
+
+  .practice-strip-card div {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
   }
 
   h1 {

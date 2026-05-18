@@ -165,11 +165,19 @@ function renderRoles() {
 }
 
 function renderPractice() {
-  const rows = [
-    ["1부 섬김자", state.practice.slotOne],
-    ["2부 섬김자", state.practice.slotTwo],
-    ["3부 섬김자", state.practice.slotThree]
-  ];
+  const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.();
+  const rows = practiceWindow
+    ? practiceWindow.map((item) => [
+        `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ${item.label}`,
+        Object.entries(item.services)
+          .map(([service, time]) => `${service} ${time}`)
+          .join(" / ")
+      ])
+    : [
+        ["1부 섬김자", state.practice.slotOne],
+        ["2부 섬김자", state.practice.slotTwo],
+        ["3부 섬김자", state.practice.slotThree]
+      ];
 
   els.saturdayTimes.innerHTML = rows
     .map(
