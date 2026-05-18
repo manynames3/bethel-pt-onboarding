@@ -614,6 +614,51 @@ h3 {
   color: var(--muted);
 }
 
+.service-times {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.service-time-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.74);
+  padding: 10px 11px;
+}
+
+.service-time-row strong {
+  color: var(--ink);
+  font-size: 0.93rem;
+}
+
+.service-time-row span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+.service-time-row span:last-child {
+  border-color: var(--line-strong);
+  background: #f8f0df;
+  color: var(--brass);
+}
+
+.service-location {
+  margin-bottom: 10px !important;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
 .reference-card p + p {
   margin-top: 10px;
 }
@@ -1065,6 +1110,14 @@ hr {
   .practice-strip-card div {
     grid-column: 1 / -1;
     justify-content: flex-start;
+  }
+
+  .service-time-row {
+    grid-template-columns: 1fr;
+  }
+
+  .service-time-row span {
+    width: fit-content;
   }
 
   h1 {
