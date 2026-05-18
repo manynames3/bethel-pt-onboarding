@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>애틀랜타 베델교회 찬양팀</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="topbar" aria-label="사이트 내비게이션">
+        <a class="brand" href="#songbook" aria-label="애틀랜타 베델교회 찬양팀 홈">
+          <span class="brand-mark" aria-hidden="true">AB</span>
+          <span>
+            <strong>애틀랜타 베델교회</strong>
+            <small>찬양팀</small>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="#songbook">곡</a>
+          <a href="#reference-videos">영상</a>
+          <a href="#onboarding">온보딩</a>
+          <a href="#practice">연습</a>
+        </nav>
+        <button class="ghost-button" id="adminOpen" type="button">관리자</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-band" aria-labelledby="pageTitle">
+        <div class="site-shell hero-copy">
+          <p class="eyebrow">주간 찬양팀 데스크</p>
+          <h1 id="pageTitle">애틀랜타 베델교회 찬양팀</h1>
+          <p class="lede">이번 주 섬기는 연주자와 싱어를 위한 악보, 메모, 참고 영상, 온보딩, 연습 시간을 한곳에 정리했습니다.</p>
+        </div>
+      </section>
+
+      <section class="song-workspace site-shell" id="songbook" aria-labelledby="songbookTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">찬양곡</p>
+            <h2 id="songbookTitle">예배 찬양곡</h2>
+          </div>
+          <p id="songStatus" class="status-pill" aria-live="polite"></p>
+        </div>
+
+        <div class="workspace-grid">
+          <aside class="song-list" aria-label="곡 목록">
+            <button class="song-tab is-active" type="button" data-song="greeting">
+              <span>인사 찬양</span>
+              <small>예배 시작 환영</small>
+            </button>
+            <button class="song-tab" type="button" data-song="baby">
+              <span>아기 환영 찬양</span>
+              <small>가정 환영 순서</small>
+            </button>
+            <button class="song-tab" type="button" data-song="offering">
+              <span>헌금 찬양</span>
+              <small>헌금 순서</small>
+            </button>
+          </aside>
+
+          <article class="pdf-panel" aria-labelledby="currentSongTitle">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">악보 PDF</p>
+                <h3 id="currentSongTitle">인사 찬양</h3>
+              </div>
+              <span id="pdfName" class="file-pill">PDF 없음</span>
+            </div>
+            <div class="pdf-frame" id="pdfFrame">
+              <div class="empty-pdf">
+                <span class="staff-lines" aria-hidden="true"></span>
+                <strong>아직 PDF가 없습니다</strong>
+                <p>관리자에서 이 곡의 악보를 업로드하세요.</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="notes-panel" aria-labelledby="notesTitle">
+            <div class="notebook-paper">
+              <p class="eyebrow">사이드 노트</p>
+              <h3 id="notesTitle">연주 메모</h3>
+              <p id="songNotes" class="hand-note"></p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="reference-videos site-shell" id="reference-videos" aria-labelledby="referenceTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">예배 참고 영상</p>
+            <h2 id="referenceTitle">YouTube 플레이리스트</h2>
+          </div>
+          <p class="status-pill"><span lang="ko">연실 집사님 감사합니다</span></p>
+        </div>
+        <div class="reference-grid">
+          <article class="reference-card friday">
+            <span class="practice-label">금요일</span>
+            <h3>금요예배 참고 영상</h3>
+            <p>영상은 콘티 공지 후 이곳에 곧 업로드됩니다.</p>
+            <p class="ko-note" lang="ko">보통 수요일쯤 콘티가 올라옴.</p>
+            <p class="ko-note" lang="ko">그주 담당 반주자님이 악보 정리겸 편곡을 하는 편.</p>
+            <a class="youtube-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer">금요예배 플레이리스트 열기</a>
+          </article>
+          <article class="reference-card sunday-ref">
+            <span class="practice-label">주일</span>
+            <h3>주일예배 참고 영상</h3>
+            <p>영상은 콘티 공지 후 이곳에 곧 업로드됩니다.</p>
+            <p class="ko-note" lang="ko">보통 목요일쯤 콘티가 올라옴.</p>
+            <p class="ko-note" lang="ko">그주 담당 반주자님이 악보 정리겸 편곡을 하는 편.</p>
+            <a class="youtube-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer">주일예배 플레이리스트 열기</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="onboarding site-shell" id="onboarding" aria-labelledby="onboardingTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">팀 온보딩</p>
+            <h2 id="onboardingTitle">파트별 빠른 안내</h2>
+          </div>
+        </div>
+        <div class="role-grid" id="roleGrid"></div>
+      </section>
+
+      <section class="practice site-shell" id="practice" aria-labelledby="practiceTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">연습</p>
+            <h2 id="practiceTitle">콜 타임</h2>
+          </div>
+        </div>
+        <div class="practice-grid">
+          <article class="practice-card">
+            <span class="practice-label">토요일</span>
+            <h3>1, 2, 3부 담당자별로 돌아가며 연습</h3>
+            <div class="rotation-list" id="saturdayTimes"></div>
+          </article>
+          <article class="practice-card sunday">
+            <span class="practice-label">주일</span>
+            <h3>예배 시작 40분 전 도착</h3>
+            <p id="sundayNote"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+    <aside class="admin-drawer" id="adminDrawer" aria-labelledby="adminTitle" aria-hidden="true">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">관리자</p>
+          <h2 id="adminTitle">사이트 내용 수정</h2>
+        </div>
+        <button class="icon-button" id="adminClose" type="button" aria-label="관리자 닫기">X</button>
+      </div>
+
+      <form class="admin-lock" id="adminLock">
+        <label for="adminCode">관리자 코드</label>
+        <div class="inline-form">
+          <input id="adminCode" name="adminCode" type="password" autocomplete="current-password">
+          <button type="submit">열기</button>
+        </div>
+        <p class="form-message" id="lockMessage" role="status"></p>
+      </form>
+
+      <form class="admin-form" id="adminForm" hidden>
+        <label for="songSelect">곡</label>
+        <select id="songSelect" name="songSelect"></select>
+
+        <label for="songTitleInput">곡 제목</label>
+        <input id="songTitleInput" name="songTitleInput" type="text">
+
+        <label for="songSubtitleInput">설명</label>
+        <input id="songSubtitleInput" name="songSubtitleInput" type="text">
+
+        <label for="notesInput">사이드 노트</label>
+        <textarea id="notesInput" name="notesInput" rows="7"></textarea>
+
+        <label for="pdfInput">악보 PDF</label>
+        <input id="pdfInput" name="pdfInput" type="file" accept="application/pdf">
+
+        <div class="button-row">
+          <button type="button" id="saveSong">곡 저장</button>
+          <button class="secondary-button" type="button" id="clearPdf">PDF 지우기</button>
+        </div>
+
+        <hr>
+
+        <fieldset>
+          <legend>연습 시간</legend>
+          <label for="slotOne">1부 섬김자</label>
+          <input id="slotOne" type="text">
+          <label for="slotTwo">2부 섬김자</label>
+          <input id="slotTwo" type="text">
+          <label for="slotThree">3부 섬김자</label>
+          <input id="slotThree" type="text">
+          <label for="sundayInput">주일 안내</label>
+          <textarea id="sundayInput" rows="3"></textarea>
+        </fieldset>
+
+        <div class="button-row">
+          <button type="button" id="savePractice">연습 시간 저장</button>
+          <button class="secondary-button" type="button" id="resetContent">초기화</button>
+        </div>
+      </form>
+    </aside>
+
+    <script src="onboarding-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>세컨 건반 | 애틀랜타 베델교회 찬양팀</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body data-role="second-keys">
+    <header class="site-shell">
+      <div class="topbar" aria-label="사이트 내비게이션">
+        <a class="brand" href="../index.html#songbook" aria-label="찬양팀 홈">
+          <span class="brand-mark" aria-hidden="true">AB</span>
+          <span><strong>애틀랜타 베델교회</strong><small>찬양팀</small></span>
+        </a>
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="../index.html#songbook">곡</a>
+          <a href="../index.html#reference-videos">영상</a>
+          <a href="../index.html#onboarding">온보딩</a>
+          <a href="../index.html#practice">연습</a>
+        </nav>
+      </div>
+    </header>
+    <main class="role-page">
+      <section class="role-hero site-shell">
+        <a class="back-link" href="../index.html#onboarding">온보딩 목록</a>
+        <p class="eyebrow" id="roleEyebrow"></p>
+        <h1 id="roleTitle"></h1>
+        <p id="roleSummary" class="lede"></p>
+        <div class="role-focus" id="roleFocus"></div>
+      </section>
+      <section class="role-layout site-shell">
+        <aside class="role-sidebar" aria-label="파트별 온보딩">
+          <h2>파트</h2>
+          <nav id="roleNav"></nav>
+        </aside>
+        <div class="role-content">
+          <article class="detail-card"><span class="practice-label" id="roleEquipment"></span><h2>연결 및 준비</h2><ol id="setupList"></ol></article>
+          <article class="detail-card"><span class="practice-label">Aviom</span><h2>모니터 믹스</h2><ol id="monitoringList"></ol></article>
+          <article class="detail-card"><span class="practice-label">예배 전</span><h2>체크리스트</h2><ul class="checklist" id="checklist"></ul></article>
+        </div>
+      </section>
+    </main>
+    <script src="../onboarding-data.js"></script>
+    <script src="../onboarding-page.js"></script>
+  </body>
+</html>
