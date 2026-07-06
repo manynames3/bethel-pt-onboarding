@@ -1,9 +1,12 @@
 const STORAGE_KEY = "abcpraise.site.ko.v1";
 const ADMIN_CODE = "bethel";
+const legacySundayNotes = [
+  "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 40분 전에 준비된 상태로 도착해 주세요."
+];
 const sundayServices = [
-  { service: "1부", arrival: "오전 7:05", worship: "오전 7:45" },
-  { service: "2부", arrival: "오전 8:50", worship: "오전 9:30" },
-  { service: "3부", arrival: "오전 10:50", worship: "오전 11:30" }
+  { service: "1부", practice: "오전 7:15", worship: "오전 7:45" },
+  { service: "2부", practice: "오전 9:00", worship: "오전 9:30" },
+  { service: "3부", practice: "오전 11:00", worship: "오전 11:30" }
 ];
 
 const defaultState = {
@@ -59,7 +62,7 @@ const defaultState = {
     slotTwo: "이번 주 토요일 시간은 코디네이터가 공지합니다",
     slotThree: "이번 주 토요일 시간은 코디네이터가 공지합니다",
     sunday:
-      "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 40분 전에 준비된 상태로 도착해 주세요."
+      "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 30분 전부터 연습을 시작합니다."
   }
 };
 
@@ -108,6 +111,14 @@ function loadState() {
   try {
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (!stored || !Array.isArray(stored.songs)) return structuredClone(defaultState);
+    const practice = {
+      ...defaultState.practice,
+      ...(stored.practice || {})
+    };
+    if (legacySundayNotes.includes(practice.sunday)) {
+      practice.sunday = defaultState.practice.sunday;
+    }
+
     return {
       ...structuredClone(defaultState),
       ...stored,
@@ -127,10 +138,7 @@ function loadState() {
         }
         return merged;
       }),
-      practice: {
-        ...defaultState.practice,
-        ...(stored.practice || {})
-      }
+      practice
     };
   } catch {
     return structuredClone(defaultState);
@@ -286,10 +294,10 @@ function roleInitial(role) {
 function renderServiceTimes() {
   const markup = sundayServices
     .map(
-      ({ service, arrival, worship }) => `
+      ({ service, practice, worship }) => `
         <div class="service-time-row">
           <strong class="service-time-service">${service}</strong>
-          <span class="service-time-value"><small>도착</small> <span>${arrival}</span></span>
+          <span class="service-time-value"><small>연습</small> <span>${practice}</span></span>
           <span class="service-time-value"><small>예배</small> <span>${worship}</span></span>
         </div>
       `
