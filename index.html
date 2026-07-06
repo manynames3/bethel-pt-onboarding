@@ -4,181 +4,234 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
+    <link rel="icon" href="assets/bethel-logo.jpeg">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
-    <header class="site-shell">
-      <div class="topbar" aria-label="사이트 내비게이션">
-        <a class="brand" href="#songbook" aria-label="애틀랜타 베델교회 찬양팀 홈">
+  <body class="app-body">
+    <div class="app-shell">
+      <header class="app-topbar">
+        <a class="brand-lockup" href="#songbook" aria-label="애틀랜타 베델교회 찬양팀 홈">
           <img class="brand-logo" src="assets/bethel-logo.jpeg" alt="Bethel Holiness to the Lord">
           <span>
-            <strong>애틀랜타 베델교회</strong>
-            <small>찬양팀</small>
+            <strong>찬양팀</strong>
+            <small>주일 예배 준비</small>
           </span>
         </a>
-        <nav class="nav-links" aria-label="주요 메뉴">
-          <a href="#songbook">곡</a>
-          <a href="#reference-videos">영상</a>
-          <a href="#onboarding">온보딩</a>
-          <a href="#practice">연습</a>
-        </nav>
-        <button class="ghost-button" id="adminOpen" type="button">관리자</button>
-      </div>
-    </header>
 
-    <main>
-      <section class="hero-band" aria-labelledby="pageTitle">
-        <div class="site-shell hero-copy">
-          <p class="eyebrow">주간 찬양팀 데스크</p>
-          <h1 id="pageTitle">애틀랜타 베델교회 찬양팀</h1>
-          <p class="lede">이번 주 섬기는 연주자와 싱어를 위한 악보, 메모, 참고 영상, 온보딩, 연습 시간을 한곳에 정리했습니다.</p>
-        </div>
-      </section>
-
-      <section class="song-workspace site-shell" id="songbook" aria-labelledby="songbookTitle">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">찬양곡</p>
-            <h2 id="songbookTitle">예배 찬양곡</h2>
+        <div class="service-controls" aria-label="토요 연습 시간 및 예배 날짜">
+          <div class="top-practice-times" id="topPracticeTimes" aria-label="이번 달과 다음 달 토요 연습 시간">
+            <span class="practice-month-group is-current">
+              <span class="practice-month-label">7월 이번 달</span>
+              <span class="practice-time-chip"><span>1부</span><strong>2:00pm</strong></span>
+              <span class="practice-time-chip"><span>2부</span><strong>2:40pm</strong></span>
+              <span class="practice-time-chip"><span>3부</span><strong>3:20pm</strong></span>
+            </span>
+            <span class="practice-month-group">
+              <span class="practice-month-label">8월 다음 달</span>
+              <span class="practice-time-chip"><span>1부</span><strong>2:40pm</strong></span>
+              <span class="practice-time-chip"><span>2부</span><strong>3:20pm</strong></span>
+              <span class="practice-time-chip"><span>3부</span><strong>2:00pm</strong></span>
+            </span>
           </div>
-          <p id="songStatus" class="status-pill" aria-live="polite"></p>
+          <div class="date-stepper" aria-label="예배 날짜">
+            <button type="button" aria-label="이전 날짜">‹</button>
+            <strong id="serviceDate">2026년 7월 5일 (주일)</strong>
+            <button type="button" aria-label="다음 날짜">›</button>
+          </div>
         </div>
 
-        <div class="song-guidance" aria-label="예배 곡 구성 안내">
-          <span class="practice-label">곡 구성 안내</span>
-          <p>보통 설교 전 찬양들 중 한두 곡이 설교 후에 다시 쓰입니다. 그 외에도 필요에 따라 곡이 추가로 더해질 수 있습니다.</p>
-          <p>축복송과 헌금송이 있으며, 1부/2부/3부 악보가 다를 수 있습니다.</p>
+        <div class="top-actions">
+          <span class="sync-status">7월 토요 연습 업데이트됨</span>
+          <button class="admin-button" id="adminOpen" type="button">관리자</button>
         </div>
+      </header>
 
-        <div class="workspace-grid">
-          <aside class="song-list" aria-label="곡 목록">
-            <button class="song-tab is-active" type="button" data-song="greeting">
-              <span>인사 찬양</span>
-              <small>예배 시작 환영</small>
-            </button>
-            <button class="song-tab" type="button" data-song="baby">
-              <span>아기 환영 찬양</span>
-              <small>가정 환영 순서</small>
-            </button>
-            <button class="song-tab" type="button" data-song="offering">
-              <span>헌금 찬양</span>
-              <small>헌금 순서</small>
-            </button>
-          </aside>
-
-          <article class="pdf-panel" aria-labelledby="currentSongTitle">
-            <div class="panel-header">
-              <div>
-                <p class="eyebrow">악보 PDF</p>
-                <h3 id="currentSongTitle">인사 찬양</h3>
-              </div>
-              <span id="pdfName" class="file-pill">PDF 없음</span>
+      <aside class="app-sidebar" aria-label="예배 준비 요약">
+        <section class="today-card" id="practice">
+          <div class="today-head">
+            <div>
+              <p class="section-label">오늘</p>
+              <h1>주일 1부</h1>
             </div>
-            <div class="pdf-frame" id="pdfFrame">
+            <span class="day-pill">D-DAY</span>
+          </div>
+          <div class="time-list">
+            <div class="time-row"><span>예배</span><strong>오전 7:45</strong></div>
+            <div class="time-row"><span>도착</span><strong>오전 7:05</strong></div>
+          </div>
+          <div class="tiny-pills">
+            <span class="tiny-pill teal">악보 3개</span>
+            <span class="tiny-pill amber">PDF 추가 예정</span>
+          </div>
+          <p class="small-note" id="sundayNote"></p>
+        </section>
+
+        <section class="role-section" id="onboarding" aria-labelledby="onboardingTitle">
+          <p class="section-label" id="onboardingTitle">역할별 온보딩</p>
+          <nav class="role-list" id="roleGrid" aria-label="파트별 온보딩"></nav>
+        </section>
+
+        <section class="practice-card" aria-labelledby="practiceTitle">
+          <p class="section-label" id="practiceTitle">토요 연습</p>
+          <div class="practice-rows" id="saturdayTimes"></div>
+          <div class="avatar-row" aria-hidden="true">
+            <span class="avatar">K</span>
+            <span class="avatar">G</span>
+            <span class="avatar">V</span>
+            <span class="avatar">+3</span>
+          </div>
+        </section>
+      </aside>
+
+      <main class="app-content" id="songbook" aria-labelledby="songbookTitle">
+        <section class="song-strip" aria-label="예배 찬양곡">
+          <h2 class="visually-hidden" id="songbookTitle">예배 찬양곡</h2>
+          <button class="song-tab is-active" type="button" data-song="greeting">
+            <span class="song-title-row">
+              <span class="song-title"><span class="number-badge teal">1</span><span data-song-title>인사 찬양</span></span>
+              <span class="song-badge">PDF</span>
+            </span>
+            <small data-song-subtitle>예배 시작 환영</small>
+          </button>
+          <button class="song-tab" type="button" data-song="baby">
+            <span class="song-title-row">
+              <span class="song-title"><span class="number-badge">2</span><span data-song-title>아기 환영 찬양 (선택)</span></span>
+              <span class="song-badge amber">선택</span>
+            </span>
+            <small data-song-subtitle>필요 시 가정 환영 순서</small>
+          </button>
+          <button class="song-tab" type="button" data-song="offering">
+            <span class="song-title-row">
+              <span class="song-title"><span class="number-badge">3</span><span data-song-title>헌금 찬양</span></span>
+              <span class="song-badge">PDF</span>
+            </span>
+            <small data-song-subtitle>헌금 순서</small>
+          </button>
+        </section>
+
+        <section class="pdf-shell" aria-labelledby="currentSongTitle">
+          <div class="pdf-toolbar">
+            <div class="file-title">
+              <span class="file-dot" aria-hidden="true"></span>
+              <span id="currentSongTitle">인사 찬양</span>
+              <span class="file-subtitle" id="pdfName">PDF 없음</span>
+              <span class="file-status" id="songStatus">예배 시작 환영</span>
+            </div>
+            <div class="page-controls" aria-label="PDF 페이지 컨트롤">
+              <button class="icon-button" type="button" aria-label="이전 페이지">‹</button>
+              <span class="zoom-pill">1 / 1</span>
+              <button class="icon-button" type="button" aria-label="다음 페이지">›</button>
+              <span class="zoom-pill">100%</span>
+            </div>
+            <div class="tool-controls" aria-label="PDF 도구">
+              <button class="icon-button" type="button" aria-label="축소">−</button>
+              <button class="icon-button" type="button" aria-label="확대">＋</button>
+              <button class="icon-button" type="button" aria-label="다운로드">⤓</button>
+              <button class="icon-button" type="button" aria-label="더 보기">⋯</button>
+            </div>
+          </div>
+
+          <div class="pdf-body">
+            <aside class="pdf-thumbs" aria-label="PDF 페이지 미리보기">
+              <span class="pdf-thumb is-active">1</span>
+              <span class="pdf-thumb">2</span>
+              <span class="pdf-thumb">3</span>
+              <span class="pdf-thumb">4</span>
+            </aside>
+            <div class="pdf-stage" id="pdfFrame">
               <div class="empty-pdf">
-                <span class="staff-lines" aria-hidden="true"></span>
+                <div class="empty-sheet" aria-hidden="true">
+                  <div class="empty-sheet-head">
+                    <strong>인사 찬양</strong>
+                    <span>예배 시작 환영</span>
+                  </div>
+                  <span class="staff-lines"></span>
+                  <span class="staff-lines"></span>
+                  <span class="staff-lines"></span>
+                </div>
                 <strong>아직 PDF가 없습니다</strong>
                 <p>관리자에서 이 곡의 악보를 업로드하세요.</p>
               </div>
             </div>
-          </article>
+          </div>
+        </section>
 
-          <aside class="notes-panel" aria-labelledby="notesTitle">
-            <div class="notebook-paper">
-              <p class="eyebrow">사이드 노트</p>
-              <h3 id="notesTitle">연주 메모</h3>
-              <p id="songNotes" class="hand-note"></p>
+        <section class="bottom-summary" aria-label="예배 준비 체크">
+          <div class="summary-item">
+            <span class="summary-icon">⏱</span>
+            <div><strong>콜 타임</strong><span>도착 오전 7:05 · 예배 오전 7:45</span></div>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">⌖</span>
+            <div><strong>장소</strong><span>예루살렘 성전 · 찬양팀 부스</span></div>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">☑</span>
+            <div><strong>체크리스트</strong><span>악기, 악보, 인이어 확인</span></div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="app-inspector" aria-label="참고 자료">
+        <section class="inspector-section" id="reference-videos" aria-labelledby="referenceTitle">
+          <div class="section-title-row">
+            <h2 id="referenceTitle">참고 영상</h2>
+            <span aria-hidden="true">⌄</span>
+          </div>
+          <article class="video-preview">
+            <div class="video-art">
+              <span class="play-button" aria-hidden="true">▶</span>
             </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="reference-videos site-shell" id="reference-videos" aria-labelledby="referenceTitle">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">예배 참고 영상</p>
-            <h2 id="referenceTitle">YouTube 플레이리스트</h2>
-          </div>
-          <p class="status-pill"><span lang="ko">연실 집사님 감사합니다</span></p>
-        </div>
-        <div class="reference-grid">
-          <article class="reference-card friday">
-            <span class="practice-label">금요일</span>
-            <h3>금요예배 참고 영상</h3>
-            <p>영상은 콘티 공지 후 이곳에 곧 업로드됩니다.</p>
-            <p class="ko-note" lang="ko">보통 수요일쯤 콘티가 올라옴.</p>
-            <p class="ko-note" lang="ko">그주 담당 반주자님이 악보 정리겸 편곡을 하는 편.</p>
-            <a class="youtube-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer">금요예배 플레이리스트 열기</a>
-          </article>
-          <article class="reference-card sunday-ref">
-            <span class="practice-label">주일</span>
-            <h3>주일예배 참고 영상</h3>
-            <p>영상은 콘티 공지 후 이곳에 곧 업로드됩니다.</p>
-            <p class="ko-note" lang="ko">보통 목요일쯤 콘티가 올라옴.</p>
-            <p class="ko-note" lang="ko">그주 담당 반주자님이 악보 정리겸 편곡을 하는 편.</p>
-            <a class="youtube-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer">주일예배 플레이리스트 열기</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="onboarding site-shell" id="onboarding" aria-labelledby="onboardingTitle">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">팀 온보딩</p>
-            <h2 id="onboardingTitle">파트별 빠른 안내</h2>
-          </div>
-        </div>
-        <div class="role-grid" id="roleGrid"></div>
-      </section>
-
-      <section class="practice site-shell" id="practice" aria-labelledby="practiceTitle">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">연습</p>
-            <h2 id="practiceTitle">콜 타임</h2>
-          </div>
-        </div>
-        <div class="practice-grid">
-          <article class="practice-card">
-            <span class="practice-label">토요일</span>
-            <h3>이번 달과 다음 달 토요일 연습 시간</h3>
-            <div class="rotation-list" id="saturdayTimes"></div>
-          </article>
-          <article class="practice-card sunday">
-            <span class="practice-label">주일</span>
-            <h3>예배 시작 40분 전 도착</h3>
-            <div class="service-times" aria-label="주일 정기예배 시간과 도착 시간">
-              <div class="service-time-row">
-                <strong>1부 이른비 예배</strong>
-                <span>예배 오전 7:45</span>
-                <span>도착 오전 7:05</span>
-              </div>
-              <div class="service-time-row">
-                <strong>2부 단비 예배</strong>
-                <span>예배 오전 9:30</span>
-                <span>도착 오전 8:50</span>
-              </div>
-              <div class="service-time-row">
-                <strong>3부 큰비 예배</strong>
-                <span>예배 오전 11:30</span>
-                <span>도착 오전 10:50</span>
-              </div>
+            <div class="video-copy">
+              <strong>주일예배 플레이리스트</strong>
+              <span>YouTube · 콘티 공지 후 확인</span>
+              <a href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer">주일예배 플레이리스트 열기</a>
             </div>
-            <p class="service-location">장소: 예루살렘 성전 (대예배실 C동)</p>
-            <p id="sundayNote"></p>
           </article>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        <section class="inspector-section" aria-labelledby="transposeTitle">
+          <div class="section-title-row">
+            <h2 id="transposeTitle">키 조정</h2>
+            <span aria-hidden="true">⌄</span>
+          </div>
+          <article class="transpose-card">
+            <div class="key-row">
+              <div class="key-box"><span>원곡 키</span><strong>D</strong></div>
+              <span class="key-arrow" aria-hidden="true">→</span>
+              <div class="key-box"><span>연주 키</span><strong>C</strong></div>
+            </div>
+            <p class="tool-note">컴퓨터에서 음원과 연습할 때 악보 키와 음원 키가 다르면 Chrome 확장으로 조정하세요.</p>
+            <a class="teal-button" href="https://transpose.video/" target="_blank" rel="noopener noreferrer">Transpose.video 열기 ↗</a>
+          </article>
+        </section>
+
+        <section class="inspector-section" aria-labelledby="aviomTitle">
+          <div class="section-title-row">
+            <h2 id="aviomTitle">Aviom</h2>
+            <span aria-hidden="true">⌄</span>
+          </div>
+          <div class="aviom-table" role="table" aria-label="Aviom 채널">
+            <div class="aviom-row" role="row"><strong>CH 1</strong><span>Lead Vocal</span><i class="mix-dot"></i></div>
+            <div class="aviom-row" role="row"><strong>CH 2</strong><span>Drums</span><i class="mix-dot amber"></i></div>
+            <div class="aviom-row" role="row"><strong>CH 3</strong><span>Bass</span><i class="mix-dot blue"></i></div>
+            <div class="aviom-row" role="row"><strong>CH 4</strong><span>E.Guitar</span><i class="mix-dot green"></i></div>
+            <div class="aviom-row" role="row"><strong>CH 5</strong><span>Key L</span><i class="mix-dot"></i></div>
+            <div class="aviom-row" role="row"><strong>CH 6</strong><span>Key R</span><i class="mix-dot blue"></i></div>
+            <div class="aviom-row" role="row"><strong>CH 8</strong><span>Click</span><i class="mix-dot amber"></i></div>
+          </div>
+        </section>
+      </aside>
+    </div>
 
     <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
     <aside class="admin-drawer" id="adminDrawer" aria-labelledby="adminTitle" aria-hidden="true">
       <div class="drawer-header">
         <div>
-          <p class="eyebrow">관리자</p>
+          <p class="section-label">관리자</p>
           <h2 id="adminTitle">사이트 내용 수정</h2>
         </div>
-        <button class="icon-button" id="adminClose" type="button" aria-label="관리자 닫기">X</button>
+        <button class="icon-button" id="adminClose" type="button" aria-label="관리자 닫기">×</button>
       </div>
 
       <form class="admin-lock" id="adminLock">
@@ -200,7 +253,7 @@
         <label for="songSubtitleInput">설명</label>
         <input id="songSubtitleInput" name="songSubtitleInput" type="text">
 
-        <label for="notesInput">사이드 노트</label>
+        <label for="notesInput">메모</label>
         <textarea id="notesInput" name="notesInput" rows="7"></textarea>
 
         <label for="pdfInput">악보 PDF</label>

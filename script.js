@@ -8,15 +8,16 @@ const defaultState = {
       id: "greeting",
       title: "인사 찬양",
       subtitle: "예배 시작 환영",
+      allowNotes: false,
       pdfName: "",
       pdfData: "",
-      notes:
-        "따뜻하고 단정하게 시작합니다. 예배 인도자의 환영 멘트가 끝날 때까지 인트로는 복잡하지 않게 유지합니다.\n\n어쿠스틱이 박자를 잡고, 베이스는 첫 구절 이후 들어옵니다. 싱어들은 멘트가 잘 들리도록 공간을 남겨 주세요."
+      notes: ""
     },
     {
       id: "baby",
-      title: "아기 환영 찬양",
-      subtitle: "가정 환영 순서",
+      title: "아기 환영 찬양 (선택)",
+      subtitle: "필요 시 가정 환영 순서",
+      allowNotes: true,
       pdfName: "",
       pdfData: "",
       notes:
@@ -26,10 +27,10 @@ const defaultState = {
       id: "offering",
       title: "헌금 찬양",
       subtitle: "헌금 순서",
+      allowNotes: false,
       pdfName: "",
       pdfData: "",
-      notes:
-        "헌금 큐가 나오면 바로 시작합니다. 헌금위원들이 움직이는 동안 템포를 안정적으로 유지합니다.\n\n일렉은 가벼운 스웰로 공간을 채울 수 있습니다. 사회자가 다음 순서로 넘어가기 쉽도록 마지막은 분명한 다운비트나 홀드 코드로 마무리합니다."
+      notes: ""
     }
   ],
   practice: {
@@ -51,8 +52,8 @@ const els = {
   currentSongTitle: document.querySelector("#currentSongTitle"),
   pdfName: document.querySelector("#pdfName"),
   pdfFrame: document.querySelector("#pdfFrame"),
-  songNotes: document.querySelector("#songNotes"),
   songStatus: document.querySelector("#songStatus"),
+  topPracticeTimes: document.querySelector("#topPracticeTimes"),
   roleGrid: document.querySelector("#roleGrid"),
   saturdayTimes: document.querySelector("#saturdayTimes"),
   sundayNote: document.querySelector("#sundayNote"),
@@ -86,10 +87,22 @@ function loadState() {
     return {
       ...structuredClone(defaultState),
       ...stored,
-      songs: defaultState.songs.map((song) => ({
-        ...song,
-        ...(stored.songs.find((item) => item.id === song.id) || {})
-      })),
+      songs: defaultState.songs.map((song) => {
+        const storedSong = stored.songs.find((item) => item.id === song.id) || {};
+        const merged = {
+          ...song,
+          ...storedSong,
+          allowNotes: song.allowNotes
+        };
+        if (merged.allowNotes === false) merged.notes = "";
+        if (song.id === "baby" && storedSong.title === "아기 환영 찬양") {
+          merged.title = song.title;
+        }
+        if (song.id === "baby" && storedSong.subtitle === "가정 환영 순서") {
+          merged.subtitle = song.subtitle;
+        }
+        return merged;
+      }),
       practice: {
         ...defaultState.practice,
         ...(stored.practice || {})
@@ -113,15 +126,17 @@ function renderSongTabs() {
     const song = state.songs.find((item) => item.id === button.dataset.song);
     if (!song) return;
     button.classList.toggle("is-active", song.id === state.selectedSongId);
-    button.querySelector("span").textContent = song.title;
-    button.querySelector("small").textContent = song.subtitle;
+    button.setAttribute("aria-pressed", song.id === state.selectedSongId ? "true" : "false");
+    const title = button.querySelector("[data-song-title]");
+    const subtitle = button.querySelector("[data-song-subtitle]");
+    if (title) title.textContent = song.title;
+    if (subtitle) subtitle.textContent = song.subtitle;
   });
 }
 
 function renderSong() {
   const song = selectedSong();
   els.currentSongTitle.textContent = song.title;
-  els.songNotes.textContent = song.notes || "아직 메모가 없습니다.";
   els.pdfName.textContent = song.pdfName || "PDF 없음";
   els.songStatus.textContent = song.subtitle;
 
@@ -134,7 +149,15 @@ function renderSong() {
   } else {
     els.pdfFrame.innerHTML = `
       <div class="empty-pdf">
-        <span class="staff-lines" aria-hidden="true"></span>
+        <div class="empty-sheet" aria-hidden="true">
+          <div class="empty-sheet-head">
+            <strong>${song.title}</strong>
+            <span>${song.subtitle}</span>
+          </div>
+          <span class="staff-lines"></span>
+          <span class="staff-lines"></span>
+          <span class="staff-lines"></span>
+        </div>
         <strong>아직 PDF가 없습니다</strong>
         <p>관리자에서 이 곡의 악보를 업로드하세요.</p>
       </div>
@@ -149,19 +172,32 @@ function renderRoles() {
   const roles = window.ABCPRAISE_ROLES || roleGuides;
   els.roleGrid.innerHTML = roles
     .map(
-      (role) => `
-        <a class="role-card" href="onboarding/${role.slug || ""}.html" aria-label="${role.tag} 온보딩 페이지 열기">
-          <span class="role-tag">${role.tag}</span>
-          <h3>${role.equipment || role.title}</h3>
-          <p>${role.summary || ""}</p>
-          <div class="role-focus">
-            ${(role.focus || []).map((item) => `<span>${item}</span>`).join("")}
-          </div>
-          <strong class="role-link">자세히 보기</strong>
+      (role, index) => `
+        <a class="role-row ${index === 0 ? "is-active" : ""}" href="onboarding/${role.slug || ""}.html" aria-label="${role.tag} 온보딩 페이지 열기">
+          <span class="role-icon">${roleInitial(role)}</span>
+          <span class="role-copy">
+            <strong>${role.tag}</strong>
+            <span>${role.equipment || role.title}</span>
+          </span>
+          <span class="chev" aria-hidden="true">›</span>
         </a>
       `
     )
     .join("");
+}
+
+function roleInitial(role) {
+  const initials = {
+    "어쿠스틱 기타": "A",
+    "베이스": "B",
+    "일렉 기타": "E",
+    "메인 건반": "K",
+    "세컨 건반": "K",
+    "드럼": "D",
+    "싱어": "V",
+    "전체 공통": "M"
+  };
+  return initials[role.tag] || role.tag.slice(0, 1);
 }
 
 function renderPractice() {
@@ -182,13 +218,47 @@ function renderPractice() {
   els.saturdayTimes.innerHTML = rows
     .map(
       ([label, time]) => `
-        <div class="rotation-row">
-          <strong>${label}</strong>
-          <span>${time}</span>
+        <div class="time-row">
+          <span>${label}</span>
+          <strong>${time}</strong>
         </div>
       `
     )
     .join("");
+  if (els.topPracticeTimes) {
+    const practiceItems = practiceWindow || [
+      {
+        label: "이번 달",
+        isCurrent: true,
+        services: {
+          "1부": state.practice.slotOne,
+          "2부": state.practice.slotTwo,
+          "3부": state.practice.slotThree
+        }
+      }
+    ];
+    els.topPracticeTimes.innerHTML = `
+      ${practiceItems
+        .map(
+          (item) => `
+            <span class="practice-month-group${item.isCurrent ? " is-current" : ""}">
+              <span class="practice-month-label">${item.month ? `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ` : ""}${item.label}</span>
+              ${Object.entries(item.services)
+                .map(
+                  ([service, time]) => `
+                    <span class="practice-time-chip">
+                      <span>${service}</span>
+                      <strong>${time}</strong>
+                    </span>
+                  `
+                )
+                .join("")}
+            </span>
+          `
+        )
+        .join("")}
+    `;
+  }
   els.sundayNote.textContent = state.practice.sunday;
 }
 
@@ -204,7 +274,9 @@ function syncAdminFields() {
   els.songSelect.value = song.id;
   els.songTitleInput.value = song.title;
   els.songSubtitleInput.value = song.subtitle;
-  els.notesInput.value = song.notes;
+  els.notesInput.disabled = song.allowNotes === false;
+  els.notesInput.placeholder = song.allowNotes === false ? "이 곡은 악보 PDF만 사용합니다." : "";
+  els.notesInput.value = song.allowNotes === false ? "" : song.notes;
   els.pdfInput.value = "";
   els.slotOne.value = state.practice.slotOne;
   els.slotTwo.value = state.practice.slotTwo;
@@ -286,7 +358,7 @@ els.saveSong.addEventListener("click", async () => {
   const song = selectedSong();
   song.title = els.songTitleInput.value.trim() || song.title;
   song.subtitle = els.songSubtitleInput.value.trim() || song.subtitle;
-  song.notes = els.notesInput.value.trim();
+  song.notes = song.allowNotes === false ? "" : els.notesInput.value.trim();
 
   const file = els.pdfInput.files[0];
   if (file) {
