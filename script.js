@@ -47,6 +47,38 @@ const defaultState = {
       pdfData: "",
       notes:
         "가정 소개가 진행되는 동안 부드럽게 연주합니다. 이름 소개와 기도가 또렷하게 들리도록 다이내믹을 낮게 유지합니다.\n\n건반이나 어쿠스틱은 가볍게 패드처럼 받쳐 주세요. 드럼은 요청이 없으면 쉬거나 아주 작게 연주합니다."
+    },
+    {
+      id: "special",
+      title: "특별 순서 찬양",
+      subtitle: "결혼 · 축복 · 환영 순서",
+      allowNotes: false,
+      pdfName: "",
+      pdfData: "",
+      resources: [
+        {
+          label: "1",
+          title: "당신은 사랑받기 위해 태어난 사람",
+          description: "PDF 악보",
+          type: "PDF",
+          href: "assets/resources/special-you-were-born-to-be-loved-20250406.pdf"
+        },
+        {
+          label: "2",
+          title: "당신은 사랑 받기 위해",
+          description: "JPG 악보",
+          type: "JPG",
+          href: "assets/resources/special-you-were-born-to-be-loved.jpg"
+        },
+        {
+          label: "3",
+          title: "하나님께서 당신을 통해",
+          description: "JPG 악보",
+          type: "JPG",
+          href: "assets/resources/special-through-you.jpg"
+        }
+      ],
+      notes: ""
     }
   ],
   practice: {
