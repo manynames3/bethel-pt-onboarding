@@ -1,5 +1,10 @@
 const STORAGE_KEY = "abcpraise.site.ko.v1";
 const ADMIN_CODE = "bethel";
+const sundayServices = [
+  { service: "1부", arrival: "오전 7:05", worship: "오전 7:45" },
+  { service: "2부", arrival: "오전 8:50", worship: "오전 9:30" },
+  { service: "3부", arrival: "오전 10:50", worship: "오전 11:30" }
+];
 
 const defaultState = {
   selectedSongId: "greeting",
@@ -54,6 +59,8 @@ const els = {
   pdfFrame: document.querySelector("#pdfFrame"),
   songStatus: document.querySelector("#songStatus"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
+  sidebarServiceTimes: document.querySelector("#sidebarServiceTimes"),
+  serviceBriefTimes: document.querySelector("#serviceBriefTimes"),
   roleGrid: document.querySelector("#roleGrid"),
   saturdayTimes: document.querySelector("#saturdayTimes"),
   sundayNote: document.querySelector("#sundayNote"),
@@ -200,6 +207,23 @@ function roleInitial(role) {
   return initials[role.tag] || role.tag.slice(0, 1);
 }
 
+function renderServiceTimes() {
+  const markup = sundayServices
+    .map(
+      ({ service, arrival, worship }) => `
+        <div class="service-time-row">
+          <strong class="service-time-service">${service}</strong>
+          <span class="service-time-value"><small>도착</small> <span>${arrival}</span></span>
+          <span class="service-time-value"><small>예배</small> <span>${worship}</span></span>
+        </div>
+      `
+    )
+    .join("");
+
+  if (els.sidebarServiceTimes) els.sidebarServiceTimes.innerHTML = markup;
+  if (els.serviceBriefTimes) els.serviceBriefTimes.innerHTML = markup;
+}
+
 function renderPractice() {
   const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.();
   const rows = practiceWindow
@@ -260,6 +284,7 @@ function renderPractice() {
     `;
   }
   els.sundayNote.textContent = state.practice.sunday;
+  renderServiceTimes();
 }
 
 function populateAdminOptions() {
