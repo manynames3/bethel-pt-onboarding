@@ -35,6 +35,22 @@ const defaultState = {
       allowNotes: false,
       pdfName: "",
       pdfData: "",
+      resources: [
+        {
+          label: "2부",
+          title: "헌금송 · 축복송",
+          description: "2부용 PDF 악보",
+          type: "PDF",
+          href: "assets/resources/2026-offering-blessing-song-2bu.pdf"
+        },
+        {
+          label: "3부",
+          title: "헌금송 · 축복송",
+          description: "3부용 JPG 악보",
+          type: "JPG",
+          href: "assets/resources/2026-offering-blessing-song-3bu.jpg"
+        }
+      ],
       notes: ""
     }
   ],
@@ -57,6 +73,7 @@ const els = {
   currentSongTitle: document.querySelector("#currentSongTitle"),
   pdfName: document.querySelector("#pdfName"),
   pdfFrame: document.querySelector("#pdfFrame"),
+  songResources: document.querySelector("#songResources"),
   songStatus: document.querySelector("#songStatus"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
   sidebarServiceTimes: document.querySelector("#sidebarServiceTimes"),
@@ -144,7 +161,7 @@ function renderSongTabs() {
 function renderSong() {
   const song = selectedSong();
   els.currentSongTitle.textContent = song.title;
-  els.pdfName.textContent = song.pdfName || "PDF 없음";
+  els.pdfName.textContent = song.pdfName || resourceSummary(song) || "PDF 없음";
   els.songStatus.textContent = song.subtitle;
 
   if (song.pdfData) {
@@ -153,6 +170,8 @@ function renderSong() {
     iframe.title = `${song.title} 악보 PDF`;
     iframe.src = song.pdfData;
     els.pdfFrame.append(iframe);
+  } else if (song.resources?.length) {
+    renderResourcePreview(song.resources[0], song);
   } else {
     els.pdfFrame.innerHTML = `
       <div class="empty-pdf">
@@ -171,8 +190,65 @@ function renderSong() {
     `;
   }
 
+  renderSongResources(song);
   renderSongTabs();
   syncAdminFields();
+}
+
+function resourceSummary(song) {
+  if (!song.resources?.length) return "";
+  return song.resources.map((resource) => `${resource.label} ${resource.type}`).join(" · ");
+}
+
+function renderResourcePreview(resource, song) {
+  els.pdfFrame.innerHTML = "";
+  if (resource.type === "PDF") {
+    const iframe = document.createElement("iframe");
+    iframe.title = `${song.title} ${resource.label} ${resource.type}`;
+    iframe.src = resource.href;
+    els.pdfFrame.append(iframe);
+    return;
+  }
+
+  const img = document.createElement("img");
+  img.className = "resource-preview-image";
+  img.src = resource.href;
+  img.alt = `${song.title} ${resource.label} ${resource.type}`;
+  els.pdfFrame.append(img);
+}
+
+function renderSongResources(song) {
+  if (!els.songResources) return;
+  const resources = song.resources || [];
+  if (!resources.length) {
+    els.songResources.hidden = true;
+    els.songResources.innerHTML = "";
+    return;
+  }
+
+  els.songResources.hidden = false;
+  els.songResources.innerHTML = `
+    <div class="song-resources-head">
+      <strong>첨부 자료</strong>
+      <span>${resources.length}개 파일</span>
+    </div>
+    <div class="song-resource-list">
+      ${resources
+        .map(
+          (resource) => `
+            <a class="song-resource-card" href="${resource.href}" target="_blank" rel="noopener noreferrer">
+              <span class="song-resource-type">${resource.type}</span>
+              <span class="song-resource-copy">
+                <strong>${resource.label} ${resource.title}</strong>
+                <span>${resource.description}</span>
+              </span>
+              <span class="song-resource-action">열기</span>
+            </a>
+          `
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 function renderRoles() {
