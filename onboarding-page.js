@@ -43,27 +43,57 @@ function renderReferenceTable(reference) {
   `;
 }
 
+function renderReferenceLinks(reference) {
+  return `
+    <div class="reference-links">
+      ${reference.links
+        .map(
+          (link) => `
+            <a class="reference-link-card" href="${link.href}" target="_blank" rel="noopener noreferrer">
+              <strong>${link.title}</strong>
+              <span>${link.description}</span>
+            </a>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
 function renderReferences() {
   const content = document.querySelector(".role-content");
   if (!content || !currentRole.references?.length) return;
 
   const markup = currentRole.references
     .map(
-      (reference) => `
-        <article class="detail-card reference-detail">
-          <span class="practice-label">${reference.label}</span>
-          <h2>${reference.title}</h2>
-          <div class="reference-media-grid">
-            <figure class="reference-photo">
-              <img src="${assetPath(reference.image)}" alt="${reference.alt}" loading="lazy">
-              <figcaption>${reference.note}</figcaption>
-            </figure>
-            <div class="reference-table-wrap">
-              ${renderReferenceTable(reference)}
+      (reference) => {
+        if (reference.links?.length) {
+          return `
+            <article class="detail-card reference-detail">
+              <span class="practice-label">${reference.label}</span>
+              <h2>${reference.title}</h2>
+              <p class="reference-note">${reference.note}</p>
+              ${renderReferenceLinks(reference)}
+            </article>
+          `;
+        }
+
+        return `
+          <article class="detail-card reference-detail">
+            <span class="practice-label">${reference.label}</span>
+            <h2>${reference.title}</h2>
+            <div class="reference-media-grid">
+              <figure class="reference-photo">
+                <img src="${assetPath(reference.image)}" alt="${reference.alt}" loading="lazy">
+                <figcaption>${reference.note}</figcaption>
+              </figure>
+              <div class="reference-table-wrap">
+                ${renderReferenceTable(reference)}
+              </div>
             </div>
-          </div>
-        </article>
-      `
+          </article>
+        `;
+      }
     )
     .join("");
 

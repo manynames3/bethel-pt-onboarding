@@ -121,7 +121,7 @@ textarea:focus-visible {
 .app-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto;
   gap: 18px;
   width: min(1180px, calc(100% - 48px));
   min-height: 100vh;
@@ -295,14 +295,6 @@ textarea:focus-visible {
   gap: 10px;
   padding: 0 18px;
   border-left: 1px solid var(--line);
-}
-
-.sync-status {
-  display: none;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 680;
-  white-space: nowrap;
 }
 
 .admin-button {
@@ -1063,221 +1055,6 @@ textarea:focus-visible {
   background: repeating-linear-gradient(180deg, transparent 0 12px, rgba(15, 23, 42, 0.28) 12px 14px, transparent 14px 17px);
 }
 
-.app-inspector {
-  display: grid;
-  grid-column: 1;
-  grid-row: 4;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: auto;
-  gap: 14px;
-  min-height: 0;
-  border-left: 0;
-  background: transparent;
-  padding: 0;
-}
-
-.inspector-section {
-  display: grid;
-  gap: 12px;
-}
-
-.section-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.section-title-row h2 {
-  color: var(--ink);
-  font-size: 16px;
-  font-weight: 820;
-}
-
-.section-title-row span {
-  color: var(--muted);
-  font-size: 16px;
-}
-
-.video-preview {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
-}
-
-.video-art {
-  position: relative;
-  height: 92px;
-  background:
-    linear-gradient(90deg, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.12)),
-    url("assets/atlanta-bethel-stage.png") center / cover no-repeat;
-}
-
-.play-button {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: grid;
-  width: 46px;
-  height: 46px;
-  transform: translate(-50%, -50%);
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.48);
-  color: #fff;
-  font-size: 18px;
-}
-
-.video-copy {
-  display: grid;
-  gap: 5px;
-  padding: 12px;
-}
-
-.video-copy strong {
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 780;
-}
-
-.video-copy span,
-.video-copy a {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 620;
-}
-
-.video-copy a {
-  color: var(--teal-dark);
-  font-weight: 780;
-}
-
-.transpose-card {
-  display: grid;
-  gap: 14px;
-  border: 1px solid rgba(8, 145, 178, 0.18);
-  border-radius: 8px;
-  background: linear-gradient(180deg, var(--surface-cyan), #ffffff);
-  box-shadow: var(--shadow-soft);
-  padding: 14px;
-}
-
-.key-row {
-  display: grid;
-  grid-template-columns: 1fr 32px 1fr;
-  gap: 10px;
-  align-items: center;
-}
-
-.key-box {
-  display: grid;
-  gap: 5px;
-  min-height: 70px;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
-}
-
-.key-box span {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 680;
-}
-
-.key-box strong {
-  color: var(--ink);
-  font-size: 24px;
-  font-weight: 820;
-}
-
-.key-arrow {
-  color: var(--muted);
-  font-weight: 800;
-  text-align: center;
-}
-
-.tool-note {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 640;
-}
-
-.teal-button {
-  display: grid;
-  min-height: 42px;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--teal);
-  color: #fff;
-  box-shadow: 0 12px 26px rgba(8, 145, 178, 0.2);
-  font-size: 14px;
-  font-weight: 780;
-  text-align: center;
-}
-
-.teal-button:hover {
-  background: var(--teal-dark);
-}
-
-.aviom-table {
-  display: grid;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-}
-
-.aviom-row {
-  display: grid;
-  grid-template-columns: 54px minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: center;
-  min-height: 38px;
-  border-bottom: 1px solid var(--line);
-  padding: 0 12px;
-  font-size: 13px;
-  font-weight: 680;
-}
-
-.aviom-row:last-child {
-  border-bottom: 0;
-}
-
-.aviom-row strong {
-  color: var(--ink-2);
-  font-weight: 780;
-}
-
-.aviom-row span {
-  overflow: hidden;
-  color: var(--muted);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.mix-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--teal);
-}
-
-.mix-dot.blue {
-  background: var(--blue);
-}
-
-.mix-dot.amber {
-  background: #f59e0b;
-}
-
-.mix-dot.green {
-  background: var(--green);
-}
-
 /* Admin drawer */
 .drawer-backdrop {
   position: fixed;
@@ -1758,6 +1535,42 @@ header.site-shell {
   margin-bottom: 18px;
 }
 
+.reference-note {
+  max-width: 720px;
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.reference-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.reference-link-card {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(8, 145, 178, 0.2);
+  border-radius: 8px;
+  background: #f8ffff;
+  padding: 16px;
+}
+
+.reference-link-card strong {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 820;
+}
+
+.reference-link-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
 .reference-media-grid {
   display: grid;
   grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
@@ -1833,7 +1646,7 @@ header.site-shell {
 
   .app-shell {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
     width: min(1120px, calc(100% - 32px));
     height: auto;
     min-height: 100vh;
@@ -1855,15 +1668,6 @@ header.site-shell {
     grid-column: 1;
     grid-row: 3;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .app-inspector {
-    grid-column: 1;
-    grid-row: 4;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: auto;
-    border-top: 0;
-    border-left: 0;
   }
 
   .resource-grid {
@@ -1922,8 +1726,7 @@ header.site-shell {
   }
 
   .app-sidebar,
-  .app-content,
-  .app-inspector {
+  .app-content {
     border: 0;
     padding: 16px;
   }
@@ -1934,10 +1737,6 @@ header.site-shell {
 
   .app-sidebar {
     order: 2;
-  }
-
-  .app-inspector {
-    order: 3;
   }
 
   .app-sidebar {
@@ -2006,12 +1805,8 @@ header.site-shell {
     padding: 30px;
   }
 
-  .app-inspector {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
   .role-layout,
+  .reference-links,
   .reference-media-grid {
     grid-template-columns: 1fr;
   }
