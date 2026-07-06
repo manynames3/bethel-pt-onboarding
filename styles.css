@@ -1063,55 +1063,6 @@ textarea:focus-visible {
   background: repeating-linear-gradient(180deg, transparent 0 12px, rgba(15, 23, 42, 0.28) 12px 14px, transparent 14px 17px);
 }
 
-.bottom-summary {
-  display: none;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--line);
-}
-
-.summary-item {
-  display: grid;
-  grid-template-columns: 38px minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-  min-width: 0;
-  background: var(--surface);
-  padding: 14px 18px;
-}
-
-.summary-icon {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--surface-blue);
-  color: var(--blue);
-  font-weight: 850;
-}
-
-.summary-item strong,
-.summary-item span {
-  display: block;
-}
-
-.summary-item strong {
-  font-size: 14px;
-  font-weight: 790;
-}
-
-.summary-item span {
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 640;
-}
-
 .app-inspector {
   display: grid;
   grid-column: 1;
@@ -2055,11 +2006,6 @@ header.site-shell {
     padding: 30px;
   }
 
-  .bottom-summary {
-    grid-template-columns: 1fr;
-    margin: 0;
-  }
-
   .app-inspector {
     display: grid;
     grid-template-columns: 1fr;
@@ -2199,10 +2145,6 @@ header.site-shell {
   .pdf-stage {
     min-height: 480px;
     padding: 14px;
-  }
-
-  .summary-item {
-    padding: 12px;
   }
 
   .role-hero h1 {
