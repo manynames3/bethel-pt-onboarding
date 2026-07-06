@@ -3,6 +3,7 @@ const ADMIN_CODE = "bethel";
 const legacySundayNotes = [
   "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 40분 전에 준비된 상태로 도착해 주세요."
 ];
+const legacyCombinedSongIds = ["greeting", "offering"];
 const sundayServices = [
   { service: "1부", practice: "오전 7:15", worship: "오전 7:45" },
   { service: "2부", practice: "오전 9:00", worship: "오전 9:30" },
@@ -10,31 +11,12 @@ const sundayServices = [
 ];
 
 const defaultState = {
-  selectedSongId: "greeting",
+  selectedSongId: "offeringGreeting",
   songs: [
     {
-      id: "greeting",
-      title: "인사 찬양",
-      subtitle: "예배 시작 환영",
-      allowNotes: false,
-      pdfName: "",
-      pdfData: "",
-      notes: ""
-    },
-    {
-      id: "baby",
-      title: "아기 환영 찬양 (선택)",
-      subtitle: "필요 시 가정 환영 순서",
-      allowNotes: true,
-      pdfName: "",
-      pdfData: "",
-      notes:
-        "가정 소개가 진행되는 동안 부드럽게 연주합니다. 이름 소개와 기도가 또렷하게 들리도록 다이내믹을 낮게 유지합니다.\n\n건반이나 어쿠스틱은 가볍게 패드처럼 받쳐 주세요. 드럼은 요청이 없으면 쉬거나 아주 작게 연주합니다."
-    },
-    {
-      id: "offering",
-      title: "헌금 찬양",
-      subtitle: "헌금 순서",
+      id: "offeringGreeting",
+      title: "헌금 찬양 & 인사찬양",
+      subtitle: "헌금송 · 축복송 자료",
       allowNotes: false,
       pdfName: "",
       pdfData: "",
@@ -55,6 +37,16 @@ const defaultState = {
         }
       ],
       notes: ""
+    },
+    {
+      id: "baby",
+      title: "아기 환영 찬양",
+      subtitle: "필요 시 가정 환영 순서",
+      allowNotes: true,
+      pdfName: "",
+      pdfData: "",
+      notes:
+        "가정 소개가 진행되는 동안 부드럽게 연주합니다. 이름 소개와 기도가 또렷하게 들리도록 다이내믹을 낮게 유지합니다.\n\n건반이나 어쿠스틱은 가볍게 패드처럼 받쳐 주세요. 드럼은 요청이 없으면 쉬거나 아주 작게 연주합니다."
     }
   ],
   practice: {
@@ -111,6 +103,11 @@ function loadState() {
   try {
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (!stored || !Array.isArray(stored.songs)) return structuredClone(defaultState);
+    const selectedSongId = legacyCombinedSongIds.includes(stored.selectedSongId)
+      ? "offeringGreeting"
+      : defaultState.songs.some((song) => song.id === stored.selectedSongId)
+        ? stored.selectedSongId
+        : defaultState.selectedSongId;
     const practice = {
       ...defaultState.practice,
       ...(stored.practice || {})
@@ -122,15 +119,39 @@ function loadState() {
     return {
       ...structuredClone(defaultState),
       ...stored,
+      selectedSongId,
       songs: defaultState.songs.map((song) => {
-        const storedSong = stored.songs.find((item) => item.id === song.id) || {};
+        const storedSong =
+          stored.songs.find((item) => item.id === song.id) ||
+          (song.id === "offeringGreeting"
+            ? stored.songs.find((item) => item.id === "offering") ||
+              stored.songs.find((item) => item.id === "greeting")
+            : {}) ||
+          {};
         const merged = {
           ...song,
           ...storedSong,
-          allowNotes: song.allowNotes
+          id: song.id,
+          allowNotes: song.allowNotes,
+          resources: song.resources
         };
         if (merged.allowNotes === false) merged.notes = "";
-        if (song.id === "baby" && storedSong.title === "아기 환영 찬양") {
+        if (
+          song.id === "offeringGreeting" &&
+          ["인사 찬양", "헌금 찬양"].includes(storedSong.title)
+        ) {
+          merged.title = song.title;
+        }
+        if (
+          song.id === "offeringGreeting" &&
+          ["예배 시작 환영", "헌금 순서"].includes(storedSong.subtitle)
+        ) {
+          merged.subtitle = song.subtitle;
+        }
+        if (
+          song.id === "baby" &&
+          ["아기 환영 찬양", "아기 환영 찬양 (선택)"].includes(storedSong.title)
+        ) {
           merged.title = song.title;
         }
         if (song.id === "baby" && storedSong.subtitle === "가정 환영 순서") {
