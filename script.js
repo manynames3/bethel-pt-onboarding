@@ -117,7 +117,6 @@ const els = {
   songTabs: [...document.querySelectorAll(".song-tab")],
   currentSongTitle: document.querySelector("#currentSongTitle"),
   pdfFrame: document.querySelector("#pdfFrame"),
-  currentResourceLink: document.querySelector("#currentResourceLink"),
   songResources: document.querySelector("#songResources"),
   mobileQuickActions: document.querySelector("#mobileQuickActions"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
@@ -246,7 +245,6 @@ function renderSong() {
   const song = selectedSong();
   els.currentSongTitle.textContent = song.title;
   const activeResource = selectedResource(song);
-  updateCurrentResourceLink(song, activeResource);
 
   if (song.pdfData) {
     els.pdfFrame.innerHTML = "";
@@ -276,24 +274,6 @@ function renderSong() {
   renderSongResources(song);
   renderSongTabs();
   syncAdminFields();
-}
-
-function updateCurrentResourceLink(song, resource = selectedResource(song)) {
-  if (!els.currentResourceLink) return;
-  const href = song.pdfData || resource?.href || "";
-  if (!href) {
-    els.currentResourceLink.hidden = true;
-    els.currentResourceLink.removeAttribute("href");
-    return;
-  }
-
-  els.currentResourceLink.hidden = false;
-  els.currentResourceLink.href = href;
-  if (song.pdfData && song.pdfName) {
-    els.currentResourceLink.setAttribute("download", song.pdfName);
-  } else {
-    els.currentResourceLink.removeAttribute("download");
-  }
 }
 
 function renderResourcePreview(resource, song) {
