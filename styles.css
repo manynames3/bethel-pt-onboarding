@@ -186,8 +186,7 @@ textarea:focus-visible {
 .practice-time-chip,
 .date-stepper,
 .admin-button,
-.icon-button,
-.zoom-pill {
+.icon-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -940,28 +939,12 @@ textarea:focus-visible {
   content: "· ";
 }
 
-.page-controls,
-.tool-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .icon-button {
   width: 34px;
   height: 34px;
   padding: 0;
   color: var(--ink-2);
   font-size: 15px;
-}
-
-.zoom-pill {
-  min-width: 70px;
-  height: 34px;
-  background: var(--surface-soft);
-  color: var(--ink-2);
-  font-size: 13px;
-  font-weight: 760;
 }
 
 .song-resources {
@@ -1069,37 +1052,8 @@ textarea:focus-visible {
 .pdf-body {
   grid-row: 3;
   display: grid;
-  grid-template-columns: 126px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   min-height: 0;
-}
-
-.pdf-thumbs {
-  display: grid;
-  gap: 16px;
-  align-content: start;
-  overflow: hidden;
-  border-right: 1px solid var(--line);
-  background: var(--bg);
-  padding: 16px;
-}
-
-.pdf-thumb {
-  display: grid;
-  height: 94px;
-  place-items: end center;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background:
-    repeating-linear-gradient(180deg, transparent 0 8px, rgba(15, 23, 42, 0.12) 8px 9px, transparent 9px 15px),
-    #fff;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 750;
-  padding-bottom: 6px;
-}
-
-.pdf-thumb.is-active {
-  border: 2px solid var(--blue);
 }
 
 .pdf-stage {
@@ -1936,17 +1890,8 @@ header.site-shell {
     grid-template-columns: 1fr;
   }
 
-  .page-controls,
-  .tool-controls {
-    flex-wrap: wrap;
-  }
-
   .pdf-body {
     grid-template-columns: 1fr;
-  }
-
-  .pdf-thumbs {
-    display: none;
   }
 
   .pdf-stage {
@@ -2101,6 +2046,438 @@ header.site-shell {
   }
 
   .checklist {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2026-07-07 dashboard polish */
+body.app-body {
+  background: #ffffff;
+}
+
+.app-shell {
+  gap: 22px;
+  width: min(1200px, calc(100% - 44px));
+  padding-top: 18px;
+}
+
+.app-topbar,
+.today-card,
+.practice-card,
+.role-list,
+.resource-card,
+.song-tab,
+.pdf-shell,
+.admin-drawer {
+  border-color: #dbe4ee;
+}
+
+.app-topbar {
+  min-height: 82px;
+  border-radius: 14px;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+}
+
+.brand-logo {
+  border-radius: 10px;
+}
+
+.brand-lockup strong {
+  font-size: 21px;
+}
+
+.welcome-dashboard {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: 40px;
+  align-items: center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 26px 2px 10px;
+}
+
+.welcome-copy {
+  gap: 16px;
+}
+
+.welcome-copy h1 {
+  max-width: 660px;
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  letter-spacing: 0;
+}
+
+.welcome-copy p:last-child {
+  max-width: 620px;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.primary-action,
+.secondary-action,
+.current-resource-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 820;
+  padding: 0 15px;
+}
+
+.primary-action {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.secondary-action,
+.current-resource-link {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-2);
+  box-shadow: var(--shadow-soft);
+}
+
+.kakao-note,
+.section-note,
+.upload-preview {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 680;
+  line-height: 1.5;
+}
+
+.kakao-note {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid rgba(8, 145, 178, 0.18);
+  border-radius: 10px;
+  background: #f4fdff;
+  color: var(--teal-dark);
+  padding: 10px 12px;
+}
+
+.service-brief {
+  border-radius: 14px;
+  background: #f8fbfd;
+  padding: 18px;
+}
+
+.service-brief .service-time-row,
+.service-time-row {
+  border-radius: 10px;
+}
+
+.quick-resources {
+  margin-top: 8px;
+}
+
+.resource-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resource-card {
+  min-height: 118px;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.resource-card.primary {
+  background: #f4fdff;
+}
+
+.resource-card strong {
+  font-size: 14px;
+}
+
+.resource-card > span:last-child {
+  font-size: 12px;
+}
+
+.songbook-panel {
+  gap: 14px;
+  border-top: 1px solid #e6edf5;
+  padding-top: 22px;
+}
+
+.dashboard-section-head {
+  align-items: start;
+}
+
+.dashboard-section-head h2 {
+  font-size: 24px;
+}
+
+.song-strip {
+  gap: 12px;
+}
+
+.song-tab {
+  min-height: 96px;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.song-tab.is-active {
+  box-shadow: inset 0 0 0 2px rgba(8, 145, 178, 0.42), var(--shadow-soft);
+}
+
+.song-title {
+  font-size: 17px;
+}
+
+.pdf-shell {
+  min-height: 590px;
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+}
+
+.pdf-toolbar {
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 68px;
+  padding: 0 18px;
+}
+
+.file-title {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+
+.current-resource-link[hidden] {
+  display: none;
+}
+
+.pdf-body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pdf-stage {
+  min-height: 520px;
+  background: #f8fafc;
+}
+
+.song-resources {
+  grid-template-columns: 90px minmax(0, 1fr);
+  background: #ffffff;
+}
+
+.song-resources-head strong {
+  font-size: 14px;
+}
+
+.song-resource-card {
+  min-height: 58px;
+  border-radius: 10px;
+}
+
+.admin-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  padding: 4px;
+}
+
+.admin-tabs button {
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.admin-tabs button.is-active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+}
+
+.admin-tabs button:hover {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+}
+
+.admin-tabs button.is-active:hover {
+  background: #fff;
+}
+
+.admin-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-info-card {
+  display: grid;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfdff;
+  padding: 14px;
+}
+
+.admin-info-card strong {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 840;
+}
+
+.admin-info-card span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.form-message.neutral {
+  color: var(--teal-dark);
+}
+
+.mobile-quick-actions {
+  display: none;
+}
+
+@media (max-width: 1240px) {
+  .resource-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  body.app-body {
+    padding-bottom: 76px;
+  }
+
+  .app-shell {
+    width: min(100% - 24px, 820px);
+    padding-top: 12px;
+  }
+
+  .welcome-dashboard {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px 0 0;
+  }
+
+  .welcome-copy h1 {
+    font-size: clamp(2.1rem, 8vw, 3.1rem);
+  }
+
+  .app-sidebar,
+  .app-content {
+    padding: 0;
+  }
+
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pdf-shell {
+    min-height: 620px;
+  }
+
+  .mobile-quick-actions {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    z-index: 18;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    border: 1px solid rgba(203, 213, 225, 0.86);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(14px);
+    padding: 6px;
+  }
+
+  .mobile-quick-actions a {
+    display: grid;
+    min-height: 42px;
+    place-items: center;
+    border-radius: 10px;
+    color: var(--ink-2);
+    font-size: 13px;
+    font-weight: 850;
+  }
+
+  .mobile-quick-actions a:first-child {
+    background: var(--ink);
+    color: #fff;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    width: min(100% - 20px, 440px);
+    gap: 12px;
+  }
+
+  .brand-lockup {
+    padding-right: 116px;
+  }
+
+  .welcome-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .primary-action,
+  .secondary-action {
+    width: 100%;
+  }
+
+  .service-brief {
+    padding: 14px;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card {
+    min-height: 86px;
+  }
+
+  .song-tab {
+    min-height: 86px;
+  }
+
+  .pdf-toolbar {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .current-resource-link {
+    width: 100%;
+  }
+
+  .song-resources {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-stage {
+    min-height: 500px;
+    padding: 12px;
+  }
+
+  .admin-tabs {
     grid-template-columns: 1fr;
   }
 }

@@ -9,6 +9,52 @@ const sundayServices = [
   { service: "2부", practice: "오전 9:00", worship: "오전 9:30" },
   { service: "3부", practice: "오전 11:00", worship: "오전 11:30" }
 ];
+const kakaoSheetNote = "악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.";
+const quickResources = [
+  {
+    href: "#songbook",
+    token: "PDF",
+    title: "찬양 PDF",
+    description: kakaoSheetNote,
+    variant: "teal",
+    primary: true,
+    mobile: "악보",
+    mobileOrder: 1
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj",
+    token: "YT",
+    title: "참고 영상",
+    description: "주일예배 플레이리스트",
+    variant: "blue",
+    external: true
+  },
+  {
+    href: "#onboarding",
+    token: "PT",
+    title: "파트별 온보딩",
+    description: "악기 · 보컬 · Aviom",
+    variant: "green"
+  },
+  {
+    href: "onboarding/aviom.html",
+    token: "ALL",
+    title: "전체 공통",
+    description: "Aviom · 키 조정 리소스",
+    variant: "slate",
+    mobile: "전체 공통",
+    mobileOrder: 3
+  },
+  {
+    href: "#practice",
+    token: "SAT",
+    title: "토요 연습",
+    description: "이번 달 · 다음 달 시간표",
+    variant: "amber",
+    mobile: "연습시간",
+    mobileOrder: 2
+  }
+];
 
 const defaultState = {
   selectedSongId: "offeringGreeting",
@@ -50,7 +96,7 @@ const defaultState = {
     },
     {
       id: "special",
-      title: "특별 순서 찬양",
+      title: "축복/환영 찬양",
       subtitle: "결혼 · 축복 · 환영 순서",
       allowNotes: false,
       pdfName: "",
@@ -100,8 +146,11 @@ const els = {
   currentSongTitle: document.querySelector("#currentSongTitle"),
   pdfName: document.querySelector("#pdfName"),
   pdfFrame: document.querySelector("#pdfFrame"),
+  currentResourceLink: document.querySelector("#currentResourceLink"),
   songResources: document.querySelector("#songResources"),
   songStatus: document.querySelector("#songStatus"),
+  resourceGrid: document.querySelector("#resourceGrid"),
+  mobileQuickActions: document.querySelector("#mobileQuickActions"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
   sidebarServiceTimes: document.querySelector("#sidebarServiceTimes"),
   serviceBriefTimes: document.querySelector("#serviceBriefTimes"),
@@ -121,13 +170,18 @@ const els = {
   songSubtitleInput: document.querySelector("#songSubtitleInput"),
   notesInput: document.querySelector("#notesInput"),
   pdfInput: document.querySelector("#pdfInput"),
+  uploadPreview: document.querySelector("#uploadPreview"),
   saveSong: document.querySelector("#saveSong"),
+  songSaveMessage: document.querySelector("#songSaveMessage"),
   clearPdf: document.querySelector("#clearPdf"),
   slotOne: document.querySelector("#slotOne"),
   slotTwo: document.querySelector("#slotTwo"),
   slotThree: document.querySelector("#slotThree"),
   sundayInput: document.querySelector("#sundayInput"),
   savePractice: document.querySelector("#savePractice"),
+  practiceSaveMessage: document.querySelector("#practiceSaveMessage"),
+  adminTabs: [...document.querySelectorAll("[data-admin-tab]")],
+  adminPanels: [...document.querySelectorAll("[data-admin-panel]")],
   resetContent: document.querySelector("#resetContent")
 };
 
@@ -189,6 +243,9 @@ function loadState() {
         if (song.id === "baby" && storedSong.subtitle === "가정 환영 순서") {
           merged.subtitle = song.subtitle;
         }
+        if (song.id === "special" && storedSong.title === "특별 순서 찬양") {
+          merged.title = song.title;
+        }
         return merged;
       }),
       practice
@@ -224,6 +281,7 @@ function renderSong() {
   els.currentSongTitle.textContent = song.title;
   els.pdfName.textContent = song.pdfName || resourceSummary(song) || "PDF 없음";
   els.songStatus.textContent = song.subtitle;
+  updateCurrentResourceLink(song);
 
   if (song.pdfData) {
     els.pdfFrame.innerHTML = "";
@@ -254,6 +312,25 @@ function renderSong() {
   renderSongResources(song);
   renderSongTabs();
   syncAdminFields();
+}
+
+function updateCurrentResourceLink(song) {
+  if (!els.currentResourceLink) return;
+  const primaryResource = song.resources?.[0];
+  const href = song.pdfData || primaryResource?.href || "";
+  if (!href) {
+    els.currentResourceLink.hidden = true;
+    els.currentResourceLink.removeAttribute("href");
+    return;
+  }
+
+  els.currentResourceLink.hidden = false;
+  els.currentResourceLink.href = href;
+  if (song.pdfData && song.pdfName) {
+    els.currentResourceLink.setAttribute("download", song.pdfName);
+  } else {
+    els.currentResourceLink.removeAttribute("download");
+  }
 }
 
 function resourceSummary(song) {
@@ -290,7 +367,7 @@ function renderSongResources(song) {
   els.songResources.hidden = false;
   els.songResources.innerHTML = `
     <div class="song-resources-head">
-      <strong>첨부 자료</strong>
+      <strong>파일</strong>
       <span>${resources.length}개 파일</span>
     </div>
     <div class="song-resource-list">
@@ -310,6 +387,30 @@ function renderSongResources(song) {
         .join("")}
     </div>
   `;
+}
+
+function renderQuickResources() {
+  if (els.resourceGrid) {
+    els.resourceGrid.innerHTML = quickResources
+      .map(
+        (resource) => `
+          <a class="resource-card${resource.primary ? " primary" : ""}" href="${resource.href}"${resource.external ? ' target="_blank" rel="noopener noreferrer"' : ""}>
+            <span class="resource-token ${resource.variant || ""}">${resource.token}</span>
+            <strong>${resource.title}</strong>
+            <span>${resource.description}</span>
+          </a>
+        `
+      )
+      .join("");
+  }
+
+  if (els.mobileQuickActions) {
+    els.mobileQuickActions.innerHTML = quickResources
+      .filter((resource) => resource.mobile)
+      .sort((a, b) => a.mobileOrder - b.mobileOrder)
+      .map((resource) => `<a href="${resource.href}">${resource.mobile}</a>`)
+      .join("");
+  }
 }
 
 function renderRoles() {
@@ -440,10 +541,32 @@ function syncAdminFields() {
   els.notesInput.placeholder = song.allowNotes === false ? "이 곡은 악보 PDF만 사용합니다." : "";
   els.notesInput.value = song.allowNotes === false ? "" : song.notes;
   els.pdfInput.value = "";
+  if (els.uploadPreview) els.uploadPreview.textContent = "선택된 새 PDF가 없습니다.";
   els.slotOne.value = state.practice.slotOne;
   els.slotTwo.value = state.practice.slotTwo;
   els.slotThree.value = state.practice.slotThree;
   els.sundayInput.value = state.practice.sunday;
+}
+
+function setAdminPanel(panelName) {
+  els.adminTabs.forEach((tab) => {
+    const active = tab.dataset.adminTab === panelName;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", active ? "true" : "false");
+  });
+  els.adminPanels.forEach((panel) => {
+    const active = panel.dataset.adminPanel === panelName;
+    panel.hidden = !active;
+    panel.classList.toggle("is-active", active);
+  });
+}
+
+function showMessage(element, message) {
+  if (!element) return;
+  element.textContent = message;
+  window.setTimeout(() => {
+    if (element.textContent === message) element.textContent = "";
+  }, 7000);
 }
 
 function openDrawer() {
@@ -516,6 +639,18 @@ els.songSelect.addEventListener("change", () => {
   renderSong();
 });
 
+els.adminTabs.forEach((tab) => {
+  tab.addEventListener("click", () => setAdminPanel(tab.dataset.adminTab));
+});
+
+els.pdfInput.addEventListener("change", () => {
+  const file = els.pdfInput.files[0];
+  if (!els.uploadPreview) return;
+  els.uploadPreview.textContent = file
+    ? `새 PDF 선택됨: ${file.name}`
+    : "선택된 새 PDF가 없습니다.";
+});
+
 els.saveSong.addEventListener("click", async () => {
   const song = selectedSong();
   song.title = els.songTitleInput.value.trim() || song.title;
@@ -535,6 +670,7 @@ els.saveSong.addEventListener("click", async () => {
   saveState();
   populateAdminOptions();
   renderSong();
+  showMessage(els.songSaveMessage, "찬양 PDF 정보가 저장되었습니다.");
 });
 
 els.clearPdf.addEventListener("click", () => {
@@ -543,6 +679,7 @@ els.clearPdf.addEventListener("click", () => {
   song.pdfData = "";
   saveState();
   renderSong();
+  showMessage(els.songSaveMessage, "업로드된 PDF가 지워졌습니다.");
 });
 
 els.savePractice.addEventListener("click", () => {
@@ -552,6 +689,7 @@ els.savePractice.addEventListener("click", () => {
   state.practice.sunday = els.sundayInput.value.trim() || defaultState.practice.sunday;
   saveState();
   renderPractice();
+  showMessage(els.practiceSaveMessage, "연습 시간이 저장되었습니다.");
 });
 
 els.resetContent.addEventListener("click", () => {
@@ -564,6 +702,7 @@ els.resetContent.addEventListener("click", () => {
 });
 
 renderRoles();
+renderQuickResources();
 renderPractice();
 populateAdminOptions();
 renderSong();
