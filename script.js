@@ -5,6 +5,9 @@ const legacySundayNotes = [
 ];
 const legacyCombinedSongIds = ["greeting", "offering"];
 const legacyOfferingSubtitle = ["헌금송", "축복송 자료"].join(" · ");
+const legacyOfferingTitles = ["인사 찬양", "헌금 찬양", "헌금 찬양 & 인사찬양"];
+const legacySpecialTitles = ["특별 순서 찬양", "축복/환영 찬양"];
+const legacySpecialSubtitles = ["결혼 · 축복 · 환영 순서"];
 const sundayServices = [
   { service: "1부", practice: "오전 7:15" },
   { service: "2부", practice: "오전 9:00" },
@@ -33,7 +36,7 @@ const defaultState = {
   songs: [
     {
       id: "offeringGreeting",
-      title: "헌금 찬양 & 인사찬양",
+      title: "헌금송 & 축복송",
       subtitle: "",
       allowNotes: false,
       pdfName: "",
@@ -58,8 +61,8 @@ const defaultState = {
     },
     {
       id: "special",
-      title: "축복/환영 찬양",
-      subtitle: "결혼 · 축복 · 환영 순서",
+      title: "아기 환영송",
+      subtitle: "",
       allowNotes: false,
       pdfName: "",
       pdfData: "",
@@ -181,10 +184,7 @@ function loadState() {
           resources: song.resources
         };
         if (merged.allowNotes === false) merged.notes = "";
-        if (
-          song.id === "offeringGreeting" &&
-          ["인사 찬양", "헌금 찬양"].includes(storedSong.title)
-        ) {
+        if (song.id === "offeringGreeting" && legacyOfferingTitles.includes(storedSong.title)) {
           merged.title = song.title;
         }
         if (
@@ -193,8 +193,11 @@ function loadState() {
         ) {
           merged.subtitle = song.subtitle;
         }
-        if (song.id === "special" && storedSong.title === "특별 순서 찬양") {
+        if (song.id === "special" && legacySpecialTitles.includes(storedSong.title)) {
           merged.title = song.title;
+        }
+        if (song.id === "special" && legacySpecialSubtitles.includes(storedSong.subtitle)) {
+          merged.subtitle = song.subtitle;
         }
         return merged;
       }),
@@ -616,7 +619,7 @@ els.saveSong.addEventListener("click", async () => {
   saveState();
   populateAdminOptions();
   renderSong();
-  showMessage(els.songSaveMessage, "찬양 PDF 정보가 저장되었습니다.");
+  showMessage(els.songSaveMessage, "악보 정보가 저장되었습니다.");
 });
 
 els.clearPdf.addEventListener("click", () => {

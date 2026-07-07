@@ -87,19 +87,19 @@
         <section class="songbook-panel" id="songbook" aria-labelledby="songbookTitle">
           <div class="dashboard-section-head">
             <div>
-              <h2 id="songbookTitle">찬양 PDF</h2>
+              <h2 id="songbookTitle">악보</h2>
             </div>
           </div>
           <section class="song-strip" aria-label="예배 찬양곡">
             <button class="song-tab is-active" type="button" data-song="offeringGreeting">
               <span class="song-title-row">
-                <span class="song-title"><span class="number-badge teal">1</span><span data-song-title>헌금 찬양 &amp; 인사찬양</span></span>
+                <span class="song-title"><span class="number-badge teal">1</span><span data-song-title>헌금송 &amp; 축복송</span></span>
                 <span class="song-badge">PDF · JPG</span>
               </span>
             </button>
             <button class="song-tab" type="button" data-song="special">
               <span class="song-title-row">
-                <span class="song-title"><span class="number-badge">2</span><span data-song-title>축복/환영 찬양</span></span>
+                <span class="song-title"><span class="number-badge">2</span><span data-song-title>아기 환영송</span></span>
                 <span class="song-badge">PDF · JPG</span>
               </span>
             </button>
@@ -113,7 +113,7 @@
             <div class="pdf-toolbar">
               <div class="file-title">
                 <span class="file-dot" aria-hidden="true"></span>
-                <span id="currentSongTitle">헌금 찬양 &amp; 인사찬양</span>
+                <span id="currentSongTitle">헌금송 &amp; 축복송</span>
               </div>
               <a class="current-resource-link" id="currentResourceLink" href="#" target="_blank" rel="noopener noreferrer">새 창에서 열기</a>
             </div>
@@ -124,7 +124,7 @@
                 <div class="empty-pdf">
                   <div class="empty-sheet" aria-hidden="true">
                     <div class="empty-sheet-head">
-                      <strong>헌금 찬양 &amp; 인사찬양</strong>
+                      <strong>헌금송 &amp; 축복송</strong>
                     </div>
                     <span class="staff-lines"></span>
                     <span class="staff-lines"></span>
@@ -162,7 +162,7 @@
 
       <form class="admin-form" id="adminForm" hidden>
         <div class="admin-tabs" role="tablist" aria-label="관리자 메뉴">
-          <button class="is-active" type="button" data-admin-tab="songs">찬양 PDF</button>
+          <button class="is-active" type="button" data-admin-tab="songs">악보</button>
           <button type="button" data-admin-tab="practice">연습 시간</button>
           <button type="button" data-admin-tab="resources">리소스</button>
         </div>
@@ -229,6 +229,6 @@
 
     <script src="practice-schedule.js?v=20260707-fixed-sunday-practice"></script>
     <script src="onboarding-data.js?v=20260706-cleanup"></script>
-    <script src="script.js?v=20260707-songbook-notes"></script>
+    <script src="script.js?v=20260707-song-title-labels"></script>
   </body>
 </html>
