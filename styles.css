@@ -178,7 +178,7 @@ textarea:focus-visible {
 
 .service-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px 14px;
   align-content: center;
   align-items: start;
@@ -186,7 +186,7 @@ textarea:focus-visible {
 }
 
 .practice-time-chip,
-.date-stepper,
+.service-time-chip,
 .admin-button,
 .icon-button {
   display: inline-flex;
@@ -252,8 +252,8 @@ textarea:focus-visible {
 
 .top-service-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 5px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
   min-width: 0;
 }
 
@@ -272,7 +272,8 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
-.practice-time-chip {
+.practice-time-chip,
+.service-time-chip {
   gap: 6px;
   min-width: 72px;
   height: 34px;
@@ -285,14 +286,21 @@ textarea:focus-visible {
   background: var(--surface-cyan);
 }
 
-.practice-time-chip span {
+.top-service-list .service-time-chip {
+  border-color: rgba(8, 145, 178, 0.18);
+  background: var(--surface-cyan);
+}
+
+.practice-time-chip span,
+.service-time-chip span {
   color: var(--muted);
   font-size: 12px;
   font-weight: 760;
   white-space: nowrap;
 }
 
-.practice-time-chip strong {
+.practice-time-chip strong,
+.service-time-chip strong {
   color: var(--ink);
   font-size: 13px;
   font-weight: 820;
@@ -300,34 +308,22 @@ textarea:focus-visible {
 }
 
 .top-service-list .service-time-row {
-  grid-template-columns: 1fr;
-  align-items: start;
-  gap: 3px;
-  min-height: 34px;
-  border-color: rgba(203, 213, 225, 0.86);
-  border-radius: 8px;
-  box-shadow: none;
-  padding: 6px 8px;
-}
-
-.top-service-list .service-time-service {
-  font-size: 12px;
-}
-
-.top-service-list .service-time-value {
-  display: flex;
-  align-items: baseline;
+  grid-template-columns: 92px repeat(3, minmax(72px, auto));
+  align-items: center;
   gap: 4px;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
-.top-service-list .service-time-value small {
-  font-size: 10px;
-}
-
-.top-service-list .service-time-value span {
-  overflow: visible;
+.top-service-list .service-time-label {
+  color: var(--muted);
   font-size: 12px;
-  text-overflow: clip;
+  font-weight: 760;
+  white-space: nowrap;
 }
 
 .top-service-note {
@@ -336,51 +332,6 @@ textarea:focus-visible {
   font-size: 11px;
   font-weight: 650;
   line-height: 1.45;
-}
-
-.date-stepper {
-  display: grid;
-  grid-template-columns: 38px minmax(168px, auto) 38px;
-  height: 38px;
-  overflow: hidden;
-  padding: 0;
-  box-shadow: none;
-}
-
-.date-stepper button {
-  display: grid;
-  width: 38px;
-  height: 100%;
-  place-items: center;
-  border: 0;
-  background: transparent;
-  color: var(--ink-2);
-  font-size: 20px;
-  font-weight: 720;
-  cursor: pointer;
-}
-
-.date-stepper button:hover {
-  background: var(--surface-soft);
-}
-
-.date-stepper button:first-child {
-  border-right: 1px solid var(--line);
-}
-
-.date-stepper button:last-child {
-  border-left: 1px solid var(--line);
-}
-
-.date-stepper strong {
-  display: grid;
-  height: 100%;
-  place-items: center;
-  padding: 0 12px;
-  color: var(--ink-2);
-  font-size: 13px;
-  font-weight: 720;
-  white-space: nowrap;
 }
 
 .top-actions {
@@ -1726,8 +1677,7 @@ header.site-shell {
   }
 
   .top-practice-times,
-  .top-service-times,
-  .date-stepper {
+  .top-service-times {
     flex: 1 1 260px;
     min-width: 0;
   }
@@ -1851,8 +1801,7 @@ header.site-shell {
   }
 
   .top-practice-times,
-  .top-service-times,
-  .date-stepper {
+  .top-service-times {
     flex: 0 0 auto;
     width: 100%;
   }
@@ -1872,6 +1821,10 @@ header.site-shell {
     grid-template-columns: 1fr;
   }
 
+  .top-service-list .service-time-row {
+    grid-template-columns: 74px repeat(3, minmax(0, 1fr));
+  }
+
   .top-service-note {
     grid-column: 1;
   }
@@ -1880,18 +1833,10 @@ header.site-shell {
     grid-template-columns: 74px repeat(3, minmax(0, 1fr));
   }
 
-  .practice-time-chip {
+  .practice-time-chip,
+  .service-time-chip {
     min-width: 0;
     padding: 0 8px;
-  }
-
-  .date-stepper {
-    grid-template-columns: 40px minmax(0, 1fr) 40px;
-  }
-
-  .date-stepper strong {
-    min-width: 0;
-    font-size: 13px;
   }
 
   .song-title-row,

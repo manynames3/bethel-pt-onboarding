@@ -5,12 +5,10 @@ const legacySundayNotes = [
 ];
 const legacyCombinedSongIds = ["greeting", "offering"];
 const sundayServices = [
-  { service: "1부", practice: "오전 7:15", worship: "오전 7:45" },
-  { service: "2부", practice: "오전 9:00", worship: "오전 9:30" },
-  { service: "3부", practice: "오전 11:00", worship: "오전 11:30" }
+  { service: "1부", practice: "오전 7:15" },
+  { service: "2부", practice: "오전 9:00" },
+  { service: "3부", practice: "오전 11:00" }
 ];
-const initialServiceDate = new Date(2026, 6, 5);
-const weekdayLabels = ["주일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 const mobileQuickResources = [
   {
     href: "#songbook",
@@ -103,7 +101,6 @@ const roleGuides = window.ABCPRAISE_ROLES || [];
 
 let state = loadState();
 let unlocked = false;
-let selectedServiceDate = new Date(initialServiceDate);
 
 const els = {
   songTabs: [...document.querySelectorAll(".song-tab")],
@@ -115,11 +112,7 @@ const els = {
   songStatus: document.querySelector("#songStatus"),
   mobileQuickActions: document.querySelector("#mobileQuickActions"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
-  prevServiceDate: document.querySelector("#prevServiceDate"),
-  serviceDate: document.querySelector("#serviceDate"),
-  nextServiceDate: document.querySelector("#nextServiceDate"),
   sidebarServiceTimes: document.querySelector("#sidebarServiceTimes"),
-  serviceBriefDate: document.querySelector("#serviceBriefDate"),
   serviceBriefTimes: document.querySelector("#serviceBriefTimes"),
   roleGrid: document.querySelector("#roleGrid"),
   saturdayTimes: document.querySelector("#saturdayTimes"),
@@ -215,35 +208,6 @@ function loadState() {
 
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-function addDays(date, days) {
-  const nextDate = new Date(date);
-  nextDate.setDate(nextDate.getDate() + days);
-  return nextDate;
-}
-
-function formatServiceDate(date, options = {}) {
-  const includeWeekday = options.includeWeekday !== false;
-  const base = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
-  return includeWeekday ? `${base} (${weekdayLabels[date.getDay()]})` : base;
-}
-
-function renderServiceDate() {
-  if (els.serviceDate) {
-    els.serviceDate.textContent = formatServiceDate(selectedServiceDate);
-  }
-  if (els.serviceBriefDate) {
-    els.serviceBriefDate.textContent = formatServiceDate(selectedServiceDate, {
-      includeWeekday: false
-    });
-  }
-}
-
-function shiftServiceDate(weeks) {
-  selectedServiceDate = addDays(selectedServiceDate, weeks * 7);
-  renderServiceDate();
-  renderPractice();
 }
 
 function selectedSong() {
@@ -419,24 +383,39 @@ function roleInitial(role) {
 }
 
 function renderServiceTimes() {
-  const markup = sundayServices
-    .map(
-      ({ service, practice, worship }) => `
-        <div class="service-time-row">
-          <strong class="service-time-service">${service}</strong>
-          <span class="service-time-value"><small>연습</small> <span>${practice}</span></span>
-          <span class="service-time-value"><small>예배</small> <span>${worship}</span></span>
-        </div>
-      `
-    )
-    .join("");
+  const markup = `
+    <div class="service-time-row">
+      <span class="service-time-label">매주</span>
+      ${sundayServices
+        .map(
+          ({ service, practice }) => `
+            <span class="service-time-chip">
+              <span>${service}</span>
+              <strong>${practice}</strong>
+            </span>
+          `
+        )
+        .join("")}
+    </div>
+  `;
 
   if (els.sidebarServiceTimes) els.sidebarServiceTimes.innerHTML = markup;
-  if (els.serviceBriefTimes) els.serviceBriefTimes.innerHTML = markup;
+  if (els.serviceBriefTimes) {
+    els.serviceBriefTimes.innerHTML = sundayServices
+      .map(
+        ({ service, practice }) => `
+          <div class="service-time-row">
+            <span class="service-time-label">${service}</span>
+            <span class="service-time-chip"><span>연습</span><strong>${practice}</strong></span>
+          </div>
+        `
+      )
+      .join("");
+  }
 }
 
 function renderPractice() {
-  const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.(selectedServiceDate);
+  const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.();
   const rows = practiceWindow
     ? practiceWindow.map((item) => [
         `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ${item.label}`,
@@ -601,14 +580,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeDrawer();
 });
 
-if (els.prevServiceDate) {
-  els.prevServiceDate.addEventListener("click", () => shiftServiceDate(-1));
-}
-
-if (els.nextServiceDate) {
-  els.nextServiceDate.addEventListener("click", () => shiftServiceDate(1));
-}
-
 els.adminLock.addEventListener("submit", (event) => {
   event.preventDefault();
   if (els.adminCode.value.trim() === ADMIN_CODE) {
@@ -681,17 +652,14 @@ els.savePractice.addEventListener("click", () => {
 els.resetContent.addEventListener("click", () => {
   if (!confirm("이 브라우저의 사이트 내용을 초기화할까요?")) return;
   state = structuredClone(defaultState);
-  selectedServiceDate = new Date(initialServiceDate);
   saveState();
   populateAdminOptions();
   renderSong();
-  renderServiceDate();
   renderPractice();
 });
 
 renderRoles();
 renderMobileQuickActions();
-renderServiceDate();
 renderPractice();
 populateAdminOptions();
 renderSong();

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-remove-practice-strip">
+    <link rel="stylesheet" href="styles.css?v=20260707-fixed-sunday-practice">
   </head>
   <body class="app-body">
     <div class="app-shell">
@@ -38,34 +38,17 @@
               </span>
             </div>
             <section class="top-service-times" id="practice" aria-labelledby="topServiceTimesTitle">
-              <div class="top-service-heading">
-                <span id="topServiceTimesTitle">주일 예배 연습시간</span>
-                <small id="serviceBriefDate">2026년 7월 5일</small>
-              </div>
+              <span class="top-service-heading" id="topServiceTimesTitle">주일 예배 연습시간</span>
               <div class="top-service-list service-times-list" id="sidebarServiceTimes">
                 <div class="service-time-row">
-                  <strong class="service-time-service">1부</strong>
-                  <span class="service-time-value"><small>연습</small> <span>오전 7:15</span></span>
-                  <span class="service-time-value"><small>예배</small> <span>오전 7:45</span></span>
-                </div>
-                <div class="service-time-row">
-                  <strong class="service-time-service">2부</strong>
-                  <span class="service-time-value"><small>연습</small> <span>오전 9:00</span></span>
-                  <span class="service-time-value"><small>예배</small> <span>오전 9:30</span></span>
-                </div>
-                <div class="service-time-row">
-                  <strong class="service-time-service">3부</strong>
-                  <span class="service-time-value"><small>연습</small> <span>오전 11:00</span></span>
-                  <span class="service-time-value"><small>예배</small> <span>오전 11:30</span></span>
+                  <span class="service-time-label">매주</span>
+                  <span class="service-time-chip"><span>1부</span><strong>오전 7:15</strong></span>
+                  <span class="service-time-chip"><span>2부</span><strong>오전 9:00</strong></span>
+                  <span class="service-time-chip"><span>3부</span><strong>오전 11:00</strong></span>
                 </div>
               </div>
               <p class="top-service-note" id="sundayNote">라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 30분 전부터 연습을 시작합니다.</p>
             </section>
-          </div>
-          <div class="date-stepper" aria-label="예배 날짜">
-            <button id="prevServiceDate" type="button" aria-label="이전 주일">‹</button>
-            <strong id="serviceDate">2026년 7월 5일 (주일)</strong>
-            <button id="nextServiceDate" type="button" aria-label="다음 주일">›</button>
           </div>
         </div>
 
@@ -259,8 +242,8 @@
       <a href="onboarding/aviom.html">전체 공통</a>
     </nav>
 
-    <script src="practice-schedule.js?v=20260707-remove-practice-strip"></script>
+    <script src="practice-schedule.js?v=20260707-fixed-sunday-practice"></script>
     <script src="onboarding-data.js?v=20260706-cleanup"></script>
-    <script src="script.js?v=20260707-remove-practice-strip"></script>
+    <script src="script.js?v=20260707-fixed-sunday-practice"></script>
   </body>
 </html>
