@@ -261,8 +261,8 @@ textarea:focus-visible {
 
 .practice-month-group {
   display: grid;
-  grid-template-columns: 92px repeat(3, minmax(72px, auto));
-  gap: 4px;
+  grid-template-columns: 104px repeat(3, minmax(0, 1fr));
+  gap: 6px;
   align-items: center;
   min-width: 0;
 }
@@ -278,6 +278,7 @@ textarea:focus-visible {
 .service-time-chip {
   gap: 6px;
   min-width: 72px;
+  width: 100%;
   min-height: 38px;
   padding: 0 10px;
   box-shadow: none;
@@ -310,9 +311,9 @@ textarea:focus-visible {
 }
 
 .top-service-list .service-time-row {
-  grid-template-columns: 92px repeat(3, minmax(72px, auto));
+  grid-template-columns: 104px repeat(3, minmax(0, 1fr));
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   min-height: 0;
   border: 0;
   border-radius: 0;
