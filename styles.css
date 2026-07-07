@@ -33,8 +33,9 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
+  font-size: 16px;
   font-family: Inter, "SF Pro Display", "Apple SD Gothic Neo", "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 body.app-body {
@@ -102,7 +103,7 @@ textarea:focus-visible {
 
 .section-label {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 760;
 }
 
@@ -129,7 +130,7 @@ textarea:focus-visible {
   grid-column: 1;
   grid-row: 1;
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr) 104px;
+  grid-template-columns: 292px minmax(0, 1fr) 128px;
   min-height: 164px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -164,16 +165,17 @@ textarea:focus-visible {
 
 .brand-lockup strong {
   color: var(--ink);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 850;
 }
 
 .brand-lockup small {
   margin-top: 2px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 650;
   line-height: 1.25;
+  white-space: nowrap;
 }
 
 .service-controls {
@@ -227,7 +229,7 @@ textarea:focus-visible {
   align-self: stretch;
   place-items: center start;
   color: var(--ink-2);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 820;
   line-height: 1.2;
   white-space: nowrap;
@@ -239,7 +241,7 @@ textarea:focus-visible {
 
 .top-service-heading small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 720;
 }
 
@@ -267,7 +269,7 @@ textarea:focus-visible {
 
 .practice-month-label {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 760;
   white-space: nowrap;
 }
@@ -276,8 +278,8 @@ textarea:focus-visible {
 .service-time-chip {
   gap: 6px;
   min-width: 72px;
-  height: 34px;
-  padding: 0 8px;
+  min-height: 38px;
+  padding: 0 10px;
   box-shadow: none;
 }
 
@@ -294,7 +296,7 @@ textarea:focus-visible {
 .practice-time-chip span,
 .service-time-chip span {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 760;
   white-space: nowrap;
 }
@@ -302,7 +304,7 @@ textarea:focus-visible {
 .practice-time-chip strong,
 .service-time-chip strong {
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 820;
   white-space: nowrap;
 }
@@ -321,7 +323,7 @@ textarea:focus-visible {
 
 .top-service-list .service-time-label {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 760;
   white-space: nowrap;
 }
@@ -329,7 +331,7 @@ textarea:focus-visible {
 .top-service-note {
   grid-column: 2;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 650;
   line-height: 1.45;
 }
@@ -342,12 +344,14 @@ textarea:focus-visible {
 }
 
 .admin-button {
-  height: 38px;
-  padding: 0 14px;
+  min-width: 88px;
+  min-height: 44px;
+  padding: 0 16px;
   border-color: var(--ink);
   background: var(--ink);
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 .resource-menu-tabs {
@@ -355,24 +359,24 @@ textarea:focus-visible {
   grid-row: 2;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 10px;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: var(--shadow-soft);
-  padding: 7px;
+  padding: 10px;
 }
 
 .resource-menu-tab {
   display: grid;
-  gap: 3px;
+  gap: 5px;
   align-content: center;
   min-width: 0;
-  min-height: 48px;
+  min-height: 74px;
   border-radius: 10px;
   color: var(--ink);
-  padding: 9px 12px;
+  padding: 14px 16px;
   transition: background 160ms ease, color 160ms ease;
 }
 
@@ -382,7 +386,7 @@ textarea:focus-visible {
 
 .resource-menu-tab span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 820;
   line-height: 1.15;
 }
@@ -390,7 +394,7 @@ textarea:focus-visible {
 .resource-menu-tab strong {
   min-width: 0;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 850;
   line-height: 1.2;
   overflow-wrap: break-word;
@@ -449,7 +453,7 @@ textarea:focus-visible {
 
 .service-time-service {
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 850;
 }
 
@@ -461,14 +465,14 @@ textarea:focus-visible {
 
 .service-time-value small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 720;
 }
 
 .service-time-value span {
   overflow: hidden;
   color: var(--ink-2);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 820;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -480,7 +484,7 @@ textarea:focus-visible {
   gap: 12px;
   align-items: start;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 680;
 }
 
@@ -500,12 +504,12 @@ textarea:focus-visible {
 .song-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  min-height: 32px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 720;
   padding: 5px 8px;
   white-space: nowrap;
@@ -529,7 +533,7 @@ textarea:focus-visible {
   display: -webkit-box;
   overflow: hidden;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 620;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -556,7 +560,7 @@ textarea:focus-visible {
   grid-template-columns: 34px minmax(0, 1fr) auto;
   gap: 10px;
   align-items: center;
-  min-height: 54px;
+  min-height: 62px;
   border-bottom: 1px solid var(--line);
   padding: 8px 12px;
 }
@@ -578,7 +582,7 @@ textarea:focus-visible {
   border-radius: 8px;
   background: var(--surface-soft);
   color: var(--teal-dark);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 850;
 }
 
@@ -592,7 +596,7 @@ textarea:focus-visible {
 .role-copy strong {
   overflow: hidden;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -601,7 +605,7 @@ textarea:focus-visible {
 .role-copy span {
   overflow: hidden;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 620;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -689,7 +693,7 @@ textarea:focus-visible {
 
 .service-brief-date {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 760;
 }
 
@@ -723,14 +727,14 @@ textarea:focus-visible {
 
 .dashboard-section-head h2 {
   color: var(--ink);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 840;
 }
 
 .compact-link,
 .compact-status {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 720;
 }
 
@@ -790,7 +794,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 10px;
   color: var(--ink);
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 820;
   line-height: 1.18;
 }
@@ -803,7 +807,7 @@ textarea:focus-visible {
 
 .song-tab small {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 640;
 }
 
@@ -813,7 +817,7 @@ textarea:focus-visible {
   gap: 6px 14px;
   align-items: center;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 650;
   line-height: 1.5;
   margin-top: 10px;
@@ -831,13 +835,13 @@ textarea:focus-visible {
 
 .number-badge {
   display: inline-grid;
-  min-width: 24px;
-  height: 24px;
+  min-width: 28px;
+  height: 28px;
   place-items: center;
   border-radius: 7px;
   background: var(--blue);
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 850;
 }
 
@@ -875,7 +879,7 @@ textarea:focus-visible {
   gap: 10px;
   min-width: 0;
   color: var(--ink-2);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 760;
 }
 
@@ -897,7 +901,7 @@ textarea:focus-visible {
 .file-status {
   overflow: hidden;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 660;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -910,11 +914,11 @@ textarea:focus-visible {
 }
 
 .icon-button {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   color: var(--ink-2);
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .song-resources {
@@ -939,13 +943,13 @@ textarea:focus-visible {
 
 .song-resources-head strong {
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 820;
 }
 
 .song-resources-head span {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 680;
 }
 
@@ -984,7 +988,7 @@ textarea:focus-visible {
   border-radius: 7px;
   background: var(--surface-cyan);
   color: var(--teal-dark);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 850;
 }
 
@@ -1003,19 +1007,19 @@ textarea:focus-visible {
 
 .song-resource-copy strong {
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
 }
 
 .song-resource-copy span {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 640;
 }
 
 .song-resource-action {
   color: var(--teal-dark);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 820;
 }
 
@@ -1075,7 +1079,7 @@ textarea:focus-visible {
 
 .empty-pdf p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 640;
 }
 
@@ -1844,7 +1848,11 @@ header.site-shell {
   }
 
   .top-service-list .service-time-row {
-    grid-template-columns: 74px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .top-service-list .service-time-label {
+    grid-column: 1 / -1;
   }
 
   .top-service-note {
@@ -1852,7 +1860,11 @@ header.site-shell {
   }
 
   .practice-month-group {
-    grid-template-columns: 74px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .practice-month-label {
+    grid-column: 1 / -1;
   }
 
   .practice-time-chip,
@@ -1944,7 +1956,7 @@ body.app-body {
 }
 
 .brand-lockup strong {
-  font-size: 21px;
+  font-size: 24px;
 }
 
 .welcome-dashboard {
@@ -1985,9 +1997,9 @@ body.app-body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 46px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 820;
   padding: 0 15px;
 }
@@ -2018,7 +2030,7 @@ body.app-body {
 .section-note,
 .upload-preview {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 680;
   line-height: 1.5;
 }
@@ -2063,7 +2075,7 @@ body.app-body {
 }
 
 .dashboard-section-head h2 {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .song-strip {
@@ -2071,9 +2083,9 @@ body.app-body {
 }
 
 .song-tab {
-  min-height: 96px;
+  min-height: 106px;
   border-radius: 12px;
-  padding: 16px;
+  padding: 18px;
 }
 
 .song-tab.is-active {
@@ -2081,7 +2093,7 @@ body.app-body {
 }
 
 .song-title {
-  font-size: 17px;
+  font-size: 21px;
 }
 
 .pdf-shell {
@@ -2120,7 +2132,7 @@ body.app-body {
 }
 
 .song-resources-head strong {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .song-resource-card {
@@ -2139,12 +2151,12 @@ body.app-body {
 }
 
 .admin-tabs button {
-  min-height: 36px;
+  min-height: 42px;
   border: 0;
   border-radius: 8px;
   background: transparent;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 820;
 }
 
@@ -2179,13 +2191,13 @@ body.app-body {
 
 .admin-info-card strong {
   color: var(--ink);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 840;
 }
 
 .admin-info-card span {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 650;
   line-height: 1.5;
 }
@@ -2250,11 +2262,11 @@ body.app-body {
 
   .mobile-quick-actions a {
     display: grid;
-    min-height: 42px;
+    min-height: 48px;
     place-items: center;
     border-radius: 10px;
     color: var(--ink-2);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 850;
   }
 
