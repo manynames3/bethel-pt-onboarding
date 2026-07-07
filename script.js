@@ -371,14 +371,56 @@ function iconSvg(paths) {
 }
 
 function roleIcon(role) {
-  if (role.slug === "main-keys" || role.slug === "second-keys") {
+  if (role.slug === "main-keys") {
     return iconSvg(`
-      <rect x="3" y="7" width="18" height="10" rx="2"></rect>
-      <path d="M7 7v10"></path>
-      <path d="M11 7v10"></path>
-      <path d="M15 7v10"></path>
-      <path d="M19 7v10"></path>
-      <path d="M3 12h18"></path>
+      <path d="M6 4h10a3 3 0 0 1 3 3v11H5V5a1 1 0 0 1 1-1z"></path>
+      <path d="M8 18v2"></path>
+      <path d="M16 18v2"></path>
+      <path d="M7 10h10"></path>
+      <path d="M7 13h10"></path>
+      <path d="M9 13v5"></path>
+      <path d="M12 13v5"></path>
+      <path d="M15 13v5"></path>
+    `);
+  }
+  if (role.slug === "second-keys") {
+    return iconSvg(`
+      <rect x="3" y="6" width="18" height="12" rx="2"></rect>
+      <path d="M5 13h14"></path>
+      <path d="M7 13v5"></path>
+      <path d="M10 13v5"></path>
+      <path d="M13 13v5"></path>
+      <path d="M16 13v5"></path>
+      <circle cx="7" cy="9.5" r=".8" fill="currentColor"></circle>
+      <circle cx="10" cy="9.5" r=".8" fill="currentColor"></circle>
+      <path d="M14 9.5h4"></path>
+    `);
+  }
+  if (role.slug === "acoustic-guitar") {
+    return iconSvg(`
+      <path d="M13 10.8l5.8-5.8"></path>
+      <path d="M17.5 4.2l2.3 2.3"></path>
+      <path d="M16.5 5.2l2.3 2.3"></path>
+      <path d="M8.6 10.9c-1.4-.8-3.2-.3-4.2 1.2-1.4 2.1-.7 5 1.5 6.5 1.5 1 3.3.9 4.6-.2 1.3 1.1 3.1 1.2 4.6.2 2.2-1.5 2.9-4.4 1.5-6.5-1-1.5-2.8-2-4.2-1.2-.7.4-1.2.9-1.4 1.5-.5-.6-1-1.1-1.9-1.5z"></path>
+      <circle cx="10.5" cy="15.2" r="1.4"></circle>
+    `);
+  }
+  if (role.slug === "electric-guitar") {
+    return iconSvg(`
+      <path d="M9.4 13.6l6.7-6.7"></path>
+      <path d="M16.1 6.9l2.9-2.9 1 1-2.9 2.9"></path>
+      <path d="M8.7 13.1l-3.5-.9 1.2 2.8-2.3 1.9 3.3.6.9 3.2 2.1-2.6 3.1.7-.8-3.2 2.6-2.1-3.5-.7-1.2-2.9-1.9 3.2z"></path>
+      <path d="M8.8 15.2l2.1 2.1"></path>
+    `);
+  }
+  if (role.slug === "bass") {
+    return iconSvg(`
+      <path d="M10.4 14.2l7.4-7.4"></path>
+      <path d="M17.8 6.8l2.6-2.6"></path>
+      <path d="M18.2 4.6l1.8 1.8"></path>
+      <path d="M7.3 12.7c-1.7-.1-3.1 1-3.5 2.7-.5 2.4 1.3 4.7 4 4.9 2.3.2 4.2-1.1 4.5-3.1.1-.7 0-1.3-.3-1.9.8.2 1.6 0 2.1-.6.8-.8.8-2.1 0-2.9s-2.1-.8-2.9 0c-.5.5-.7 1.3-.6 2-.8-.7-1.9-1.1-3.3-1.1z"></path>
+      <circle cx="8.3" cy="16.8" r="1.3"></circle>
+      <path d="M13.3 11.3l3.4 3.4"></path>
     `);
   }
   if (role.slug === "drums") {
