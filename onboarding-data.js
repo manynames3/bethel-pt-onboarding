@@ -196,7 +196,7 @@ window.ABCPRAISE_ROLES = [
   },
   {
     slug: "aviom",
-    tag: "전체 공통",
+    tag: "악기팀 공통",
     equipment: "Aviom 모니터링",
     title: "Aviom 공통 온보딩",
     summary: "모든 파트가 같은 기준으로 개인 모니터를 빠르게 세팅할 수 있게 합니다.",
@@ -214,7 +214,7 @@ window.ABCPRAISE_ROLES = [
     ],
     references: [
       {
-        label: "전체 공통",
+        label: "악기팀 공통",
         title: "키 조정 리소스",
         note: "컴퓨터에서 음원과 연습할 때 악보 키와 음원 키가 다르면 Chrome 확장으로 조정하세요.",
         links: [

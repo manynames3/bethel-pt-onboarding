@@ -21,7 +21,7 @@ const mobileQuickResources = [
   },
   {
     href: "onboarding/aviom.html",
-    mobile: "전체 공통",
+    mobile: "악기팀 공통",
     mobileOrder: 3
   },
   {
@@ -369,7 +369,7 @@ function roleInitial(role) {
     "세컨 건반": "K",
     "드럼": "D",
     "싱어": "V",
-    "전체 공통": "M"
+    "악기팀 공통": "M"
   };
   return initials[role.tag] || role.tag.slice(0, 1);
 }
