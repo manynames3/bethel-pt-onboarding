@@ -53,7 +53,8 @@ window.ABCPRAISE_ROLES = [
     focus: ["Gain", "DI out", "Kick"],
     setup: [
       "베이스를 입력에 연결하고 master volume은 낮춘 상태에서 시작합니다.",
-      "가장 크게 연주할 부분을 치면서 gain을 올리되 clip 불이 계속 켜지지 않게 합니다.",
+      "가장 크게 연주할 부분을 치면서 gain을 올리되, 특히 액티브 베이스나 페달 사용 시 clip 불이 켜지지 않는지 확인합니다.",
+      "clip 불이 들어오면 베이스 볼륨 또는 페달 output level을 필요한 만큼 낮춰 입력이 깨지지 않게 합니다.",
       "FOH 신호가 깨끗하고 예측 가능하도록 앰프 EQ는 과하게 만지지 않습니다.",
       "DI out을 FOH로 보내고, 캐비넷을 쓰는 경우 master volume은 무대 느낌 조절용으로만 사용합니다."
     ],
@@ -63,7 +64,7 @@ window.ABCPRAISE_ROLES = [
       "저역이 과하게 쌓이면 master보다 Aviom 안의 bass 채널을 먼저 낮춥니다."
     ],
     checklist: [
-      "Gain clip 확인",
+      "Clip light 꺼짐 확인",
       "DI out 연결",
       "Master 낮게 시작",
       "킥/클릭 밸런스 확인"
