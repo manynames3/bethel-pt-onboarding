@@ -200,16 +200,20 @@ window.ABCPRAISE_ROLES = [
     equipment: "Aviom 모니터링",
     title: "Aviom 공통 온보딩",
     summary: "모든 파트가 같은 기준으로 개인 모니터를 빠르게 세팅할 수 있게 합니다.",
-    focus: ["Low master", "Leader", "Save"],
+    focus: ["Low master", "CH 13", "Preset"],
     setup: [
-      "Master volume은 낮게 시작한 뒤 천천히 올립니다.",
+      "Master volume은 낮게 시작하고, 왜곡과 음질 저하를 피하기 위해 12시 방향을 넘기지 않는 것을 권장합니다.",
       "찬양 인도자, 클릭이나 tempo source, 본인 channel을 중심으로 믹스를 만듭니다.",
       "가운데 공간이 답답하지 않도록 관련 악기는 살짝 pan을 나눕니다.",
+      "선호 믹스는 Recall + Group + 원하는 channel number로 저장할 수 있습니다.",
+      "저장한 preset은 다음에 Recall + 저장할 때 사용한 channel number를 눌러 불러옵니다.",
       "공용 routing을 바꾸거나 라벨이 붙은 cable을 뽑기 전에는 반드시 확인합니다."
     ],
     monitoring: [
       "가장 먼저 찬양 인도자와 리드 보컬을 명확히 둡니다.",
       "그 다음 tempo source와 본인 악기 또는 보컬을 올립니다.",
+      "Channel 13은 main speaker output과 같은 믹스입니다.",
+      "단순하게 듣고 싶을 때는 channel 13을 기준으로 올리고 본인 악기 channel만 더 올리면, 각 channel을 하나씩 조정하지 않아도 본인을 잘 들을 수 있습니다.",
       "전체 band를 크게 듣기보다 cue와 tempo를 놓치지 않는 믹스를 만듭니다."
     ],
     references: [
@@ -245,7 +249,7 @@ window.ABCPRAISE_ROLES = [
           ["10", "KICK", "킥"],
           ["11", "S.N", "스네어"],
           ["12", "L-R", "메인 L/R"],
-          ["13", "PGM", "프로그램"],
+          ["13", "PGM", "메인 스피커 출력과 같은 믹스"],
           ["14", "EX/WH", "외부/무선"],
           ["15", "TALK", "토크백"],
           ["16", "C", "클릭"]
@@ -256,7 +260,7 @@ window.ABCPRAISE_ROLES = [
       "Master 낮게 시작",
       "인도자 먼저",
       "본인 채널 확인",
-      "가능하면 preset 저장"
+      "Preset 저장/불러오기 확인"
     ]
   }
 ];

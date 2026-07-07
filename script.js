@@ -15,19 +15,19 @@ const sundayServices = [
 ];
 const mobileQuickResources = [
   {
-    href: "#songbook",
-    mobile: "악보",
+    href: "#onboarding",
+    mobile: "온보딩",
     mobileOrder: 1
   },
   {
-    href: "onboarding/aviom.html",
-    mobile: "악기팀 공통",
-    mobileOrder: 3
+    href: "#songbook",
+    mobile: "악보",
+    mobileOrder: 2
   },
   {
     href: "#practice",
     mobile: "연습시간",
-    mobileOrder: 2
+    mobileOrder: 3
   }
 ];
 
