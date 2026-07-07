@@ -85,16 +85,6 @@ const defaultState = {
       notes: ""
     },
     {
-      id: "baby",
-      title: "아기 환영 찬양",
-      subtitle: "필요 시 가정 환영 순서",
-      allowNotes: true,
-      pdfName: "",
-      pdfData: "",
-      notes:
-        "가정 소개가 진행되는 동안 부드럽게 연주합니다. 이름 소개와 기도가 또렷하게 들리도록 다이내믹을 낮게 유지합니다.\n\n건반이나 어쿠스틱은 가볍게 패드처럼 받쳐 주세요. 드럼은 요청이 없으면 쉬거나 아주 작게 연주합니다."
-    },
-    {
       id: "special",
       title: "축복/환영 찬양",
       subtitle: "결혼 · 축복 · 환영 순서",
@@ -232,15 +222,6 @@ function loadState() {
           song.id === "offeringGreeting" &&
           ["예배 시작 환영", "헌금 순서"].includes(storedSong.subtitle)
         ) {
-          merged.subtitle = song.subtitle;
-        }
-        if (
-          song.id === "baby" &&
-          ["아기 환영 찬양", "아기 환영 찬양 (선택)"].includes(storedSong.title)
-        ) {
-          merged.title = song.title;
-        }
-        if (song.id === "baby" && storedSong.subtitle === "가정 환영 순서") {
           merged.subtitle = song.subtitle;
         }
         if (song.id === "special" && storedSong.title === "특별 순서 찬양") {
