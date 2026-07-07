@@ -1777,7 +1777,7 @@ header.site-shell {
   }
 
   .pdf-shell {
-    min-height: 820px;
+    min-height: 960px;
     margin: 0;
   }
 
@@ -1802,7 +1802,7 @@ header.site-shell {
   }
 
   .pdf-stage {
-    min-height: 700px;
+    min-height: 840px;
     padding: 18px;
   }
 
@@ -2147,7 +2147,7 @@ body.app-body {
 }
 
 .pdf-shell {
-  min-height: 940px;
+  min-height: 1200px;
   border-radius: 12px;
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
 }
@@ -2179,7 +2179,7 @@ body.app-body {
 }
 
 .pdf-stage {
-  min-height: 850px;
+  min-height: 1100px;
   background: #f8fafc;
   padding: 14px;
 }
@@ -2324,7 +2324,7 @@ body.app-body {
   }
 
   .pdf-shell {
-    min-height: 760px;
+    min-height: 900px;
   }
 
   .mobile-quick-actions {
@@ -2425,7 +2425,7 @@ body.app-body {
   }
 
   .pdf-stage {
-    min-height: 620px;
+    min-height: 760px;
     padding: 10px;
   }
 
