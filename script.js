@@ -450,16 +450,18 @@ function renderPractice() {
         ["3부 섬김자", state.practice.slotThree]
       ];
 
-  els.saturdayTimes.innerHTML = rows
-    .map(
-      ([label, time]) => `
-        <div class="time-row">
-          <span>${label}</span>
-          <strong>${time}</strong>
-        </div>
-      `
-    )
-    .join("");
+  if (els.saturdayTimes) {
+    els.saturdayTimes.innerHTML = rows
+      .map(
+        ([label, time]) => `
+          <div class="time-row">
+            <span>${label}</span>
+            <strong>${time}</strong>
+          </div>
+        `
+      )
+      .join("");
+  }
   if (els.topPracticeTimes) {
     const practiceItems = practiceWindow || [
       {
@@ -497,7 +499,7 @@ function renderPractice() {
       </span>
     `;
   }
-  els.sundayNote.textContent = state.practice.sunday;
+  if (els.sundayNote) els.sundayNote.textContent = state.practice.sunday;
   renderServiceTimes();
 }
 

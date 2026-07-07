@@ -129,8 +129,8 @@ textarea:focus-visible {
   grid-column: 1;
   grid-row: 1;
   display: grid;
-  grid-template-columns: minmax(170px, 0.36fr) minmax(0, 1fr) auto;
-  min-height: 92px;
+  grid-template-columns: 260px minmax(0, 1fr) 104px;
+  min-height: 164px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -179,8 +179,9 @@ textarea:focus-visible {
 .service-controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px 16px;
+  gap: 10px 14px;
   align-content: center;
+  align-items: start;
   padding: 12px 18px;
 }
 
@@ -199,19 +200,31 @@ textarea:focus-visible {
   font-weight: 720;
 }
 
-.top-practice-times {
+.top-schedule-stack {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+
+.top-practice-times,
+.top-service-times {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
   align-items: center;
   gap: 6px 12px;
   min-width: 0;
   flex: 1 1 auto;
 }
 
-.top-practice-heading {
+.top-service-times {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+.top-practice-heading,
+.top-service-heading {
   display: grid;
   align-self: stretch;
-  min-width: 82px;
   place-items: center start;
   color: var(--ink-2);
   font-size: 12px;
@@ -220,10 +233,27 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
+.top-service-heading {
+  gap: 2px;
+}
+
+.top-service-heading small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 720;
+}
+
 .top-practice-months {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 6px;
+  min-width: 0;
+}
+
+.top-service-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
   min-width: 0;
 }
 
@@ -267,6 +297,45 @@ textarea:focus-visible {
   font-size: 13px;
   font-weight: 820;
   white-space: nowrap;
+}
+
+.top-service-list .service-time-row {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 3px;
+  min-height: 34px;
+  border-color: rgba(203, 213, 225, 0.86);
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+
+.top-service-list .service-time-service {
+  font-size: 12px;
+}
+
+.top-service-list .service-time-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.top-service-list .service-time-value small {
+  font-size: 10px;
+}
+
+.top-service-list .service-time-value span {
+  overflow: visible;
+  font-size: 12px;
+  text-overflow: clip;
+}
+
+.top-service-note {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
 .date-stepper {
@@ -392,7 +461,7 @@ textarea:focus-visible {
   display: grid;
   grid-column: 1;
   grid-row: 4;
-  grid-template-columns: minmax(320px, 1.35fr) minmax(220px, 0.8fr);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto;
   gap: 14px;
   min-height: 0;
@@ -403,42 +472,6 @@ textarea:focus-visible {
 
 .app-sidebar > * {
   min-width: 0;
-}
-
-.today-card,
-.practice-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
-}
-
-.today-card {
-  display: grid;
-  gap: 14px;
-  padding: 16px;
-}
-
-.today-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.today-card h1 {
-  margin-top: 2px;
-  font-size: 24px;
-  font-weight: 850;
-}
-
-.day-pill {
-  border-radius: 8px;
-  background: var(--surface-cyan);
-  color: var(--teal-dark);
-  font-size: 12px;
-  font-weight: 850;
-  padding: 7px 9px;
 }
 
 .time-list,
@@ -628,12 +661,6 @@ textarea:focus-visible {
   font-size: 18px;
 }
 
-.practice-card {
-  display: grid;
-  gap: 12px;
-  padding: 14px;
-}
-
 .practice-rows .time-row {
   grid-template-columns: 1fr;
   gap: 4px;
@@ -657,10 +684,6 @@ textarea:focus-visible {
   margin-top: 16px;
 }
 
-.dashboard-content > .today-card {
-  width: min(100%, 720px);
-}
-
 .welcome-dashboard {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -671,7 +694,7 @@ textarea:focus-visible {
   border-radius: 10px;
   background: #ffffff;
   box-shadow: var(--shadow-soft);
-  padding: 34px;
+  padding: 22px 2px 6px;
 }
 
 .welcome-dashboard .section-label {
@@ -1739,7 +1762,7 @@ header.site-shell {
   .app-sidebar {
     grid-column: 1;
     grid-row: 4;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1757,8 +1780,7 @@ header.site-shell {
   }
 
   .app-topbar {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 12;
     display: grid;
     grid-template-columns: 1fr;
@@ -1788,6 +1810,7 @@ header.site-shell {
   }
 
   .top-practice-times,
+  .top-service-times,
   .date-stepper {
     flex: 1 1 260px;
     min-width: 0;
@@ -1933,18 +1956,29 @@ header.site-shell {
   }
 
   .top-practice-times,
+  .top-service-times,
   .date-stepper {
     flex: 0 0 auto;
     width: 100%;
   }
 
-  .top-practice-times {
+  .top-practice-times,
+  .top-service-times {
     grid-template-columns: 1fr;
   }
 
-  .top-practice-heading {
+  .top-practice-heading,
+  .top-service-heading {
     min-width: 0;
     min-height: 22px;
+  }
+
+  .top-service-list {
+    grid-template-columns: 1fr;
+  }
+
+  .top-service-note {
+    grid-column: 1;
   }
 
   .practice-month-group {
@@ -2029,8 +2063,6 @@ body.app-body {
 }
 
 .app-topbar,
-.today-card,
-.practice-card,
 .role-list,
 .song-tab,
 .pdf-shell,
@@ -2039,7 +2071,7 @@ body.app-body {
 }
 
 .app-topbar {
-  min-height: 82px;
+  min-height: 164px;
   border-radius: 14px;
   box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
 }
@@ -2055,13 +2087,13 @@ body.app-body {
 
 .welcome-dashboard {
   grid-template-columns: minmax(0, 1fr);
-  gap: 40px;
+  gap: 18px;
   align-items: center;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  padding: 26px 2px 10px;
+  padding: 12px 2px 4px;
 }
 
 .welcome-copy {
@@ -2069,8 +2101,8 @@ body.app-body {
 }
 
 .welcome-copy h1 {
-  max-width: 660px;
-  font-size: clamp(2.3rem, 4vw, 4rem);
+  max-width: 560px;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
   letter-spacing: 0;
 }
 
@@ -2321,7 +2353,7 @@ body.app-body {
   }
 
   .welcome-copy h1 {
-    font-size: clamp(2.1rem, 8vw, 3.1rem);
+    font-size: clamp(1.85rem, 7vw, 2.35rem);
   }
 
   .app-sidebar,

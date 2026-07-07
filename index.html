@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-worship-copy">
+    <link rel="stylesheet" href="styles.css?v=20260707-clean-top">
   </head>
   <body class="app-body">
     <div class="app-shell">
@@ -18,23 +18,49 @@
           </span>
         </a>
 
-        <div class="service-controls" aria-label="토요 연습 시간 및 예배 날짜">
-          <div class="top-practice-times" id="topPracticeTimes" aria-label="이번 달과 다음 달 토요 연습 시간">
-            <span class="top-practice-heading">토요 연습 시간</span>
-            <span class="top-practice-months">
-              <span class="practice-month-group is-current">
-                <span class="practice-month-label">7월 이번 달</span>
-                <span class="practice-time-chip"><span>1부</span><strong>2:00pm</strong></span>
-                <span class="practice-time-chip"><span>2부</span><strong>2:40pm</strong></span>
-                <span class="practice-time-chip"><span>3부</span><strong>3:20pm</strong></span>
+        <div class="service-controls" aria-label="토요 연습 시간 및 주일 예배 연습시간">
+          <div class="top-schedule-stack">
+            <div class="top-practice-times" id="topPracticeTimes" aria-label="이번 달과 다음 달 토요 연습 시간">
+              <span class="top-practice-heading">토요 연습 시간</span>
+              <span class="top-practice-months">
+                <span class="practice-month-group is-current">
+                  <span class="practice-month-label">7월 이번 달</span>
+                  <span class="practice-time-chip"><span>1부</span><strong>2:00pm</strong></span>
+                  <span class="practice-time-chip"><span>2부</span><strong>2:40pm</strong></span>
+                  <span class="practice-time-chip"><span>3부</span><strong>3:20pm</strong></span>
+                </span>
+                <span class="practice-month-group">
+                  <span class="practice-month-label">8월 다음 달</span>
+                  <span class="practice-time-chip"><span>1부</span><strong>2:40pm</strong></span>
+                  <span class="practice-time-chip"><span>2부</span><strong>3:20pm</strong></span>
+                  <span class="practice-time-chip"><span>3부</span><strong>2:00pm</strong></span>
+                </span>
               </span>
-              <span class="practice-month-group">
-                <span class="practice-month-label">8월 다음 달</span>
-                <span class="practice-time-chip"><span>1부</span><strong>2:40pm</strong></span>
-                <span class="practice-time-chip"><span>2부</span><strong>3:20pm</strong></span>
-                <span class="practice-time-chip"><span>3부</span><strong>2:00pm</strong></span>
-              </span>
-            </span>
+            </div>
+            <section class="top-service-times" id="practice" aria-labelledby="topServiceTimesTitle">
+              <div class="top-service-heading">
+                <span id="topServiceTimesTitle">주일 예배 연습시간</span>
+                <small id="serviceBriefDate">2026년 7월 5일</small>
+              </div>
+              <div class="top-service-list service-times-list" id="sidebarServiceTimes">
+                <div class="service-time-row">
+                  <strong class="service-time-service">1부</strong>
+                  <span class="service-time-value"><small>연습</small> <span>오전 7:15</span></span>
+                  <span class="service-time-value"><small>예배</small> <span>오전 7:45</span></span>
+                </div>
+                <div class="service-time-row">
+                  <strong class="service-time-service">2부</strong>
+                  <span class="service-time-value"><small>연습</small> <span>오전 9:00</span></span>
+                  <span class="service-time-value"><small>예배</small> <span>오전 9:30</span></span>
+                </div>
+                <div class="service-time-row">
+                  <strong class="service-time-service">3부</strong>
+                  <span class="service-time-value"><small>연습</small> <span>오전 11:00</span></span>
+                  <span class="service-time-value"><small>예배</small> <span>오전 11:30</span></span>
+                </div>
+              </div>
+              <p class="top-service-note" id="sundayNote">라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 30분 전부터 연습을 시작합니다.</p>
+            </section>
           </div>
           <div class="date-stepper" aria-label="예배 날짜">
             <button id="prevServiceDate" type="button" aria-label="이전 주일">‹</button>
@@ -72,46 +98,9 @@
           <p class="section-label" id="onboardingTitle">역할별 온보딩</p>
           <nav class="role-list" id="roleGrid" aria-label="파트별 온보딩"></nav>
         </section>
-
-        <section class="practice-card" aria-labelledby="practiceTitle">
-          <p class="section-label" id="practiceTitle">토요 연습</p>
-          <div class="practice-rows" id="saturdayTimes"></div>
-        </section>
       </aside>
 
       <main class="app-content dashboard-content" id="dashboard" aria-labelledby="dashboardTitle">
-        <section class="today-card" id="practice">
-          <div class="today-head">
-            <div>
-              <p class="section-label" id="serviceBriefDate">2026년 7월 5일</p>
-              <h1>주일 예배 연습시간</h1>
-            </div>
-            <span class="day-pill">D-DAY</span>
-          </div>
-          <div class="time-list service-times-list" id="sidebarServiceTimes">
-            <div class="service-time-row">
-              <strong class="service-time-service">1부</strong>
-              <span class="service-time-value"><small>연습</small> <span>오전 7:15</span></span>
-              <span class="service-time-value"><small>예배</small> <span>오전 7:45</span></span>
-            </div>
-            <div class="service-time-row">
-              <strong class="service-time-service">2부</strong>
-              <span class="service-time-value"><small>연습</small> <span>오전 9:00</span></span>
-              <span class="service-time-value"><small>예배</small> <span>오전 9:30</span></span>
-            </div>
-            <div class="service-time-row">
-              <strong class="service-time-service">3부</strong>
-              <span class="service-time-value"><small>연습</small> <span>오전 11:00</span></span>
-              <span class="service-time-value"><small>예배</small> <span>오전 11:30</span></span>
-            </div>
-          </div>
-          <div class="tiny-pills">
-            <span class="tiny-pill teal">악보 2개</span>
-            <span class="tiny-pill amber">카카오 공유</span>
-          </div>
-          <p class="small-note" id="sundayNote"></p>
-        </section>
-
         <section class="welcome-dashboard" aria-labelledby="dashboardTitle">
           <div class="welcome-copy">
             <h1 id="dashboardTitle">오늘 필요한 준비를 빠르게 확인하세요.</h1>
@@ -274,6 +263,6 @@
 
     <script src="practice-schedule.js?v=20260706-cleanup"></script>
     <script src="onboarding-data.js?v=20260706-cleanup"></script>
-    <script src="script.js?v=20260707-worship-copy"></script>
+    <script src="script.js?v=20260707-clean-top"></script>
   </body>
 </html>
