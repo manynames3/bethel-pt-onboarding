@@ -9,6 +9,8 @@ const sundayServices = [
   { service: "2부", practice: "오전 9:00", worship: "오전 9:30" },
   { service: "3부", practice: "오전 11:00", worship: "오전 11:30" }
 ];
+const initialServiceDate = new Date(2026, 6, 5);
+const weekdayLabels = ["주일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 const kakaoSheetNote = "악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.";
 const quickResources = [
   {
@@ -130,6 +132,7 @@ const roleGuides = window.ABCPRAISE_ROLES || [];
 
 let state = loadState();
 let unlocked = false;
+let selectedServiceDate = new Date(initialServiceDate);
 
 const els = {
   songTabs: [...document.querySelectorAll(".song-tab")],
@@ -142,7 +145,11 @@ const els = {
   resourceGrid: document.querySelector("#resourceGrid"),
   mobileQuickActions: document.querySelector("#mobileQuickActions"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
+  prevServiceDate: document.querySelector("#prevServiceDate"),
+  serviceDate: document.querySelector("#serviceDate"),
+  nextServiceDate: document.querySelector("#nextServiceDate"),
   sidebarServiceTimes: document.querySelector("#sidebarServiceTimes"),
+  serviceBriefDate: document.querySelector("#serviceBriefDate"),
   serviceBriefTimes: document.querySelector("#serviceBriefTimes"),
   roleGrid: document.querySelector("#roleGrid"),
   saturdayTimes: document.querySelector("#saturdayTimes"),
@@ -238,6 +245,35 @@ function loadState() {
 
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function addDays(date, days) {
+  const nextDate = new Date(date);
+  nextDate.setDate(nextDate.getDate() + days);
+  return nextDate;
+}
+
+function formatServiceDate(date, options = {}) {
+  const includeWeekday = options.includeWeekday !== false;
+  const base = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+  return includeWeekday ? `${base} (${weekdayLabels[date.getDay()]})` : base;
+}
+
+function renderServiceDate() {
+  if (els.serviceDate) {
+    els.serviceDate.textContent = formatServiceDate(selectedServiceDate);
+  }
+  if (els.serviceBriefDate) {
+    els.serviceBriefDate.textContent = formatServiceDate(selectedServiceDate, {
+      includeWeekday: false
+    });
+  }
+}
+
+function shiftServiceDate(weeks) {
+  selectedServiceDate = addDays(selectedServiceDate, weeks * 7);
+  renderServiceDate();
+  renderPractice();
 }
 
 function selectedSong() {
@@ -444,7 +480,7 @@ function renderServiceTimes() {
 }
 
 function renderPractice() {
-  const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.();
+  const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.(selectedServiceDate);
   const rows = practiceWindow
     ? practiceWindow.map((item) => [
         `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ${item.label}`,
@@ -481,25 +517,28 @@ function renderPractice() {
       }
     ];
     els.topPracticeTimes.innerHTML = `
-      ${practiceItems
-        .map(
-          (item) => `
-            <span class="practice-month-group${item.isCurrent ? " is-current" : ""}">
-              <span class="practice-month-label">${item.month ? `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ` : ""}${item.label}</span>
-              ${Object.entries(item.services)
-                .map(
-                  ([service, time]) => `
-                    <span class="practice-time-chip">
-                      <span>${service}</span>
-                      <strong>${time}</strong>
-                    </span>
-                  `
-                )
-                .join("")}
-            </span>
-          `
-        )
-        .join("")}
+      <span class="top-practice-heading">토요 연습 시간</span>
+      <span class="top-practice-months">
+        ${practiceItems
+          .map(
+            (item) => `
+              <span class="practice-month-group${item.isCurrent ? " is-current" : ""}">
+                <span class="practice-month-label">${item.month ? `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ` : ""}${item.label}</span>
+                ${Object.entries(item.services)
+                  .map(
+                    ([service, time]) => `
+                      <span class="practice-time-chip">
+                        <span>${service}</span>
+                        <strong>${time}</strong>
+                      </span>
+                    `
+                  )
+                  .join("")}
+              </span>
+            `
+          )
+          .join("")}
+      </span>
     `;
   }
   els.sundayNote.textContent = state.practice.sunday;
@@ -604,6 +643,14 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeDrawer();
 });
 
+if (els.prevServiceDate) {
+  els.prevServiceDate.addEventListener("click", () => shiftServiceDate(-1));
+}
+
+if (els.nextServiceDate) {
+  els.nextServiceDate.addEventListener("click", () => shiftServiceDate(1));
+}
+
 els.adminLock.addEventListener("submit", (event) => {
   event.preventDefault();
   if (els.adminCode.value.trim() === ADMIN_CODE) {
@@ -676,14 +723,17 @@ els.savePractice.addEventListener("click", () => {
 els.resetContent.addEventListener("click", () => {
   if (!confirm("이 브라우저의 사이트 내용을 초기화할까요?")) return;
   state = structuredClone(defaultState);
+  selectedServiceDate = new Date(initialServiceDate);
   saveState();
   populateAdminOptions();
   renderSong();
+  renderServiceDate();
   renderPractice();
 });
 
 renderRoles();
 renderQuickResources();
+renderServiceDate();
 renderPractice();
 populateAdminOptions();
 renderSong();

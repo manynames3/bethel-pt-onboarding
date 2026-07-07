@@ -196,11 +196,30 @@ textarea:focus-visible {
 
 .top-practice-times {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 6px;
+  gap: 6px 12px;
   min-width: 0;
   flex: 1 1 auto;
+}
+
+.top-practice-heading {
+  display: grid;
+  align-self: stretch;
+  min-width: 82px;
+  place-items: center start;
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 820;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.top-practice-months {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  min-width: 0;
 }
 
 .practice-month-group {
@@ -264,6 +283,11 @@ textarea:focus-visible {
   color: var(--ink-2);
   font-size: 20px;
   font-weight: 720;
+  cursor: pointer;
+}
+
+.date-stepper button:hover {
+  background: var(--surface-soft);
 }
 
 .date-stepper button:first-child {
@@ -1943,6 +1967,11 @@ header.site-shell {
 
   .top-practice-times {
     grid-template-columns: 1fr;
+  }
+
+  .top-practice-heading {
+    min-width: 0;
+    min-height: 22px;
   }
 
   .practice-month-group {
