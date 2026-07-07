@@ -117,7 +117,7 @@ textarea:focus-visible {
 .app-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
   gap: 18px;
   width: min(1180px, calc(100% - 48px));
   min-height: 100vh;
@@ -325,10 +325,68 @@ textarea:focus-visible {
   font-size: 14px;
 }
 
+.resource-menu-tabs {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-soft);
+  padding: 7px;
+}
+
+.resource-menu-tab {
+  display: grid;
+  gap: 3px;
+  align-content: center;
+  min-width: 0;
+  min-height: 48px;
+  border-radius: 10px;
+  color: var(--ink);
+  padding: 9px 12px;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.resource-menu-tab:hover {
+  background: var(--surface-soft);
+}
+
+.resource-menu-tab span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 820;
+  line-height: 1.15;
+}
+
+.resource-menu-tab strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.resource-menu-tab.video span {
+  color: var(--blue);
+}
+
+.resource-menu-tab.onboarding span {
+  color: var(--green);
+}
+
+.resource-menu-tab.common span {
+  color: var(--teal-dark);
+}
+
 .app-sidebar {
   display: grid;
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 4;
   grid-template-columns: minmax(320px, 1.35fr) minmax(220px, 0.8fr);
   grid-template-rows: auto;
   gap: 14px;
@@ -582,7 +640,7 @@ textarea:focus-visible {
 
 .app-content {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 3;
   min-width: 0;
   min-height: 0;
   overflow: visible;
@@ -611,8 +669,7 @@ textarea:focus-visible {
   padding: 34px;
 }
 
-.welcome-dashboard .section-label,
-.quick-resources .section-label {
+.welcome-dashboard .section-label {
   display: none;
 }
 
@@ -673,7 +730,6 @@ textarea:focus-visible {
   min-height: 54px;
 }
 
-.quick-resources,
 .songbook-panel {
   display: grid;
   gap: 12px;
@@ -701,94 +757,6 @@ textarea:focus-visible {
 
 .compact-link {
   color: var(--teal-dark);
-}
-
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.resource-card {
-  display: grid;
-  gap: 8px;
-  min-height: 104px;
-  align-content: start;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: none;
-  padding: 15px;
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
-}
-
-.resource-card:hover {
-  transform: translateY(-1px);
-  border-color: rgba(8, 145, 178, 0.28);
-  box-shadow: var(--shadow-soft);
-}
-
-.resource-card.primary {
-  border-color: rgba(8, 145, 178, 0.18);
-  background: #f8ffff;
-}
-
-.resource-token {
-  display: inline-grid;
-  width: fit-content;
-  min-width: 32px;
-  height: 24px;
-  place-items: center;
-  border: 0;
-  border-radius: 8px;
-  background: var(--surface-cyan);
-  color: var(--teal-dark);
-  font-size: 10px;
-  font-weight: 850;
-  padding: 0 7px;
-}
-
-.resource-token.blue {
-  border-color: rgba(37, 99, 235, 0.18);
-  background: var(--surface-blue);
-  color: var(--blue);
-}
-
-.resource-token.teal {
-  border-color: rgba(8, 145, 178, 0.18);
-  background: var(--surface-cyan);
-  color: var(--teal-dark);
-}
-
-.resource-token.green {
-  border-color: rgba(22, 163, 74, 0.18);
-  background: #f0fdf4;
-  color: var(--green);
-}
-
-.resource-token.amber {
-  border-color: rgba(217, 119, 6, 0.18);
-  background: #fff7ed;
-  color: var(--amber);
-}
-
-.resource-token.slate {
-  border-color: rgba(100, 116, 139, 0.18);
-  background: var(--surface-soft);
-  color: var(--ink-2);
-}
-
-.resource-card strong {
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 820;
-}
-
-.resource-card > span:last-child {
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 620;
-  line-height: 1.45;
 }
 
 .songbook-panel {
@@ -1745,7 +1713,7 @@ header.site-shell {
 
   .app-shell {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     width: min(1120px, calc(100% - 32px));
     height: auto;
     min-height: 100vh;
@@ -1765,12 +1733,8 @@ header.site-shell {
 
   .app-sidebar {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .resource-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -2013,14 +1977,6 @@ header.site-shell {
     font-size: 2rem;
   }
 
-  .resource-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .resource-card {
-    min-height: 112px;
-  }
-
   .file-title {
     flex-wrap: wrap;
   }
@@ -2071,7 +2027,6 @@ body.app-body {
 .today-card,
 .practice-card,
 .role-list,
-.resource-card,
 .song-tab,
 .pdf-shell,
 .admin-drawer {
@@ -2181,33 +2136,6 @@ body.app-body {
 .service-brief .service-time-row,
 .service-time-row {
   border-radius: 10px;
-}
-
-.quick-resources {
-  margin-top: 8px;
-}
-
-.resource-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.resource-card {
-  min-height: 118px;
-  border-radius: 12px;
-  padding: 16px;
-}
-
-.resource-card.primary {
-  background: #f4fdff;
-}
-
-.resource-card strong {
-  font-size: 14px;
-}
-
-.resource-card > span:last-child {
-  font-size: 12px;
 }
 
 .songbook-panel {
@@ -2356,12 +2284,6 @@ body.app-body {
   display: none;
 }
 
-@media (max-width: 1240px) {
-  .resource-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 980px) {
   body.app-body {
     padding-bottom: 76px;
@@ -2387,7 +2309,7 @@ body.app-body {
     padding: 0;
   }
 
-  .resource-grid {
+  .resource-menu-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2450,14 +2372,6 @@ body.app-body {
 
   .service-brief {
     padding: 14px;
-  }
-
-  .resource-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .resource-card {
-    min-height: 86px;
   }
 
   .song-tab {

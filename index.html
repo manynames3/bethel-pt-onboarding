@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-friday">
+    <link rel="stylesheet" href="styles.css?v=20260707-menu-tabs">
   </head>
   <body class="app-body">
     <div class="app-shell">
@@ -47,6 +47,25 @@
           <button class="admin-button" id="adminOpen" type="button">관리자</button>
         </div>
       </header>
+
+      <nav class="resource-menu-tabs" aria-label="자료 메뉴">
+        <a class="resource-menu-tab video" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer" aria-label="주일 예배 플레이리스트 열기">
+          <span>참고 영상</span>
+          <strong>주일 예배 플레이리스트</strong>
+        </a>
+        <a class="resource-menu-tab video" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer" aria-label="금요 예배 플레이리스트 열기">
+          <span>참고 영상</span>
+          <strong>금요 예배 플레이리스트</strong>
+        </a>
+        <a class="resource-menu-tab onboarding" href="#onboarding">
+          <span>온보딩</span>
+          <strong>파트별 온보딩</strong>
+        </a>
+        <a class="resource-menu-tab common" href="onboarding/aviom.html">
+          <span>공통 자료</span>
+          <strong>전체 공통</strong>
+        </a>
+      </nav>
 
       <aside class="app-sidebar" aria-label="예배 준비 요약">
         <section class="role-section" id="onboarding" aria-labelledby="onboardingTitle">
@@ -101,37 +120,6 @@
               <a class="primary-action" href="#songbook">찬양 PDF 보기</a>
             </div>
             <p class="kakao-note">악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.</p>
-          </div>
-        </section>
-
-        <section class="quick-resources" aria-labelledby="quickResourcesTitle">
-          <div class="dashboard-section-head">
-            <div>
-              <h2 id="quickResourcesTitle">빠른 자료</h2>
-            </div>
-            <a class="compact-link" href="#songbook">찬양 PDF로 이동</a>
-          </div>
-          <div class="resource-grid" id="resourceGrid">
-            <a class="resource-card" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer">
-              <span class="resource-token blue">YT</span>
-              <strong>주일예배 플레이리스트</strong>
-              <span>YouTube 참고 영상</span>
-            </a>
-            <a class="resource-card" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer">
-              <span class="resource-token blue">YT</span>
-              <strong>금요예배 플레이리스트</strong>
-              <span>YouTube 참고 영상</span>
-            </a>
-            <a class="resource-card" href="#onboarding">
-              <span class="resource-token green">PT</span>
-              <strong>파트별 온보딩</strong>
-              <span>악기 · 보컬 · Aviom</span>
-            </a>
-            <a class="resource-card" href="onboarding/aviom.html">
-              <span class="resource-token slate">ALL</span>
-              <strong>전체 공통</strong>
-              <span>Aviom · 키 조정 리소스</span>
-            </a>
           </div>
         </section>
 
@@ -283,6 +271,6 @@
 
     <script src="practice-schedule.js?v=20260706-cleanup"></script>
     <script src="onboarding-data.js?v=20260706-cleanup"></script>
-    <script src="script.js?v=20260707-nopdfcard"></script>
+    <script src="script.js?v=20260707-menu-tabs"></script>
   </body>
 </html>

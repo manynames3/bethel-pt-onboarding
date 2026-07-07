@@ -11,58 +11,19 @@ const sundayServices = [
 ];
 const initialServiceDate = new Date(2026, 6, 5);
 const weekdayLabels = ["주일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-const kakaoSheetNote = "악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.";
-const quickResources = [
+const mobileQuickResources = [
   {
     href: "#songbook",
-    token: "PDF",
-    title: "찬양 PDF",
-    description: kakaoSheetNote,
-    variant: "teal",
-    primary: true,
-    hideFromGrid: true,
     mobile: "악보",
     mobileOrder: 1
   },
   {
-    href: "https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj",
-    token: "YT",
-    title: "주일예배 플레이리스트",
-    description: "YouTube 참고 영상",
-    variant: "blue",
-    external: true
-  },
-  {
-    href: "https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot",
-    token: "YT",
-    title: "금요예배 플레이리스트",
-    description: "YouTube 참고 영상",
-    variant: "blue",
-    external: true
-  },
-  {
-    href: "#onboarding",
-    token: "PT",
-    title: "파트별 온보딩",
-    description: "악기 · 보컬 · Aviom",
-    variant: "green"
-  },
-  {
     href: "onboarding/aviom.html",
-    token: "ALL",
-    title: "전체 공통",
-    description: "Aviom · 키 조정 리소스",
-    variant: "slate",
     mobile: "전체 공통",
     mobileOrder: 3
   },
   {
     href: "#practice",
-    token: "SAT",
-    title: "토요 연습",
-    description: "이번 달 · 다음 달 시간표",
-    variant: "amber",
-    hideFromGrid: true,
     mobile: "연습시간",
     mobileOrder: 2
   }
@@ -152,7 +113,6 @@ const els = {
   currentResourceLink: document.querySelector("#currentResourceLink"),
   songResources: document.querySelector("#songResources"),
   songStatus: document.querySelector("#songStatus"),
-  resourceGrid: document.querySelector("#resourceGrid"),
   mobileQuickActions: document.querySelector("#mobileQuickActions"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
   prevServiceDate: document.querySelector("#prevServiceDate"),
@@ -416,24 +376,9 @@ function renderSongResources(song) {
   `;
 }
 
-function renderQuickResources() {
-  if (els.resourceGrid) {
-    els.resourceGrid.innerHTML = quickResources
-      .filter((resource) => !resource.hideFromGrid)
-      .map(
-        (resource) => `
-          <a class="resource-card${resource.primary ? " primary" : ""}" href="${resource.href}"${resource.external ? ' target="_blank" rel="noopener noreferrer"' : ""}>
-            <span class="resource-token ${resource.variant || ""}">${resource.token}</span>
-            <strong>${resource.title}</strong>
-            <span>${resource.description}</span>
-          </a>
-        `
-      )
-      .join("");
-  }
-
+function renderMobileQuickActions() {
   if (els.mobileQuickActions) {
-    els.mobileQuickActions.innerHTML = quickResources
+    els.mobileQuickActions.innerHTML = mobileQuickResources
       .filter((resource) => resource.mobile)
       .sort((a, b) => a.mobileOrder - b.mobileOrder)
       .map((resource) => `<a href="${resource.href}">${resource.mobile}</a>`)
@@ -743,7 +688,7 @@ els.resetContent.addEventListener("click", () => {
 });
 
 renderRoles();
-renderQuickResources();
+renderMobileQuickActions();
 renderServiceDate();
 renderPractice();
 populateAdminOptions();
