@@ -115,7 +115,16 @@ function renderRolePage() {
 
   renderList("#setupList", currentRole.setup);
   renderList("#monitoringList", currentRole.monitoring);
-  renderList("#checklist", currentRole.checklist);
+
+  const checklist = document.querySelector("#checklist");
+  const checklistCard = checklist?.closest(".detail-card");
+  if (currentRole.checklist?.length) {
+    renderList("#checklist", currentRole.checklist);
+    if (checklistCard) checklistCard.hidden = false;
+  } else if (checklistCard) {
+    checklistCard.hidden = true;
+  }
+
   renderReferences();
   renderRoleNav();
 }

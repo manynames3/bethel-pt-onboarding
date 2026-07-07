@@ -256,11 +256,6 @@ window.ABCPRAISE_ROLES = [
         ]
       }
     ],
-    checklist: [
-      "Master 낮게 시작",
-      "인도자 먼저",
-      "본인 채널 확인",
-      "Preset 저장/불러오기 확인"
-    ]
+    checklist: []
   }
 ];
