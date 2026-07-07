@@ -2095,8 +2095,12 @@ body.app-body {
   align-items: start;
 }
 
+.role-section .section-label,
 .dashboard-section-head h2 {
+  color: var(--ink);
   font-size: 28px;
+  font-weight: 880;
+  line-height: 1.15;
 }
 
 .song-strip {
