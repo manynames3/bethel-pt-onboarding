@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-heading-align">
+    <link rel="stylesheet" href="styles.css?v=20260707-media-songbook">
   </head>
   <body class="app-body">
     <div class="app-shell">
@@ -56,25 +56,6 @@
         </div>
       </header>
 
-      <nav class="resource-menu-tabs" aria-label="자료 메뉴">
-        <a class="resource-menu-tab video" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer" aria-label="주일 예배 플레이리스트 열기">
-          <span>참고 영상</span>
-          <strong>주일 예배 플레이리스트</strong>
-        </a>
-        <a class="resource-menu-tab video" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer" aria-label="금요 예배 플레이리스트 열기">
-          <span>참고 영상</span>
-          <strong>금요 예배 플레이리스트</strong>
-        </a>
-        <a class="resource-menu-tab onboarding" href="#onboarding">
-          <span>온보딩</span>
-          <strong>파트별 온보딩</strong>
-        </a>
-        <a class="resource-menu-tab common" href="onboarding/aviom.html">
-          <span>공통 자료</span>
-          <strong>악기팀 공통</strong>
-        </a>
-      </nav>
-
       <aside class="app-sidebar" aria-label="예배 준비 요약">
         <section class="role-section" id="onboarding" aria-labelledby="onboardingTitle">
           <h2 class="section-label" id="onboardingTitle">역할별 온보딩</h2>
@@ -86,9 +67,19 @@
         <section class="songbook-panel" id="songbook" aria-labelledby="songbookTitle">
           <div class="dashboard-section-head">
             <div>
-              <h2 id="songbookTitle">악보</h2>
+              <h2 id="songbookTitle">음원 &amp; 악보</h2>
             </div>
           </div>
+          <nav class="playlist-strip" aria-label="예배 플레이리스트">
+            <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer" aria-label="주일 예배 플레이리스트 열기">
+              <span>음원</span>
+              <strong>주일 예배 플레이리스트</strong>
+            </a>
+            <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer" aria-label="금요 예배 플레이리스트 열기">
+              <span>음원</span>
+              <strong>금요 예배 플레이리스트</strong>
+            </a>
+          </nav>
           <section class="song-strip" aria-label="예배 찬양곡">
             <button class="song-tab is-active" type="button" data-song="offeringGreeting">
               <span class="song-title-row">
@@ -214,7 +205,7 @@
           </div>
           <div class="admin-info-card">
             <strong>공통 리소스</strong>
-            <span>Transpose 확장, Aviom 안내, 파트별 온보딩은 악기팀 공통 메뉴에서 확인할 수 있습니다.</span>
+            <span>Transpose 확장, Aviom 안내, 파트별 온보딩은 악기팀 공통 온보딩에서 확인할 수 있습니다.</span>
           </div>
         </section>
       </form>
@@ -222,12 +213,12 @@
 
     <nav class="mobile-quick-actions" id="mobileQuickActions" aria-label="빠른 이동">
       <a href="#onboarding">온보딩</a>
-      <a href="#songbook">악보</a>
+      <a href="#songbook">음원 &amp; 악보</a>
       <a href="#practice">연습시간</a>
     </nav>
 
     <script src="practice-schedule.js?v=20260707-fixed-sunday-practice"></script>
     <script src="onboarding-data.js?v=20260707-bass-clip"></script>
-    <script src="script.js?v=20260707-header-cleanup-2"></script>
+    <script src="script.js?v=20260707-media-songbook"></script>
   </body>
 </html>

@@ -18,7 +18,7 @@ const mobileQuickResources = [
   },
   {
     href: "#songbook",
-    mobile: "악보",
+    mobile: "음원 & 악보",
     mobileOrder: 2
   },
   {
