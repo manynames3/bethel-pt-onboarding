@@ -807,6 +807,28 @@ textarea:focus-visible {
   font-weight: 640;
 }
 
+.songbook-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.songbook-notes p {
+  margin: 0;
+}
+
+.songbook-notes p + p::before {
+  content: "·";
+  margin-right: 14px;
+  color: var(--quiet);
+}
+
 .number-badge {
   display: inline-grid;
   min-width: 24px;
@@ -2268,6 +2290,15 @@ body.app-body {
 
   .song-tab {
     min-height: 86px;
+  }
+
+  .songbook-notes {
+    display: grid;
+    gap: 4px;
+  }
+
+  .songbook-notes p + p::before {
+    display: none;
   }
 
   .pdf-toolbar {

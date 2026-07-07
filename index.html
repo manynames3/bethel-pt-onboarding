@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-fixed-sunday-practice">
+    <link rel="stylesheet" href="styles.css?v=20260707-songbook-notes">
   </head>
   <body class="app-body">
     <div class="app-shell">
@@ -84,25 +84,11 @@
       </aside>
 
       <main class="app-content dashboard-content" id="dashboard" aria-label="주일 예배와 금요 예배 준비">
-        <section class="welcome-dashboard" aria-label="주요 안내">
-          <div class="welcome-copy">
-            <div class="welcome-actions" aria-label="주요 이동">
-              <a class="primary-action" href="#songbook">찬양 PDF 보기</a>
-            </div>
-            <div class="welcome-notes" aria-label="준비 안내">
-              <p class="kakao-note">악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.</p>
-              <p class="location-note">새벽예배는 평소 별관에서 드립니다.</p>
-            </div>
-          </div>
-        </section>
-
         <section class="songbook-panel" id="songbook" aria-labelledby="songbookTitle">
           <div class="dashboard-section-head">
             <div>
               <h2 id="songbookTitle">찬양 PDF</h2>
-              <p class="section-note">악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.</p>
             </div>
-            <span class="compact-status">필요한 곡을 선택해 바로 열 수 있습니다.</span>
           </div>
           <section class="song-strip" aria-label="예배 찬양곡">
             <button class="song-tab is-active" type="button" data-song="offeringGreeting">
@@ -110,24 +96,24 @@
                 <span class="song-title"><span class="number-badge teal">1</span><span data-song-title>헌금 찬양 &amp; 인사찬양</span></span>
                 <span class="song-badge">PDF · JPG</span>
               </span>
-              <small data-song-subtitle>헌금송 · 축복송 자료</small>
             </button>
             <button class="song-tab" type="button" data-song="special">
               <span class="song-title-row">
                 <span class="song-title"><span class="number-badge">2</span><span data-song-title>축복/환영 찬양</span></span>
                 <span class="song-badge">PDF · JPG</span>
               </span>
-              <small data-song-subtitle>결혼 · 축복 · 환영 순서</small>
             </button>
           </section>
+          <aside class="songbook-notes" aria-label="안내">
+            <p>매주 악보는 베델교회 찬양팀 단톡방 통해서 공유됩니다.</p>
+            <p>새벽예배는 평소 별관에서 드립니다.</p>
+          </aside>
 
           <section class="pdf-shell" aria-labelledby="currentSongTitle">
             <div class="pdf-toolbar">
               <div class="file-title">
                 <span class="file-dot" aria-hidden="true"></span>
                 <span id="currentSongTitle">헌금 찬양 &amp; 인사찬양</span>
-                <span class="file-subtitle" id="pdfName">2부 PDF · 3부 JPG</span>
-                <span class="file-status" id="songStatus">헌금송 · 축복송 자료</span>
               </div>
               <a class="current-resource-link" id="currentResourceLink" href="#" target="_blank" rel="noopener noreferrer">새 창에서 열기</a>
             </div>
@@ -139,7 +125,6 @@
                   <div class="empty-sheet" aria-hidden="true">
                     <div class="empty-sheet-head">
                       <strong>헌금 찬양 &amp; 인사찬양</strong>
-                      <span>헌금송 · 축복송 자료</span>
                     </div>
                     <span class="staff-lines"></span>
                     <span class="staff-lines"></span>
@@ -244,6 +229,6 @@
 
     <script src="practice-schedule.js?v=20260707-fixed-sunday-practice"></script>
     <script src="onboarding-data.js?v=20260706-cleanup"></script>
-    <script src="script.js?v=20260707-fixed-sunday-practice"></script>
+    <script src="script.js?v=20260707-songbook-notes"></script>
   </body>
 </html>

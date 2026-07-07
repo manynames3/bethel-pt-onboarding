@@ -4,6 +4,7 @@ const legacySundayNotes = [
   "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 40분 전에 준비된 상태로 도착해 주세요."
 ];
 const legacyCombinedSongIds = ["greeting", "offering"];
+const legacyOfferingSubtitle = ["헌금송", "축복송 자료"].join(" · ");
 const sundayServices = [
   { service: "1부", practice: "오전 7:15" },
   { service: "2부", practice: "오전 9:00" },
@@ -33,7 +34,7 @@ const defaultState = {
     {
       id: "offeringGreeting",
       title: "헌금 찬양 & 인사찬양",
-      subtitle: "헌금송 · 축복송 자료",
+      subtitle: "",
       allowNotes: false,
       pdfName: "",
       pdfData: "",
@@ -105,11 +106,9 @@ let unlocked = false;
 const els = {
   songTabs: [...document.querySelectorAll(".song-tab")],
   currentSongTitle: document.querySelector("#currentSongTitle"),
-  pdfName: document.querySelector("#pdfName"),
   pdfFrame: document.querySelector("#pdfFrame"),
   currentResourceLink: document.querySelector("#currentResourceLink"),
   songResources: document.querySelector("#songResources"),
-  songStatus: document.querySelector("#songStatus"),
   mobileQuickActions: document.querySelector("#mobileQuickActions"),
   topPracticeTimes: document.querySelector("#topPracticeTimes"),
   sidebarServiceTimes: document.querySelector("#sidebarServiceTimes"),
@@ -190,7 +189,7 @@ function loadState() {
         }
         if (
           song.id === "offeringGreeting" &&
-          ["예배 시작 환영", "헌금 순서"].includes(storedSong.subtitle)
+          ["예배 시작 환영", "헌금 순서", legacyOfferingSubtitle].includes(storedSong.subtitle)
         ) {
           merged.subtitle = song.subtitle;
         }
@@ -221,17 +220,13 @@ function renderSongTabs() {
     button.classList.toggle("is-active", song.id === state.selectedSongId);
     button.setAttribute("aria-pressed", song.id === state.selectedSongId ? "true" : "false");
     const title = button.querySelector("[data-song-title]");
-    const subtitle = button.querySelector("[data-song-subtitle]");
     if (title) title.textContent = song.title;
-    if (subtitle) subtitle.textContent = song.subtitle;
   });
 }
 
 function renderSong() {
   const song = selectedSong();
   els.currentSongTitle.textContent = song.title;
-  els.pdfName.textContent = song.pdfName || resourceSummary(song) || "PDF 없음";
-  els.songStatus.textContent = song.subtitle;
   updateCurrentResourceLink(song);
 
   if (song.pdfData) {
@@ -248,7 +243,6 @@ function renderSong() {
         <div class="empty-sheet" aria-hidden="true">
           <div class="empty-sheet-head">
             <strong>${song.title}</strong>
-            <span>${song.subtitle}</span>
           </div>
           <span class="staff-lines"></span>
           <span class="staff-lines"></span>
@@ -282,11 +276,6 @@ function updateCurrentResourceLink(song) {
   } else {
     els.currentResourceLink.removeAttribute("download");
   }
-}
-
-function resourceSummary(song) {
-  if (!song.resources?.length) return "";
-  return song.resources.map((resource) => `${resource.label} ${resource.type}`).join(" · ");
 }
 
 function renderResourcePreview(resource, song) {
