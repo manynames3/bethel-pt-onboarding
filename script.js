@@ -61,6 +61,7 @@ const quickResources = [
     title: "토요 연습",
     description: "이번 달 · 다음 달 시간표",
     variant: "amber",
+    hideFromGrid: true,
     mobile: "연습시간",
     mobileOrder: 2
   }
@@ -417,6 +418,7 @@ function renderSongResources(song) {
 function renderQuickResources() {
   if (els.resourceGrid) {
     els.resourceGrid.innerHTML = quickResources
+      .filter((resource) => !resource.hideFromGrid)
       .map(
         (resource) => `
           <a class="resource-card${resource.primary ? " primary" : ""}" href="${resource.href}"${resource.external ? ' target="_blank" rel="noopener noreferrer"' : ""}>
