@@ -26,8 +26,16 @@ const quickResources = [
   {
     href: "https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj",
     token: "YT",
-    title: "참고 영상",
-    description: "주일예배 플레이리스트",
+    title: "주일예배 플레이리스트",
+    description: "YouTube 참고 영상",
+    variant: "blue",
+    external: true
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot",
+    token: "YT",
+    title: "금요예배 플레이리스트",
+    description: "YouTube 참고 영상",
     variant: "blue",
     external: true
   },
