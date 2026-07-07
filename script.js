@@ -156,9 +156,7 @@ function loadState() {
       ...defaultState.practice,
       ...(stored.practice || {})
     };
-    if (typeof practice.sunday === "string" && practice.sunday.includes("Aviom 믹스")) {
-      practice.sunday = defaultState.practice.sunday;
-    }
+    practice.sunday = defaultState.practice.sunday;
 
     return {
       ...structuredClone(defaultState),
@@ -631,7 +629,7 @@ els.savePractice.addEventListener("click", () => {
   state.practice.slotOne = els.slotOne.value.trim() || defaultState.practice.slotOne;
   state.practice.slotTwo = els.slotTwo.value.trim() || defaultState.practice.slotTwo;
   state.practice.slotThree = els.slotThree.value.trim() || defaultState.practice.slotThree;
-  state.practice.sunday = els.sundayInput.value.trim() || defaultState.practice.sunday;
+  state.practice.sunday = defaultState.practice.sunday;
   saveState();
   renderPractice();
   showMessage(els.practiceSaveMessage, "연습 시간이 저장되었습니다.");
