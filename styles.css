@@ -158,6 +158,10 @@ textarea:focus-visible {
   display: block;
 }
 
+.brand-lockup span {
+  min-width: 0;
+}
+
 .brand-lockup strong {
   color: var(--ink);
   font-size: 22px;
@@ -169,6 +173,7 @@ textarea:focus-visible {
   color: var(--muted);
   font-size: 13px;
   font-weight: 650;
+  line-height: 1.25;
 }
 
 .service-controls {
@@ -2107,7 +2112,15 @@ body.app-body {
   box-shadow: var(--shadow-soft);
 }
 
+.welcome-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
 .kakao-note,
+.location-note,
 .section-note,
 .upload-preview {
   color: var(--muted);
@@ -2116,7 +2129,8 @@ body.app-body {
   line-height: 1.5;
 }
 
-.kakao-note {
+.kakao-note,
+.location-note {
   display: inline-flex;
   width: fit-content;
   max-width: 100%;
@@ -2125,6 +2139,12 @@ body.app-body {
   background: #f4fdff;
   color: var(--teal-dark);
   padding: 10px 12px;
+}
+
+.location-note {
+  border-color: rgba(100, 116, 139, 0.18);
+  background: #f8fafc;
+  color: var(--ink-2);
 }
 
 .service-brief {
