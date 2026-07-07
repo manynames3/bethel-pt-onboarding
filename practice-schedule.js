@@ -31,45 +31,9 @@
     ];
   }
 
-  function serviceMarkup(services) {
-    return Object.entries(services)
-      .map(([service, time]) => `<span><strong>${service}</strong> ${time}</span>`)
-      .join("");
-  }
-
-  function renderHeaderPractice() {
-    const header = document.querySelector("header.site-shell");
-    if (!header || header.querySelector(".practice-strip")) return;
-
-    const strip = document.createElement("section");
-    strip.className = "practice-strip";
-    strip.setAttribute("aria-label", "이번 달과 다음 달 토요일 연습 시간");
-    strip.innerHTML = `
-      <div class="practice-strip-label">토요 연습</div>
-      <div class="practice-strip-months">
-        ${getCurrentAndNext()
-          .map(
-            (item) => `
-              <article class="practice-strip-card${item.isCurrent ? " is-current" : ""}"${item.isCurrent ? ' aria-current="date"' : ""}>
-                <span>${item.label}</span>
-                <h2>${monthName(item.month)}</h2>
-                <div>${serviceMarkup(item.services)}</div>
-              </article>
-            `
-          )
-          .join("")}
-      </div>
-    `;
-
-    header.append(strip);
-  }
-
   window.ABCPRAISE_PRACTICE = {
     monthSchedule,
     getCurrentAndNext,
-    monthName,
-    serviceMarkup
+    monthName
   };
-
-  renderHeaderPractice();
 })();

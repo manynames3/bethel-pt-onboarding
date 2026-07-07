@@ -1361,90 +1361,6 @@ header.site-shell {
   color: #fff;
 }
 
-.practice-strip {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 12px;
-  align-items: stretch;
-  padding: 0 0 14px;
-}
-
-.practice-strip-label {
-  display: flex;
-  align-items: center;
-  min-height: 52px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--teal-dark);
-  font-size: 0.82rem;
-  font-weight: 850;
-  padding: 0 13px;
-  white-space: nowrap;
-}
-
-.practice-strip-months {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.practice-strip-card {
-  display: grid;
-  grid-template-columns: auto auto minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
-  min-height: 52px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.78);
-  padding: 9px 12px;
-}
-
-.practice-strip-card.is-current {
-  border-color: rgba(8, 145, 178, 0.3);
-  background: #fff;
-  box-shadow: inset 4px 0 0 var(--teal), var(--shadow-soft);
-}
-
-.practice-strip-card > span {
-  color: var(--quiet);
-  font-size: 0.76rem;
-  font-weight: 800;
-}
-
-.practice-strip-card.is-current > span {
-  border-radius: 8px;
-  background: var(--ink);
-  color: #fff;
-  padding: 3px 8px;
-}
-
-.practice-strip-card h2 {
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 820;
-  white-space: nowrap;
-}
-
-.practice-strip-card div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 6px;
-}
-
-.practice-strip-card div span {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 760;
-  padding: 3px 8px;
-  white-space: nowrap;
-}
-
 .eyebrow {
   margin: 0 0 8px;
   color: var(--teal-dark);
@@ -1927,27 +1843,6 @@ header.site-shell {
     flex: 1;
     padding-inline: 6px;
     text-align: center;
-  }
-
-  .practice-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .practice-strip-label {
-    min-height: 38px;
-  }
-
-  .practice-strip-months {
-    grid-template-columns: 1fr;
-  }
-
-  .practice-strip-card {
-    grid-template-columns: auto auto;
-  }
-
-  .practice-strip-card div {
-    grid-column: 1 / -1;
-    justify-content: flex-start;
   }
 
   .service-controls,
