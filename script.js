@@ -27,6 +27,16 @@ const mobileQuickResources = [
     mobileOrder: 3
   }
 ];
+const roleDisplayOrder = [
+  "main-keys",
+  "second-keys",
+  "acoustic-guitar",
+  "electric-guitar",
+  "bass",
+  "drums",
+  "singers",
+  "aviom"
+];
 
 const defaultState = {
   selectedSongId: "offeringGreeting",
@@ -356,15 +366,18 @@ function renderMobileQuickActions() {
 }
 
 function renderRoles() {
-  const roles = window.ABCPRAISE_ROLES || roleGuides;
+  const roles = [...(window.ABCPRAISE_ROLES || roleGuides)].sort((a, b) => {
+    const aIndex = roleDisplayOrder.indexOf(a.slug);
+    const bIndex = roleDisplayOrder.indexOf(b.slug);
+    return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+  });
   els.roleGrid.innerHTML = roles
     .map(
       (role, index) => `
         <a class="role-row ${index === 0 ? "is-active" : ""}" href="onboarding/${role.slug || ""}.html" aria-label="${role.tag} 온보딩 페이지 열기">
-          <span class="role-icon">${roleInitial(role)}</span>
+          <span class="role-icon" aria-hidden="true">${roleIcon(role)}</span>
           <span class="role-copy">
             <strong>${role.tag}</strong>
-            <span>${role.equipment || role.title}</span>
           </span>
           <span class="chev" aria-hidden="true">›</span>
         </a>
@@ -373,18 +386,59 @@ function renderRoles() {
     .join("");
 }
 
-function roleInitial(role) {
-  const initials = {
-    "어쿠스틱 기타": "A",
-    "베이스": "B",
-    "일렉 기타": "E",
-    "메인 건반": "K",
-    "세컨 건반": "K",
-    "드럼": "D",
-    "싱어": "V",
-    "악기팀 공통": "M"
-  };
-  return initials[role.tag] || role.tag.slice(0, 1);
+function iconSvg(paths) {
+  return `<svg viewBox="0 0 24 24" focusable="false">${paths}</svg>`;
+}
+
+function roleIcon(role) {
+  if (role.slug === "main-keys" || role.slug === "second-keys") {
+    return iconSvg(`
+      <rect x="3" y="7" width="18" height="10" rx="2"></rect>
+      <path d="M7 7v10"></path>
+      <path d="M11 7v10"></path>
+      <path d="M15 7v10"></path>
+      <path d="M19 7v10"></path>
+      <path d="M3 12h18"></path>
+    `);
+  }
+  if (role.slug === "drums") {
+    return iconSvg(`
+      <ellipse cx="9" cy="14" rx="5" ry="3"></ellipse>
+      <ellipse cx="16" cy="11" rx="4" ry="2.5"></ellipse>
+      <path d="M4 14v3c0 1.7 2.2 3 5 3s5-1.3 5-3v-3"></path>
+      <path d="M12 11v2.5"></path>
+      <path d="M16 13.5v2"></path>
+      <path d="M5 5l5 5"></path>
+      <path d="M19 5l-5 5"></path>
+    `);
+  }
+  if (role.slug === "singers") {
+    return iconSvg(`
+      <rect x="9" y="3" width="6" height="11" rx="3"></rect>
+      <path d="M5 11a7 7 0 0 0 14 0"></path>
+      <path d="M12 18v3"></path>
+      <path d="M8 21h8"></path>
+    `);
+  }
+  if (role.slug === "aviom") {
+    return iconSvg(`
+      <path d="M5 4v16"></path>
+      <path d="M12 4v16"></path>
+      <path d="M19 4v16"></path>
+      <circle cx="5" cy="9" r="2"></circle>
+      <circle cx="12" cy="15" r="2"></circle>
+      <circle cx="19" cy="7" r="2"></circle>
+    `);
+  }
+  return iconSvg(`
+    <path d="M15 4l5 5"></path>
+    <path d="M14 5l5 5"></path>
+    <path d="M10 8l6 6"></path>
+    <path d="M8 10l6 6"></path>
+    <ellipse cx="7.5" cy="16.5" rx="4.5" ry="3.5" transform="rotate(-35 7.5 16.5)"></ellipse>
+    <circle cx="7.5" cy="16.5" r="1.4"></circle>
+    <path d="M11 13l7-7"></path>
+  `);
 }
 
 function renderServiceTimes() {
