@@ -1,8 +1,5 @@
 const STORAGE_KEY = "abcpraise.site.ko.v1";
 const ADMIN_CODE = "bethel";
-const legacySundayNotes = [
-  "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 40분 전에 준비된 상태로 도착해 주세요."
-];
 const legacyCombinedSongIds = ["greeting", "offering"];
 const legacyOfferingSubtitle = ["헌금송", "축복송 자료"].join(" · ");
 const legacyOfferingTitles = ["인사 찬양", "헌금 찬양", "헌금 찬양 & 인사찬양"];
@@ -96,8 +93,7 @@ const defaultState = {
     slotOne: "이번 주 토요일 시간은 코디네이터가 공지합니다",
     slotTwo: "이번 주 토요일 시간은 코디네이터가 공지합니다",
     slotThree: "이번 주 토요일 시간은 코디네이터가 공지합니다",
-    sunday:
-      "라인 체크, Aviom 믹스, 튜닝, 전체 합주를 위해 예배 30분 전부터 연습을 시작합니다."
+    sunday: ""
   }
 };
 
@@ -160,7 +156,7 @@ function loadState() {
       ...defaultState.practice,
       ...(stored.practice || {})
     };
-    if (legacySundayNotes.includes(practice.sunday)) {
+    if (typeof practice.sunday === "string" && practice.sunday.includes("Aviom 믹스")) {
       practice.sunday = defaultState.practice.sunday;
     }
 

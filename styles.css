@@ -167,6 +167,8 @@ textarea:focus-visible {
   color: var(--ink);
   font-size: 24px;
   font-weight: 850;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .brand-lockup small {
@@ -175,6 +177,8 @@ textarea:focus-visible {
   font-size: 15px;
   font-weight: 650;
   line-height: 1.25;
+  overflow-wrap: normal;
+  word-break: keep-all;
   white-space: nowrap;
 }
 
