@@ -101,6 +101,7 @@ const roleGuides = window.ABCPRAISE_ROLES || [];
 
 let state = loadState();
 let unlocked = false;
+const selectedResourceBySongId = {};
 
 const els = {
   songTabs: [...document.querySelectorAll(".song-tab")],
@@ -210,6 +211,16 @@ function selectedSong() {
   return state.songs.find((song) => song.id === state.selectedSongId) || state.songs[0];
 }
 
+function selectedResourceIndex(song) {
+  const resources = song.resources || [];
+  const index = selectedResourceBySongId[song.id] || 0;
+  return resources[index] ? index : 0;
+}
+
+function selectedResource(song) {
+  return (song.resources || [])[selectedResourceIndex(song)];
+}
+
 function renderSongTabs() {
   els.songTabs.forEach((button) => {
     const song = state.songs.find((item) => item.id === button.dataset.song);
@@ -224,7 +235,8 @@ function renderSongTabs() {
 function renderSong() {
   const song = selectedSong();
   els.currentSongTitle.textContent = song.title;
-  updateCurrentResourceLink(song);
+  const activeResource = selectedResource(song);
+  updateCurrentResourceLink(song, activeResource);
 
   if (song.pdfData) {
     els.pdfFrame.innerHTML = "";
@@ -232,8 +244,8 @@ function renderSong() {
     iframe.title = `${song.title} 악보 PDF`;
     iframe.src = song.pdfData;
     els.pdfFrame.append(iframe);
-  } else if (song.resources?.length) {
-    renderResourcePreview(song.resources[0], song);
+  } else if (activeResource) {
+    renderResourcePreview(activeResource, song);
   } else {
     els.pdfFrame.innerHTML = `
       <div class="empty-pdf">
@@ -256,10 +268,9 @@ function renderSong() {
   syncAdminFields();
 }
 
-function updateCurrentResourceLink(song) {
+function updateCurrentResourceLink(song, resource = selectedResource(song)) {
   if (!els.currentResourceLink) return;
-  const primaryResource = song.resources?.[0];
-  const href = song.pdfData || primaryResource?.href || "";
+  const href = song.pdfData || resource?.href || "";
   if (!href) {
     els.currentResourceLink.hidden = true;
     els.currentResourceLink.removeAttribute("href");
@@ -295,6 +306,7 @@ function renderResourcePreview(resource, song) {
 function renderSongResources(song) {
   if (!els.songResources) return;
   const resources = song.resources || [];
+  const activeIndex = selectedResourceIndex(song);
   if (!resources.length) {
     els.songResources.hidden = true;
     els.songResources.innerHTML = "";
@@ -310,20 +322,27 @@ function renderSongResources(song) {
     <div class="song-resource-list">
       ${resources
         .map(
-          (resource) => `
-            <a class="song-resource-card" href="${resource.href}" target="_blank" rel="noopener noreferrer">
+          (resource, index) => `
+            <button class="song-resource-card ${index === activeIndex ? "is-active" : ""}" type="button" data-resource-index="${index}">
               <span class="song-resource-type">${resource.type}</span>
               <span class="song-resource-copy">
                 <strong>${resource.label} ${resource.title}</strong>
                 <span>${resource.description}</span>
               </span>
-              <span class="song-resource-action">열기</span>
-            </a>
+              <span class="song-resource-action">보기</span>
+            </button>
           `
         )
         .join("")}
     </div>
   `;
+
+  els.songResources.querySelectorAll("[data-resource-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedResourceBySongId[song.id] = Number(button.dataset.resourceIndex) || 0;
+      renderSong();
+    });
+  });
 }
 
 function renderMobileQuickActions() {

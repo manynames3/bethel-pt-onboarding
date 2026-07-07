@@ -970,7 +970,13 @@ textarea:focus-visible {
   border-radius: 8px;
   background: #fff;
   padding: 10px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
@@ -978,6 +984,17 @@ textarea:focus-visible {
   transform: translateY(-1px);
   border-color: rgba(8, 145, 178, 0.36);
   box-shadow: var(--shadow-soft);
+}
+
+.song-resource-card.is-active {
+  border-color: rgba(8, 145, 178, 0.46);
+  background: var(--surface-cyan);
+  box-shadow: 0 0 0 2px rgba(8, 145, 178, 0.08);
+}
+
+.song-resource-card:focus-visible {
+  outline: 3px solid rgba(8, 145, 178, 0.28);
+  outline-offset: 2px;
 }
 
 .song-resource-type {
@@ -1034,7 +1051,8 @@ textarea:focus-visible {
   display: grid;
   min-width: 0;
   min-height: 0;
-  place-items: center;
+  align-items: start;
+  justify-items: center;
   overflow: hidden;
   background: linear-gradient(180deg, var(--bg), var(--page));
   padding: 20px 26px;
@@ -1759,7 +1777,7 @@ header.site-shell {
   }
 
   .pdf-shell {
-    min-height: 600px;
+    min-height: 820px;
     margin: 0;
   }
 
@@ -1784,7 +1802,7 @@ header.site-shell {
   }
 
   .pdf-stage {
-    min-height: 520px;
+    min-height: 700px;
     padding: 18px;
   }
 
@@ -2129,7 +2147,7 @@ body.app-body {
 }
 
 .pdf-shell {
-  min-height: 470px;
+  min-height: 940px;
   border-radius: 12px;
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
 }
@@ -2161,7 +2179,7 @@ body.app-body {
 }
 
 .pdf-stage {
-  min-height: 380px;
+  min-height: 850px;
   background: #f8fafc;
   padding: 14px;
 }
@@ -2306,7 +2324,7 @@ body.app-body {
   }
 
   .pdf-shell {
-    min-height: 500px;
+    min-height: 760px;
   }
 
   .mobile-quick-actions {
@@ -2407,7 +2425,7 @@ body.app-body {
   }
 
   .pdf-stage {
-    min-height: 400px;
+    min-height: 620px;
     padding: 10px;
   }
 
