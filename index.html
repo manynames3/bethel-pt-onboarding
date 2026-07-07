@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>애틀랜타 베델교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-date">
+    <link rel="stylesheet" href="styles.css?v=20260707-cardtop">
   </head>
   <body class="app-body">
     <div class="app-shell">
@@ -49,10 +49,22 @@
       </header>
 
       <aside class="app-sidebar" aria-label="예배 준비 요약">
+        <section class="role-section" id="onboarding" aria-labelledby="onboardingTitle">
+          <p class="section-label" id="onboardingTitle">역할별 온보딩</p>
+          <nav class="role-list" id="roleGrid" aria-label="파트별 온보딩"></nav>
+        </section>
+
+        <section class="practice-card" aria-labelledby="practiceTitle">
+          <p class="section-label" id="practiceTitle">토요 연습</p>
+          <div class="practice-rows" id="saturdayTimes"></div>
+        </section>
+      </aside>
+
+      <main class="app-content dashboard-content" id="dashboard" aria-labelledby="dashboardTitle">
         <section class="today-card" id="practice">
           <div class="today-head">
             <div>
-              <p class="section-label">오늘</p>
+              <p class="section-label" id="serviceBriefDate">2026년 7월 5일</p>
               <h1>주일 예배 연습시간</h1>
             </div>
             <span class="day-pill">D-DAY</span>
@@ -81,18 +93,6 @@
           <p class="small-note" id="sundayNote"></p>
         </section>
 
-        <section class="role-section" id="onboarding" aria-labelledby="onboardingTitle">
-          <p class="section-label" id="onboardingTitle">역할별 온보딩</p>
-          <nav class="role-list" id="roleGrid" aria-label="파트별 온보딩"></nav>
-        </section>
-
-        <section class="practice-card" aria-labelledby="practiceTitle">
-          <p class="section-label" id="practiceTitle">토요 연습</p>
-          <div class="practice-rows" id="saturdayTimes"></div>
-        </section>
-      </aside>
-
-      <main class="app-content dashboard-content" id="dashboard" aria-labelledby="dashboardTitle">
         <section class="welcome-dashboard" aria-labelledby="dashboardTitle">
           <div class="welcome-copy">
             <h1 id="dashboardTitle">오늘 필요한 준비를 빠르게 확인하세요.</h1>
@@ -103,27 +103,6 @@
               <a class="secondary-action" href="onboarding/aviom.html">전체 공통</a>
             </div>
             <p class="kakao-note">악보는 베델교회 찬양팀 카카오톡 단체방에도 공유됩니다.</p>
-          </div>
-          <div class="service-brief" aria-label="주일 예배 연습시간">
-            <span class="service-brief-date" id="serviceBriefDate">2026년 7월 5일</span>
-            <strong>주일 예배 연습시간</strong>
-            <div class="service-brief-times" id="serviceBriefTimes">
-              <div class="service-time-row">
-                <strong class="service-time-service">1부</strong>
-                <span class="service-time-value"><small>연습</small> <span>오전 7:15</span></span>
-                <span class="service-time-value"><small>예배</small> <span>오전 7:45</span></span>
-              </div>
-              <div class="service-time-row">
-                <strong class="service-time-service">2부</strong>
-                <span class="service-time-value"><small>연습</small> <span>오전 9:00</span></span>
-                <span class="service-time-value"><small>예배</small> <span>오전 9:30</span></span>
-              </div>
-              <div class="service-time-row">
-                <strong class="service-time-service">3부</strong>
-                <span class="service-time-value"><small>연습</small> <span>오전 11:00</span></span>
-                <span class="service-time-value"><small>예배</small> <span>오전 11:30</span></span>
-              </div>
-            </div>
           </div>
         </section>
 

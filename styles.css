@@ -329,7 +329,7 @@ textarea:focus-visible {
   display: grid;
   grid-column: 1;
   grid-row: 3;
-  grid-template-columns: minmax(210px, 0.75fr) minmax(320px, 1.35fr) minmax(220px, 0.8fr);
+  grid-template-columns: minmax(320px, 1.35fr) minmax(220px, 0.8fr);
   grid-template-rows: auto;
   gap: 14px;
   min-height: 0;
@@ -594,9 +594,13 @@ textarea:focus-visible {
   margin-top: 16px;
 }
 
+.dashboard-content > .today-card {
+  width: min(100%, 720px);
+}
+
 .welcome-dashboard {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
   align-items: stretch;
   overflow: hidden;
@@ -1762,7 +1766,7 @@ header.site-shell {
   .app-sidebar {
     grid-column: 1;
     grid-row: 3;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .resource-grid {
@@ -2090,7 +2094,7 @@ body.app-body {
 }
 
 .welcome-dashboard {
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 40px;
   align-items: center;
   border: 0;
