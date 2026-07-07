@@ -20,6 +20,7 @@ const quickResources = [
     description: kakaoSheetNote,
     variant: "teal",
     primary: true,
+    hideFromGrid: true,
     mobile: "악보",
     mobileOrder: 1
   },
