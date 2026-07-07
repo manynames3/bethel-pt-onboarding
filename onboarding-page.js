@@ -109,9 +109,11 @@ function renderRolePage() {
   document.querySelector("#roleEquipment").textContent = currentRole.equipment;
   document.querySelector("#roleSummary").textContent = currentRole.summary;
 
-  document.querySelector("#roleFocus").innerHTML = currentRole.focus
-    .map((item) => `<span>${item}</span>`)
-    .join("");
+  const roleFocus = document.querySelector("#roleFocus");
+  if (roleFocus) {
+    roleFocus.replaceChildren();
+    roleFocus.hidden = true;
+  }
 
   renderList("#setupList", currentRole.setup);
   renderList("#monitoringList", currentRole.monitoring);
