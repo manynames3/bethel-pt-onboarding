@@ -255,6 +255,7 @@ textarea:focus-visible {
 .vfc-hero-copy h1 strong {
   font-style: italic;
   font-weight: 380;
+  margin-top: clamp(8px, 0.09em, 14px);
 }
 
 .hero-subtitle {
