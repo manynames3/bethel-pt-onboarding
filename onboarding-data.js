@@ -221,11 +221,11 @@ window.ABCPRAISE_ROLES = [
       {
         label: "악기팀 공통",
         title: "키 조정 리소스",
-        note: "컴퓨터에서 음원과 연습할 때 악보 키와 음원 키가 다르면 Chrome 확장으로 조정하세요.",
+        note: "컴퓨터에서 음원과 연습할 때 악보 키와 음원 키가 다르면 Chrome Extension으로 조정할 수 있습니다.",
         links: [
           {
-            title: "Transpose Chrome 확장",
-            description: "음원 재생 중 pitch와 speed를 조정할 때 사용합니다.",
+            title: "Transpose Chrome Extension",
+            description: "YouTube 음원 재생 중 pitch와 speed를 조정할 때 사용합니다.",
             href: "https://chromewebstore.google.com/detail/transpose-%E2%96%B2%E2%96%BC-pitch-%E2%96%B9-spee/ioimlbgefgadofblnajllknopjboejda?hl=en"
           }
         ]
