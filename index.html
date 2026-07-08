@@ -5,86 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>아틀란타 벧엘교회 찬양팀</title>
     <link rel="icon" href="assets/bethel-logo.jpeg">
-    <link rel="stylesheet" href="styles.css?v=20260707-instrument-icons">
+    <link rel="stylesheet" href="styles.css?v=20260708-accepted-concept-2">
   </head>
   <body class="app-body">
-    <div class="app-shell">
-      <header class="app-topbar">
-        <a class="brand-lockup" href="index.html#songbook" aria-label="아틀란타 벧엘교회 찬양팀 홈">
+    <header class="vfc-header" aria-label="사이트 상단 메뉴">
+      <a class="vfc-brand" href="index.html#practice" aria-label="아틀란타 벧엘교회 찬양팀 홈">
+        <span class="vfc-logo-frame">
           <img class="brand-logo" src="assets/bethel-logo.jpeg" alt="Bethel Holiness to the Lord">
-          <span>
-            <strong>아틀란타 벧엘교회</strong>
-            <small>찬양팀</small>
-          </span>
-        </a>
+        </span>
+        <span>
+          <strong>아틀란타 벧엘교회</strong>
+          <small>찬양팀</small>
+        </span>
+      </a>
 
-        <div class="service-controls" aria-label="토요 연습 시간 및 주일 예배 연습시간">
-          <div class="top-schedule-stack">
-            <div class="top-practice-times" id="topPracticeTimes" aria-label="이번 달과 다음 달 토요 연습 시간">
-              <span class="top-practice-heading">토요 연습 시간</span>
-              <span class="top-practice-months">
-                <span class="practice-month-group is-current">
-                  <span class="practice-month-label">7월 이번 달</span>
-                  <span class="practice-time-chip"><span>1부</span><strong>2:00pm</strong></span>
-                  <span class="practice-time-chip"><span>2부</span><strong>2:40pm</strong></span>
-                  <span class="practice-time-chip"><span>3부</span><strong>3:20pm</strong></span>
-                </span>
-                <span class="practice-month-group">
-                  <span class="practice-month-label">8월 다음 달</span>
-                  <span class="practice-time-chip"><span>1부</span><strong>2:40pm</strong></span>
-                  <span class="practice-time-chip"><span>2부</span><strong>3:20pm</strong></span>
-                  <span class="practice-time-chip"><span>3부</span><strong>2:00pm</strong></span>
-                </span>
+      <nav class="vfc-nav" aria-label="주요 메뉴">
+        <a class="is-active" href="#onboarding">온보딩</a>
+        <a href="#songbook">음원 &amp; 악보</a>
+        <a href="#practice">연습시간</a>
+      </nav>
+    </header>
+
+    <div class="app-shell">
+      <section class="vfc-hero" id="practice" aria-labelledby="heroTitle">
+        <div class="vfc-hero-copy">
+          <h1 id="heroTitle">
+            <span>주일 예배 + 금요 예배</span>
+            <strong>준비</strong>
+          </h1>
+          <p class="hero-subtitle">연습시간과 자료를 바로 확인하세요.</p>
+          <span class="hero-rule" aria-hidden="true"></span>
+          <p class="hero-copy-note">함께 예배를 준비하며 하나님께 최고의 찬양을 올려드립니다.</p>
+        </div>
+
+        <div class="vfc-schedule-board" aria-label="연습 시간">
+          <div class="top-practice-times" id="topPracticeTimes" aria-label="이번 달과 다음 달 토요 연습 시간">
+            <span class="top-practice-heading">토요 연습 시간</span>
+            <span class="top-practice-months">
+              <span class="practice-month-group is-current">
+                <span class="practice-month-label">7월 이번 달</span>
+                <span class="practice-time-chip"><span>1부</span><strong>2:00pm</strong></span>
+                <span class="practice-time-chip"><span>2부</span><strong>2:40pm</strong></span>
+                <span class="practice-time-chip"><span>3부</span><strong>3:20pm</strong></span>
               </span>
-            </div>
-            <section class="top-service-times" id="practice" aria-labelledby="topServiceTimesTitle">
-              <span class="top-service-heading" id="topServiceTimesTitle">주일 예배 연습시간</span>
-              <div class="top-service-list service-times-list" id="sidebarServiceTimes">
-                <div class="service-time-row">
-                  <span class="service-time-label">매주</span>
-                  <span class="service-time-chip"><span>1부</span><strong>오전 7:15</strong></span>
-                  <span class="service-time-chip"><span>2부</span><strong>오전 9:00</strong></span>
-                  <span class="service-time-chip"><span>3부</span><strong>오전 11:00</strong></span>
-                </div>
-              </div>
-            </section>
+              <span class="practice-month-group">
+                <span class="practice-month-label">8월 다음 달</span>
+                <span class="practice-time-chip"><span>1부</span><strong>2:40pm</strong></span>
+                <span class="practice-time-chip"><span>2부</span><strong>3:20pm</strong></span>
+                <span class="practice-time-chip"><span>3부</span><strong>2:00pm</strong></span>
+              </span>
+            </span>
           </div>
+          <section class="top-service-times" aria-labelledby="topServiceTimesTitle">
+            <span class="top-service-heading" id="topServiceTimesTitle">주일 예배 연습시간</span>
+            <div class="top-service-list service-times-list" id="sidebarServiceTimes">
+              <div class="service-time-row">
+                <span class="service-time-label">매주</span>
+                <span class="service-time-chip"><span>1부</span><strong>오전 7:15</strong></span>
+                <span class="service-time-chip"><span>2부</span><strong>오전 9:00</strong></span>
+                <span class="service-time-chip"><span>3부</span><strong>오전 11:00</strong></span>
+              </div>
+            </div>
+          </section>
         </div>
+      </section>
 
-        <div class="top-actions">
-          <button class="admin-button" id="adminOpen" type="button">관리자</button>
-        </div>
-      </header>
-
-      <aside class="app-sidebar" aria-label="예배 준비 요약">
+      <section class="quick-panels" aria-label="빠른 자료">
         <section class="role-section" id="onboarding" aria-labelledby="onboardingTitle">
-          <h2 class="section-label" id="onboardingTitle">역할별 온보딩</h2>
+          <div class="panel-heading">
+            <span class="panel-icon role-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                <path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                <path d="M4 19c.4-3.1 2.1-5 4-5s3.6 1.9 4 5"></path>
+                <path d="M12 19c.4-3.1 2.1-5 4-5s3.6 1.9 4 5"></path>
+              </svg>
+            </span>
+            <span class="panel-copy">
+              <h2 class="section-label" id="onboardingTitle">역할별 온보딩</h2>
+              <p>파트별 장비, 세팅, 가이드와 유용한 팁을 확인하세요.</p>
+            </span>
+            <a class="panel-arrow" href="#onboarding" aria-label="역할별 온보딩으로 이동">›</a>
+          </div>
           <nav class="role-list" id="roleGrid" aria-label="파트별 온보딩"></nav>
         </section>
-      </aside>
 
-      <main class="app-content dashboard-content" id="dashboard" aria-label="주일 예배와 금요 예배 준비">
         <section class="songbook-panel" id="songbook" aria-labelledby="songbookTitle">
-          <div class="dashboard-section-head">
-            <div>
+          <div class="panel-heading">
+            <span class="panel-icon song-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 18V5l9-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="15" cy="16" r="3"></circle>
+              </svg>
+            </span>
+            <span class="panel-copy">
               <h2 id="songbookTitle">음원 &amp; 악보</h2>
-            </div>
+              <p>예배 곡 음원과 악보를 확인하고 바로 열람하세요.</p>
+            </span>
+            <a class="panel-arrow gold-arrow" href="#score-viewer" aria-label="악보 뷰어로 이동">›</a>
           </div>
           <nav class="playlist-strip" aria-label="예배 플레이리스트">
             <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1Fi4PGkWwMiS6gyCDs3udoj" target="_blank" rel="noopener noreferrer" aria-label="주일 예배 플레이리스트 열기">
-              <span>음원</span>
+              <span class="play-icon" aria-hidden="true">▶</span>
               <strong>주일 예배 플레이리스트</strong>
             </a>
             <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLl9hj6fNvw1G7-RC3SlAN1_Q0cqBYavot" target="_blank" rel="noopener noreferrer" aria-label="금요 예배 플레이리스트 열기">
-              <span>음원</span>
+              <span class="play-icon" aria-hidden="true">▶</span>
               <strong>금요 예배 플레이리스트</strong>
             </a>
           </nav>
           <aside class="songbook-notes" aria-label="안내">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 3h7l4 4v14H7V3z"></path>
+              <path d="M14 3v5h5"></path>
+              <path d="M10 13h6"></path>
+              <path d="M10 17h4"></path>
+            </svg>
             <p>매주 악보는 벧엘교회 찬양팀 단톡방 통해서 공유됩니다.</p>
-            <p>새벽예배는 평소 별관에서 드립니다.</p>
           </aside>
+        </section>
+      </section>
 
+      <aside class="notice-strip" id="notices" aria-label="공지">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+          <path d="M10 21h4"></path>
+        </svg>
+        <p>새벽예배는 평소 별관에서 드립니다.</p>
+      </aside>
+
+      <main class="app-content dashboard-content" id="dashboard" aria-label="주일 예배와 금요 예배 준비">
+        <section class="score-viewer-section" id="score-viewer" aria-labelledby="scoreViewerTitle">
+          <div class="dashboard-section-head">
+            <div>
+              <h2 id="scoreViewerTitle">악보</h2>
+            </div>
+          </div>
           <section class="pdf-shell" aria-labelledby="currentSongTitle">
             <div class="pdf-toolbar">
               <span class="visually-hidden" id="currentSongTitle">헌금송 &amp; 축복송</span>
@@ -215,6 +272,6 @@
 
     <script src="practice-schedule.js?v=20260707-fixed-sunday-practice"></script>
     <script src="onboarding-data.js?v=20260707-bass-clip"></script>
-    <script src="script.js?v=20260707-instrument-icons"></script>
+    <script src="script.js?v=20260708-accepted-concept"></script>
   </body>
 </html>

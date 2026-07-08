@@ -345,6 +345,33 @@ function renderMobileQuickActions() {
   }
 }
 
+function setupNavigationState() {
+  const navLinks = [...document.querySelectorAll(".vfc-nav a, .mobile-quick-actions a")];
+  if (!navLinks.length) return;
+
+  const normalizeHash = () => {
+    if (window.location.hash === "#score-viewer") return "#songbook";
+    return window.location.hash || "#onboarding";
+  };
+
+  const syncActive = () => {
+    const activeHash = normalizeHash();
+    navLinks.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === activeHash);
+    });
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.forEach((item) => item.classList.remove("is-active"));
+      link.classList.add("is-active");
+    });
+  });
+
+  window.addEventListener("hashchange", syncActive);
+  syncActive();
+}
+
 function renderRoles() {
   const roles = [...(window.ABCPRAISE_ROLES || roleGuides)].sort((a, b) => {
     const aIndex = roleDisplayOrder.indexOf(a.slug);
@@ -653,9 +680,9 @@ els.songTabs.forEach((button) => {
   });
 });
 
-els.adminOpen.addEventListener("click", openDrawer);
-els.adminClose.addEventListener("click", closeDrawer);
-els.drawerBackdrop.addEventListener("click", closeDrawer);
+if (els.adminOpen) els.adminOpen.addEventListener("click", openDrawer);
+if (els.adminClose) els.adminClose.addEventListener("click", closeDrawer);
+if (els.drawerBackdrop) els.drawerBackdrop.addEventListener("click", closeDrawer);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeDrawer();
@@ -741,6 +768,7 @@ els.resetContent.addEventListener("click", () => {
 
 renderRoles();
 renderMobileQuickActions();
+setupNavigationState();
 renderPractice();
 populateAdminOptions();
 renderSong();

@@ -1,11 +1,29 @@
 const roles = window.ABCPRAISE_ROLES || [];
 const currentSlug = document.body.dataset.role;
 const currentRole = roles.find((role) => role.slug === currentSlug) || roles[0];
+const roleDisplayOrder = [
+  "main-keys",
+  "second-keys",
+  "acoustic-guitar",
+  "electric-guitar",
+  "bass",
+  "drums",
+  "singers",
+  "aviom"
+];
+
+function orderedRoles() {
+  return [...roles].sort((a, b) => {
+    const aIndex = roleDisplayOrder.indexOf(a.slug);
+    const bIndex = roleDisplayOrder.indexOf(b.slug);
+    return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+  });
+}
 
 function renderRoleNav() {
   const nav = document.querySelector("#roleNav");
   if (!nav) return;
-  nav.innerHTML = roles
+  nav.innerHTML = orderedRoles()
     .map(
       (role) => `
         <a class="${role.slug === currentRole.slug ? "is-active" : ""}" href="${role.slug}.html">
