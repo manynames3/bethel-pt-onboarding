@@ -78,6 +78,15 @@ function renderReferenceLinks(reference) {
   `;
 }
 
+function renderReferenceImage(reference) {
+  if (!reference.image) return "";
+  return `
+    <figure class="reference-link-image">
+      <img src="${assetPath(reference.image)}" alt="${reference.alt || ""}" loading="lazy">
+    </figure>
+  `;
+}
+
 function renderReferences() {
   const content = document.querySelector(".role-content");
   if (!content || !currentRole.references?.length) return;
@@ -91,6 +100,7 @@ function renderReferences() {
               <span class="practice-label">${reference.label}</span>
               <h2>${reference.title}</h2>
               <p class="reference-note">${reference.note}</p>
+              ${renderReferenceImage(reference)}
               ${renderReferenceLinks(reference)}
             </article>
           `;

@@ -220,8 +220,10 @@ window.ABCPRAISE_ROLES = [
     references: [
       {
         label: "악기팀 공통",
-        title: "키 조정 리소스",
+        title: "음원 키 조정",
         note: "컴퓨터에서 음원과 연습할 때 악보 키와 음원 키가 다르면 Chrome Extension으로 조정할 수 있습니다.",
+        image: "assets/transpose-chrome-extension.jpg",
+        alt: "YouTube에서 Transpose Chrome Extension으로 음원 키와 속도를 조정하는 화면",
         links: [
           {
             title: "Transpose Chrome Extension",

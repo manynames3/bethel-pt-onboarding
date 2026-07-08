@@ -1060,6 +1060,17 @@ textarea:focus-visible {
   margin-top: 18px;
 }
 
+.reference-link-image {
+  margin: 20px 0 0;
+}
+
+.reference-link-image img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--rule);
+  object-fit: contain;
+}
+
 .reference-link-card {
   grid-template-columns: 1fr;
   min-height: 74px;
