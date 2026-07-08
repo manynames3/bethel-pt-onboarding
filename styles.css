@@ -3574,13 +3574,6 @@ body[data-role] .role-hero .back-link {
   padding: 0 16px;
 }
 
-body[data-role] .eyebrow {
-  margin: 0 0 11px;
-  color: var(--concept-gold);
-  font-size: 20px;
-  font-weight: 900;
-}
-
 body[data-role] .role-hero h1 {
   max-width: 900px;
   color: #fff;
@@ -3673,18 +3666,11 @@ body[data-role] .detail-card {
 }
 
 body[data-role] .practice-label {
-  min-height: 32px;
-  border-color: rgba(185, 133, 37, 0.24);
-  border-radius: 999px;
-  background: #fff9ee;
-  color: var(--concept-gold-2);
-  font-size: 14px;
-  font-weight: 860;
-  padding: 5px 12px;
+  display: none;
 }
 
 body[data-role] .detail-card h2 {
-  margin: 14px 0 18px;
+  margin: 0 0 18px;
   color: #0f172a;
   font-size: clamp(1.75rem, 2.2vw, 2.35rem);
   font-weight: 920;

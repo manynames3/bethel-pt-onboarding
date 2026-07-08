@@ -122,7 +122,6 @@ function renderRolePage() {
   if (!currentRole) return;
 
   document.title = `${currentRole.tag} | 아틀란타 벧엘교회 찬양팀`;
-  document.querySelector("#roleEyebrow").textContent = currentRole.tag;
   document.querySelector("#roleTitle").textContent = currentRole.title;
   document.querySelector("#roleEquipment").textContent = currentRole.equipment;
   document.querySelector("#roleSummary").textContent = currentRole.summary;
