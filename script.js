@@ -1,4 +1,6 @@
 const STORAGE_KEY = "abcpraise.site.ko.v1";
+const PDF_DB_NAME = "abcpraise.site.ko.uploads";
+const PDF_STORE_NAME = "pdfs";
 const ADMIN_CODE = "bethel";
 const legacyCombinedSongIds = ["greeting", "offering"];
 const legacyOfferingSubtitle = ["헌금송", "축복송 자료"].join(" · ");
@@ -48,6 +50,7 @@ const defaultState = {
       allowNotes: false,
       pdfName: "",
       pdfData: "",
+      pdfKey: "",
       resources: [
         {
           label: "2부",
@@ -73,6 +76,7 @@ const defaultState = {
       allowNotes: false,
       pdfName: "",
       pdfData: "",
+      pdfKey: "",
       resources: [
         {
           label: "1",
@@ -213,7 +217,80 @@ function loadState() {
 }
 
 function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  const storedState = structuredClone(state);
+  storedState.songs = storedState.songs.map((song) => ({
+    ...song,
+    pdfData: song.pdfKey ? "" : song.pdfData
+  }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(storedState));
+}
+
+function openPdfDb() {
+  return new Promise((resolve, reject) => {
+    if (!window.indexedDB) {
+      reject(new Error("IndexedDB is not available"));
+      return;
+    }
+
+    const request = indexedDB.open(PDF_DB_NAME, 1);
+    request.onupgradeneeded = () => {
+      request.result.createObjectStore(PDF_STORE_NAME);
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+function withPdfStore(mode, callback) {
+  return openPdfDb().then(
+    (db) =>
+      new Promise((resolve, reject) => {
+        const transaction = db.transaction(PDF_STORE_NAME, mode);
+        const store = transaction.objectStore(PDF_STORE_NAME);
+        const request = callback(store);
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+        transaction.oncomplete = () => db.close();
+        transaction.onerror = () => {
+          db.close();
+          reject(transaction.error);
+        };
+      })
+  );
+}
+
+function storeUploadedPdf(key, dataUrl) {
+  return withPdfStore("readwrite", (store) => store.put(dataUrl, key));
+}
+
+function readUploadedPdf(key) {
+  return withPdfStore("readonly", (store) => store.get(key));
+}
+
+function deleteUploadedPdf(key) {
+  return withPdfStore("readwrite", (store) => store.delete(key));
+}
+
+function clearUploadedPdfs() {
+  return withPdfStore("readwrite", (store) => store.clear());
+}
+
+async function hydrateUploadedPdfs() {
+  const songsWithUploads = state.songs.filter((song) => song.pdfKey);
+  if (!songsWithUploads.length) return;
+
+  try {
+    await Promise.all(
+      songsWithUploads.map(async (song) => {
+        const pdfData = await readUploadedPdf(song.pdfKey);
+        if (pdfData) song.pdfData = pdfData;
+      })
+    );
+    renderSong();
+  } catch (error) {
+    console.warn("Uploaded PDFs could not be loaded.", error);
+  }
 }
 
 function selectedSong() {
@@ -724,20 +801,48 @@ els.saveSong.addEventListener("click", async () => {
       alert("PDF 파일만 업로드해 주세요.");
       return;
     }
-    song.pdfName = file.name;
-    song.pdfData = await fileToDataUrl(file);
+
+    const pdfData = await fileToDataUrl(file);
+    const pdfKey = song.id;
+
+    try {
+      await storeUploadedPdf(pdfKey, pdfData);
+      song.pdfName = file.name;
+      song.pdfKey = pdfKey;
+      song.pdfData = pdfData;
+    } catch (error) {
+      console.warn("PDF upload could not be stored.", error);
+      showMessage(els.songSaveMessage, "이 브라우저에 PDF를 저장할 수 없습니다.");
+      return;
+    }
   }
 
-  saveState();
+  try {
+    saveState();
+  } catch (error) {
+    console.warn("Site content could not be saved.", error);
+    showMessage(els.songSaveMessage, "브라우저 저장 공간이 부족해 저장하지 못했습니다.");
+    return;
+  }
+
   populateAdminOptions();
   renderSong();
   showMessage(els.songSaveMessage, "악보 정보가 저장되었습니다.");
 });
 
-els.clearPdf.addEventListener("click", () => {
+els.clearPdf.addEventListener("click", async () => {
   const song = selectedSong();
+  const pdfKey = song.pdfKey;
   song.pdfName = "";
   song.pdfData = "";
+  song.pdfKey = "";
+  if (pdfKey) {
+    try {
+      await deleteUploadedPdf(pdfKey);
+    } catch (error) {
+      console.warn("Uploaded PDF could not be deleted.", error);
+    }
+  }
   saveState();
   renderSong();
   showMessage(els.songSaveMessage, "업로드된 PDF가 지워졌습니다.");
@@ -753,8 +858,13 @@ els.savePractice.addEventListener("click", () => {
   showMessage(els.practiceSaveMessage, "연습 시간이 저장되었습니다.");
 });
 
-els.resetContent.addEventListener("click", () => {
+els.resetContent.addEventListener("click", async () => {
   if (!confirm("이 브라우저의 사이트 내용을 초기화할까요?")) return;
+  try {
+    await clearUploadedPdfs();
+  } catch (error) {
+    console.warn("Uploaded PDFs could not be reset.", error);
+  }
   state = structuredClone(defaultState);
   saveState();
   populateAdminOptions();
@@ -768,3 +878,4 @@ setupNavigationState();
 renderPractice();
 populateAdminOptions();
 renderSong();
+hydrateUploadedPdfs();
