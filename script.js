@@ -30,14 +30,14 @@ const mobileQuickResources = [
   }
 ];
 const roleDisplayOrder = [
+  "aviom",
   "main-keys",
   "second-keys",
   "acoustic-guitar",
   "electric-guitar",
   "bass",
   "drums",
-  "singers",
-  "aviom"
+  "singers"
 ];
 
 const defaultState = {

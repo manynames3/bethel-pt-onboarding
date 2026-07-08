@@ -2,14 +2,14 @@ const roles = window.ABCPRAISE_ROLES || [];
 const currentSlug = document.body.dataset.role;
 const currentRole = roles.find((role) => role.slug === currentSlug) || roles[0];
 const roleDisplayOrder = [
+  "aviom",
   "main-keys",
   "second-keys",
   "acoustic-guitar",
   "electric-guitar",
   "bass",
   "drums",
-  "singers",
-  "aviom"
+  "singers"
 ];
 
 function orderedRoles() {
