@@ -595,11 +595,19 @@ function renderServiceTimes() {
   }
 }
 
+function formatPracticeMonthLabel(item) {
+  if (!item.month) return item.label;
+
+  const schedule = window.ABCPRAISE_PRACTICE;
+  const monthLabel = schedule?.formatMonthLabel?.(item) || schedule?.monthName?.(item.month) || `${item.month}월`;
+  return `${monthLabel} ${item.label}`;
+}
+
 function renderPractice() {
   const practiceWindow = window.ABCPRAISE_PRACTICE?.getCurrentAndNext?.();
   const rows = practiceWindow
     ? practiceWindow.map((item) => [
-        `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ${item.label}`,
+        formatPracticeMonthLabel(item),
         Object.entries(item.services)
           .map(([service, time]) => `${service} ${time}`)
           .join(" / ")
@@ -640,8 +648,8 @@ function renderPractice() {
         ${practiceItems
           .map(
             (item) => `
-              <span class="practice-month-group${item.isCurrent ? " is-current" : ""}">
-                <span class="practice-month-label">${item.month ? `${window.ABCPRAISE_PRACTICE.monthName(item.month)} ` : ""}${item.label}</span>
+              <span class="practice-month-group${item.isCurrent ? " is-current" : ""}" data-practice-year="${item.year || ""}" data-practice-month="${item.month || ""}">
+                <span class="practice-month-label">${formatPracticeMonthLabel(item)}</span>
                 ${Object.entries(item.services)
                   .map(
                     ([service, time]) => `
