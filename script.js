@@ -305,10 +305,6 @@ function renderSongResources(song) {
 
   els.songResources.hidden = false;
   els.songResources.innerHTML = `
-    <div class="song-resources-head">
-      <strong>파일</strong>
-      <span>${resources.length}개 파일</span>
-    </div>
     <div class="song-resource-list">
       ${resources
         .map(

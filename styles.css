@@ -922,7 +922,7 @@ textarea:focus-visible {
 .song-resources {
   grid-row: 2;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -932,23 +932,6 @@ textarea:focus-visible {
 
 .song-resources[hidden] {
   display: none;
-}
-
-.song-resources-head {
-  display: grid;
-  gap: 2px;
-}
-
-.song-resources-head strong {
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 820;
-}
-
-.song-resources-head span {
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 680;
 }
 
 .song-resource-list {
@@ -2202,18 +2185,10 @@ body.app-body {
 }
 
 .song-resources {
-  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
   background: #ffffff;
   padding: 10px 14px;
-}
-
-.song-resources-head strong {
-  font-size: 14px;
-}
-
-.song-resources-head span {
-  display: none;
 }
 
 .song-resource-list {
