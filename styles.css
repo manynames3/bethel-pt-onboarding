@@ -722,7 +722,7 @@ textarea:focus-visible {
 }
 
 .pdf-stage {
-  min-height: 620px;
+  min-height: 760px;
   background: #222725;
 }
 
@@ -730,8 +730,8 @@ textarea:focus-visible {
 .resource-preview-image {
   display: block;
   width: 100%;
-  height: min(74vh, 760px);
-  min-height: 620px;
+  height: clamp(760px, 86vh, 920px);
+  min-height: 760px;
   border: 0;
   background: #222725;
 }
@@ -1258,7 +1258,8 @@ textarea:focus-visible {
   .pdf-stage,
   .pdf-stage iframe,
   .resource-preview-image {
-    min-height: 480px;
+    height: clamp(600px, 82vh, 760px);
+    min-height: 600px;
   }
 
   .role-hero h1 {
