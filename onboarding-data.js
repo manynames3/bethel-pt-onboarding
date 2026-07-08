@@ -3,7 +3,7 @@ window.ABCPRAISE_ROLES = [
     slug: "acoustic-guitar",
     tag: "어쿠스틱 기타",
     equipment: "Two Notes Opus DI",
-    title: "어쿠스틱 기타 온보딩",
+    title: "어쿠스틱 기타",
     summary: "Opus DI를 기준으로 안정적인 어쿠스틱 톤과 Aviom 개인 믹스를 준비합니다.",
     focus: ["튜닝", "Opus DI", "Aviom"],
     setup: [
@@ -48,7 +48,7 @@ window.ABCPRAISE_ROLES = [
     slug: "bass",
     tag: "베이스",
     equipment: "Markbass Little Mark III",
-    title: "베이스 온보딩",
+    title: "베이스",
     summary: "Markbass Little Mark III의 gain과 master를 분리해서 안정적인 저역을 만듭니다.",
     focus: ["Gain", "DI out", "Kick"],
     setup: [
@@ -74,7 +74,7 @@ window.ABCPRAISE_ROLES = [
     slug: "electric-guitar",
     tag: "일렉 기타",
     equipment: "페달보드 XLR/DI 연결",
-    title: "일렉 기타 온보딩",
+    title: "일렉 기타",
     summary: "페달보드 출력 방식을 먼저 확정하고 리듬/리드 볼륨 차이를 정리합니다.",
     focus: ["Mono/Stereo", "DI", "Gain stage"],
     setup: [
@@ -99,7 +99,7 @@ window.ABCPRAISE_ROLES = [
     slug: "main-keys",
     tag: "메인 건반",
     equipment: "Nord Piano 4",
-    title: "메인 건반 온보딩",
+    title: "메인 건반",
     summary: "Nord Piano 4를 기준으로 예배의 중심 화성과 인트로, 전환을 안정적으로 담당합니다.",
     focus: ["Piano patch", "Transitions", "Leader"],
     setup: [
@@ -124,7 +124,7 @@ window.ABCPRAISE_ROLES = [
     slug: "second-keys",
     tag: "세컨 건반",
     equipment: "Yamaha S90 ES",
-    title: "세컨 건반 온보딩",
+    title: "세컨 건반",
     summary: "Yamaha S90 ES로 pad, strings, organ, synth 등 보조 질감을 정리합니다.",
     focus: ["Patch order", "Layers", "Space"],
     setup: [
@@ -149,7 +149,7 @@ window.ABCPRAISE_ROLES = [
     slug: "drums",
     tag: "드럼",
     equipment: "핸드폰 클릭 사용",
-    title: "드럼 온보딩",
+    title: "드럼",
     summary: "핸드폰 클릭을 안정적으로 사용하고 팀 전체의 tempo 기준을 세웁니다.",
     focus: ["Click", "Wired in-ear", "Tempo"],
     setup: [
@@ -174,7 +174,7 @@ window.ABCPRAISE_ROLES = [
     slug: "singers",
     tag: "싱어",
     equipment: "마이크팩 및 무선 마이크",
-    title: "싱어 온보딩",
+    title: "싱어",
     summary: "무선 마이크와 마이크팩을 안정적으로 사용하고 보컬 블렌드를 맞춥니다.",
     focus: ["Channel", "Battery", "Blend"],
     setup: [
@@ -199,7 +199,7 @@ window.ABCPRAISE_ROLES = [
     slug: "aviom",
     tag: "악기팀 공통",
     equipment: "Aviom 모니터링",
-    title: "Aviom 공통 온보딩",
+    title: "Aviom 공통",
     summary: "모든 파트가 같은 기준으로 개인 모니터를 빠르게 세팅할 수 있게 합니다.",
     focus: ["Low master", "CH 13", "Preset"],
     setup: [
