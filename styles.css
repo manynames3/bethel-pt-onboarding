@@ -176,17 +176,20 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  color: var(--ink-soft);
-  font-size: 13px;
-  font-weight: 560;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  gap: clamp(16px, 1.9vw, 26px);
+  color: rgba(29, 48, 34, 0.78);
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(15px, 1.12vw, 16px);
+  font-weight: 420;
+  letter-spacing: 0.16em;
+  line-height: 1;
   white-space: nowrap;
 }
 
 .vfc-nav span {
-  color: var(--rule-strong);
+  color: rgba(29, 48, 34, 0.38);
+  font-weight: 320;
+  transform: translateY(-1px);
 }
 
 .vfc-nav a,
@@ -212,9 +215,11 @@ textarea:focus-visible {
   background: transparent;
   border: 0;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 560;
-  letter-spacing: 0.16em;
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 14.5px;
+  font-weight: 420;
+  letter-spacing: 0.15em;
+  line-height: 1;
 }
 
 .admin-open-link span {
@@ -231,8 +236,7 @@ textarea:focus-visible {
   grid-template-columns: minmax(0, 0.9fr) minmax(480px, 0.82fr);
   gap: 56px;
   align-items: start;
-  min-height: 500px;
-  padding: 58px 0 34px;
+  padding: 58px 0 46px;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -256,6 +260,16 @@ textarea:focus-visible {
   font-style: italic;
   font-weight: 380;
   margin-top: clamp(2px, 0.025em, 5px);
+}
+
+.vfc-hero-copy h1.hero-title-worship {
+  font-size: clamp(70px, 8.2vw, 124px);
+  line-height: 0.99;
+}
+
+.vfc-hero-copy h1.hero-title-worship span + span,
+.vfc-hero-copy h1.hero-title-worship span + strong {
+  margin-top: clamp(6px, 0.055em, 10px);
 }
 
 .hero-subtitle {
@@ -362,70 +376,11 @@ textarea:focus-visible {
   font-weight: 740;
 }
 
-.hero-resource-note {
-  grid-column: 2;
-  max-width: 420px;
-  margin-left: auto;
-}
-
-.hero-resource-note figure {
-  display: grid;
-  grid-template-columns: minmax(170px, 220px) minmax(150px, 1fr);
-  gap: 24px;
-  align-items: center;
-  margin: 20px 0 0;
-}
-
-.hero-resource-note img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1.48;
-  object-fit: cover;
-  filter: saturate(0.78);
-}
-
-.hero-resource-note figcaption {
-  color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.hero-resource-note figcaption span,
-.hero-resource-note figcaption strong {
-  display: block;
-}
-
-.hero-resource-note figcaption strong {
-  margin-top: 6px;
-  font-weight: 560;
-}
-
-.notice-strip,
 .site-meta-row {
   display: grid;
   align-items: center;
   min-height: 58px;
   border-bottom: 1px solid var(--rule);
-}
-
-.notice-strip {
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  padding: 0 16px;
-  border-left: 1px solid var(--rule);
-  border-right: 1px solid var(--rule);
-}
-
-.notice-strip svg {
-  width: 22px;
-  height: 22px;
-  color: var(--ink-soft);
-}
-
-.notice-strip p {
-  color: var(--ink-soft);
-  font-size: 14px;
-  font-weight: 560;
 }
 
 .site-meta-row {
@@ -1136,12 +1091,6 @@ textarea:focus-visible {
     gap: 34px;
   }
 
-  .hero-resource-note {
-    grid-column: auto;
-    max-width: none;
-    margin-left: 0;
-  }
-
   .role-sidebar {
     position: static;
   }
@@ -1173,15 +1122,16 @@ textarea:focus-visible {
 
   .vfc-nav,
   .nav-links {
-    gap: 10px;
+    gap: 12px;
     overflow-x: auto;
     width: 100%;
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    font-size: 12.5px;
+    letter-spacing: 0.11em;
   }
 
   .admin-open-link {
-    font-size: 11px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
   }
 
   .vfc-hero {
@@ -1191,6 +1141,16 @@ textarea:focus-visible {
 
   .vfc-hero-copy h1 {
     font-size: clamp(48px, 16vw, 72px);
+  }
+
+  .vfc-hero-copy h1.hero-title-worship {
+    font-size: clamp(48px, 15vw, 66px);
+    line-height: 1.02;
+  }
+
+  .vfc-hero-copy h1.hero-title-worship span + span,
+  .vfc-hero-copy h1.hero-title-worship span + strong {
+    margin-top: clamp(5px, 0.06em, 8px);
   }
 
   .vfc-schedule-board {
@@ -1215,17 +1175,12 @@ textarea:focus-visible {
     border-left: 0;
   }
 
-  .hero-resource-note figure,
   .section-heading,
   .role-list,
   .song-resource-list,
   .song-strip,
   .reference-media-grid {
     grid-template-columns: 1fr;
-  }
-
-  .notice-strip {
-    padding: 12px;
   }
 
   .site-meta-row {
