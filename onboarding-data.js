@@ -63,6 +63,20 @@ window.ABCPRAISE_ROLES = [
       "찬양 인도자와 메인 건반을 충분히 들리게 둡니다.",
       "저역이 과하게 쌓이면 master보다 Aviom 안의 bass 채널을 먼저 낮춥니다."
     ],
+    references: [
+      {
+        label: "MARKBASS LITTLE MARK III",
+        title: "베이스 앰프 컨트롤",
+        note: "예배 전 GAIN과 MASTER를 낮게 시작하고, CLIP 표시를 확인하며 입력 레벨을 맞춥니다.",
+        images: [
+          {
+            src: "assets/markbass-little-mark-iii.png",
+            alt: "Markbass Little Mark III 베이스 앰프 전면 컨트롤 패널",
+            caption: "Markbass Little Mark III 전면 패널"
+          }
+        ]
+      }
+    ],
     checklist: [
       "Clip light 꺼짐 확인",
       "DI out 연결",
@@ -98,9 +112,9 @@ window.ABCPRAISE_ROLES = [
   {
     slug: "main-keys",
     tag: "메인 건반",
-    equipment: "Nord Piano 4",
+    equipment: "Nord Piano 5",
     title: "메인 건반",
-    summary: "Nord Piano 4를 기준으로 예배의 중심 화성과 인트로, 전환을 안정적으로 담당합니다.",
+    summary: "Nord Piano 5를 기준으로 예배의 중심 화성과 인트로, 전환을 안정적으로 담당합니다.",
     focus: ["Piano patch", "Transitions", "Leader"],
     setup: [
       "리허설 전에 메인 피아노 패치를 확인하고 예배 중에는 같은 기준으로 유지합니다.",
@@ -113,6 +127,25 @@ window.ABCPRAISE_ROLES = [
       "세컨 건반과 어쿠스틱을 들어 화성 충돌이 없는지 확인합니다.",
       "클릭 또는 템포 소스는 곡 시작과 전환이 흔들리지 않을 정도로만 둡니다."
     ],
+    references: [
+      {
+        label: "메인 건반",
+        title: "Nord Piano 5",
+        note: "전체 세팅과 피아노 및 Sample Synth 컨트롤 위치를 사진으로 확인합니다.",
+        images: [
+          {
+            src: "assets/nord-piano-5-overview.webp",
+            alt: "예배 무대에 설치된 Nord Piano 5 메인 건반 전체 모습",
+            caption: "Nord Piano 5 전체 세팅"
+          },
+          {
+            src: "assets/nord-piano-5-controls.webp",
+            alt: "Nord Piano 5의 Piano 및 Sample Synth 컨트롤 패널",
+            caption: "Piano 및 Sample Synth 컨트롤 영역"
+          }
+        ]
+      }
+    ],
     checklist: [
       "메인 패치 확인",
       "볼륨 기준 위치 확인",
@@ -123,9 +156,9 @@ window.ABCPRAISE_ROLES = [
   {
     slug: "second-keys",
     tag: "세컨 건반",
-    equipment: "Yamaha S90 ES",
+    equipment: "Yamaha MODX8",
     title: "세컨 건반",
-    summary: "Yamaha S90 ES로 pad, strings, organ, synth 등 보조 질감을 정리합니다.",
+    summary: "Yamaha MODX8로 pad, strings, organ, synth 등 보조 질감을 정리합니다.",
     focus: ["Patch order", "Layers", "Space"],
     setup: [
       "사운드체크 전에 파트가 pad, strings, organ, synth, 보조 piano 중 무엇인지 확인합니다.",
@@ -138,6 +171,25 @@ window.ABCPRAISE_ROLES = [
       "Pad는 크게 들을수록 팀 전체가 무거워질 수 있어 작게 시작합니다.",
       "Patch마다 출력 차이가 있으면 Aviom보다 키보드 안에서 먼저 정리합니다."
     ],
+    references: [
+      {
+        label: "세컨 건반",
+        title: "Yamaha MODX8",
+        note: "전체 세팅과 주요 볼륨 및 Assign 컨트롤 위치를 사진으로 확인합니다.",
+        images: [
+          {
+            src: "assets/yamaha-modx8-overview.webp",
+            alt: "예배 무대에 설치된 Yamaha MODX8 세컨 건반 전체 모습",
+            caption: "Yamaha MODX8 전체 세팅"
+          },
+          {
+            src: "assets/yamaha-modx8-controls.webp",
+            alt: "Yamaha MODX8의 Master Volume, USB Volume 및 Assign 컨트롤 패널",
+            caption: "Master Volume, USB Volume 및 Assign 컨트롤 영역"
+          }
+        ]
+      }
+    ],
     checklist: [
       "Patch 순서 메모",
       "Layer balance 확인",
@@ -148,9 +200,9 @@ window.ABCPRAISE_ROLES = [
   {
     slug: "drums",
     tag: "드럼",
-    equipment: "핸드폰 클릭 사용",
+    equipment: "DW Collector's Series",
     title: "드럼",
-    summary: "핸드폰 클릭을 안정적으로 사용하고 팀 전체의 tempo 기준을 세웁니다.",
+    summary: "DW Collector's Series 드럼 키트와 유선 클릭을 사용해 팀 전체의 안정적인 tempo 기준을 세웁니다.",
     focus: ["Click", "Wired in-ear", "Tempo"],
     setup: [
       "메트로놈 앱이나 제공된 클릭 트랙을 사용하고 리허설 전에 tempo를 세팅합니다.",
@@ -162,6 +214,20 @@ window.ABCPRAISE_ROLES = [
       "클릭, 찬양 인도자, 베이스, 메인 건반, 리드 보컬 순서로 맞춥니다.",
       "베이스가 늦거나 앞서는지 확인할 수 있을 만큼만 충분히 듣습니다.",
       "찬양 인도자의 cue가 묻히지 않도록 click volume을 과하게 올리지 않습니다."
+    ],
+    references: [
+      {
+        label: "DW COLLECTOR'S SERIES",
+        title: "메인 드럼 키트",
+        note: "드럼과 심벌의 위치를 사진으로 확인하고, 마이크와 기존 무대 세팅은 임의로 옮기지 않습니다.",
+        images: [
+          {
+            src: "assets/dw-collectors-series.webp",
+            alt: "아틀란타 벧엘교회 무대의 DW Collector's Series 드럼 키트",
+            caption: "DW Collector's Series 드럼 키트"
+          }
+        ]
+      }
     ],
     checklist: [
       "템포 확인",
@@ -193,6 +259,45 @@ window.ABCPRAISE_ROLES = [
       "배터리 확인",
       "팩 고정",
       "보컬 blend 확인"
+    ]
+  },
+  {
+    slug: "morning-prayer-team",
+    tag: "새벽기도 악기팀",
+    equipment: "Behringer Powerplay 16",
+    title: "새벽기도 악기팀",
+    summary: "별관 새벽기도에서 Behringer Powerplay 16으로 개인 모니터를 준비합니다.",
+    focus: ["Channel 선택", "Volume", "Pan/Balance"],
+    setup: [
+      "Behringer Powerplay 16은 Aviom과 비슷한 방식으로 작동합니다.",
+      "조정하려는 channel number를 먼저 선택합니다.",
+      "VOLUME 노브로 선택한 channel의 음량을 조절합니다.",
+      "PAN/BAL 노브로 선택한 channel의 좌우 위치를 조절합니다."
+    ],
+    monitoring: [
+      "Master LEVEL은 낮게 시작하고 필요한 만큼만 올립니다.",
+      "찬양 인도자와 본인 악기를 먼저 명확하게 맞춥니다.",
+      "조정 전마다 선택한 channel 번호를 확인해 다른 channel을 바꾸지 않도록 합니다."
+    ],
+    references: [
+      {
+        label: "별관 새벽기도",
+        title: "Behringer Powerplay 16",
+        note: "Aviom과 사용 방식이 비슷합니다. 조정할 채널 번호를 선택한 뒤 VOLUME으로 음량을, PAN/BAL로 좌우 위치를 조절합니다.",
+        images: [
+          {
+            src: "assets/behringer-powerplay-16.png",
+            alt: "별관 새벽기도에서 사용하는 Behringer Powerplay 16 개인 모니터 스테이션",
+            caption: "Behringer Powerplay 16 모니터 스테이션"
+          }
+        ]
+      }
+    ],
+    checklist: [
+      "Channel 선택 확인",
+      "Volume 조정",
+      "Pan/Balance 조정",
+      "전체 모니터 레벨 확인"
     ]
   },
   {

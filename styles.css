@@ -419,8 +419,8 @@ textarea:focus-visible {
 
 .quick-panels {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.48fr);
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 72px;
   padding: 58px 0;
 }
 
@@ -486,6 +486,7 @@ textarea:focus-visible {
 .role-list .role-row:nth-child(6) .role-icon::after { content: "06"; }
 .role-list .role-row:nth-child(7) .role-icon::after { content: "07"; }
 .role-list .role-row:nth-child(8) .role-icon::after { content: "08"; }
+.role-list .role-row:nth-child(9) .role-icon::after { content: "09"; }
 
 .role-copy strong {
   color: var(--ink);
@@ -1139,6 +1140,42 @@ textarea:focus-visible {
   line-height: 1.7;
 }
 
+.equipment-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.equipment-gallery.is-single {
+  grid-template-columns: minmax(0, 720px);
+}
+
+.equipment-gallery.is-single .equipment-photo img {
+  aspect-ratio: auto;
+}
+
+.equipment-photo {
+  min-width: 0;
+  margin: 0;
+}
+
+.equipment-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--rule);
+}
+
+.equipment-photo figcaption {
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 .reference-table-wrap {
   overflow-x: auto;
 }
@@ -1303,7 +1340,8 @@ textarea:focus-visible {
   .role-list,
   .song-resource-list,
   .song-strip,
-  .reference-media-grid {
+  .reference-media-grid,
+  .equipment-gallery {
     grid-template-columns: 1fr;
   }
 

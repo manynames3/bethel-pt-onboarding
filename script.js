@@ -31,6 +31,7 @@ const mobileQuickResources = [
 ];
 const roleDisplayOrder = [
   "aviom",
+  "morning-prayer-team",
   "main-keys",
   "second-keys",
   "acoustic-guitar",

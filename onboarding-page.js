@@ -3,6 +3,7 @@ const currentSlug = document.body.dataset.role;
 const currentRole = roles.find((role) => role.slug === currentSlug) || roles[0];
 const roleDisplayOrder = [
   "aviom",
+  "morning-prayer-team",
   "main-keys",
   "second-keys",
   "acoustic-guitar",
@@ -87,6 +88,24 @@ function renderReferenceImage(reference) {
   `;
 }
 
+function renderReferenceGallery(reference) {
+  if (!reference.images?.length) return "";
+  return `
+    <div class="equipment-gallery${reference.images.length === 1 ? " is-single" : ""}">
+      ${reference.images
+        .map(
+          (image) => `
+            <figure class="equipment-photo">
+              <img src="${assetPath(image.src)}" alt="${image.alt || ""}" loading="lazy">
+              ${image.caption ? `<figcaption>${image.caption}</figcaption>` : ""}
+            </figure>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
 function renderReferences() {
   const content = document.querySelector(".role-content");
   if (!content || !currentRole.references?.length) return;
@@ -94,6 +113,17 @@ function renderReferences() {
   const markup = currentRole.references
     .map(
       (reference) => {
+        if (reference.images?.length) {
+          return `
+            <article class="detail-card reference-detail">
+              <span class="practice-label">${reference.label}</span>
+              <h2>${reference.title}</h2>
+              ${reference.note ? `<p class="reference-note">${reference.note}</p>` : ""}
+              ${renderReferenceGallery(reference)}
+            </article>
+          `;
+        }
+
         if (reference.links?.length) {
           return `
             <article class="detail-card reference-detail">

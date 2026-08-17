@@ -9,7 +9,8 @@ Live site: https://bethel-pt-onboarding.pages.dev/
 - Sunday worship and Saturday rehearsal schedules
 - Sheet music previews for offering songs, blessing songs, and special numbers
 - YouTube playlist links for Sunday worship and Friday worship
-- Role-specific onboarding pages for main keys, second keys, acoustic guitar, electric guitar, bass, drums, singers, and Aviom
+- Role-specific onboarding pages for main keys, second keys, acoustic guitar, electric guitar, bass, drums, singers, Aviom, and the annex morning-prayer instrument team
+- Equipment photo references for the keyboards, bass amp, drum kit, and personal monitor stations
 - Browser-based admin panel for editing song titles, uploading PDFs, and updating rehearsal notes
 - v2 editorial layout designed for both desktop and mobile
 
