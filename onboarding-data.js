@@ -309,6 +309,8 @@ window.ABCPRAISE_ROLES = [
     focus: ["Low master", "CH 13", "Preset"],
     setup: [
       "Master volume은 낮게 시작하고, 왜곡과 음질 저하를 피하기 위해 12시 방향을 넘기지 않는 것을 권장합니다.",
+      "매주 악기 출력 레벨이 동일하게 유지되도록 합니다.",
+      "각 장비의 volume knob 기준 위치를 확인하고 예배 전 같은 위치로 맞춥니다.",
       "찬양 인도자, 클릭이나 tempo source, 본인 channel을 중심으로 믹스를 만듭니다.",
       "가운데 공간이 답답하지 않도록 관련 악기는 살짝 pan을 나눕니다.",
       "선호 믹스는 Recall + Group + 원하는 channel number로 저장할 수 있습니다.",
@@ -320,6 +322,8 @@ window.ABCPRAISE_ROLES = [
       "그 다음 tempo source와 본인 악기 또는 보컬을 올립니다.",
       "Channel 13은 main speaker output과 같은 믹스입니다.",
       "단순하게 듣고 싶을 때는 channel 13을 기준으로 올리고 본인 악기 channel만 더 올리면, 각 channel을 하나씩 조정하지 않아도 본인을 잘 들을 수 있습니다.",
+      "개인 monitor 소리가 작거나 크면 악기 장비의 volume knob보다 Aviom에서 우선 조정합니다.",
+      "Main speaker로 나가는 전체 볼륨은 음향팀이 조정합니다.",
       "전체 band를 크게 듣기보다 cue와 tempo를 놓치지 않는 믹스를 만듭니다."
     ],
     references: [

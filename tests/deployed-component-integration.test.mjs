@@ -87,3 +87,10 @@ test("drum onboarding identifies and shows the DW Collector's Series kit", () =>
   assert.match(onboardingData, /src: "assets\/dw-collectors-series\.webp"/);
   assert.ok(existsSync(resolve(root, "assets/dw-collectors-series.webp")));
 });
+
+test("shared instrument guide separates monitor and house volume control", () => {
+  assert.match(onboardingData, /매주 악기 출력 레벨이 동일하게 유지되도록 합니다/);
+  assert.match(onboardingData, /volume knob 기준 위치를 확인하고 예배 전 같은 위치로 맞춥니다/);
+  assert.match(onboardingData, /Aviom에서 우선 조정합니다/);
+  assert.match(onboardingData, /Main speaker로 나가는 전체 볼륨은 음향팀이 조정합니다/);
+});
