@@ -27,9 +27,12 @@ function renderRoleNav() {
   nav.innerHTML = orderedRoles()
     .map(
       (role) => `
-        <a class="${role.slug === currentRole.slug ? "is-active" : ""}" href="${role.slug}.html">
-          <span>${role.tag}</span>
-          <small>${role.equipment}</small>
+        <a class="${role.slug === currentRole.slug ? "is-active" : ""}" href="${role.slug}.html"${role.slug === currentRole.slug ? ' aria-current="page"' : ""}>
+          <span class="role-nav-copy">
+            <strong>${role.tag}</strong>
+            <small>${role.equipment}</small>
+          </span>
+          <span class="role-nav-action">${role.slug === currentRole.slug ? "현재 보기" : "자세히 보기"}<b aria-hidden="true">→</b></span>
         </a>
       `
     )

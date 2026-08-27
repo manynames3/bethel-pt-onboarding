@@ -1053,24 +1053,73 @@ textarea:focus-visible {
 
 #roleNav a {
   display: grid;
-  gap: 3px;
-  padding: 15px 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 12px;
   border-bottom: 1px solid var(--rule);
+  transition: background 160ms ease, color 160ms ease;
 }
 
-#roleNav a span {
+#roleNav a:hover {
+  background: rgba(31, 49, 36, 0.07);
+}
+
+#roleNav a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
+.role-nav-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.role-nav-copy strong {
   color: var(--ink);
   font-size: 14px;
   font-weight: 620;
 }
 
-#roleNav a small {
+.role-nav-copy small {
   color: var(--muted);
   font-size: 12px;
 }
 
-#roleNav a.is-active span {
+.role-nav-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.role-nav-action b {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  transition: transform 160ms ease;
+}
+
+#roleNav a:hover .role-nav-action b,
+#roleNav a:focus-visible .role-nav-action b {
+  transform: translateX(3px);
+}
+
+#roleNav a.is-active {
+  background: rgba(31, 49, 36, 0.1);
+}
+
+#roleNav a.is-active .role-nav-copy strong {
   font-weight: 800;
+}
+
+#roleNav a.is-active .role-nav-action {
+  color: var(--ink);
 }
 
 .role-content {
