@@ -14,7 +14,7 @@ const sundayServices = [
 ];
 const mobileQuickResources = [
   {
-    href: "#onboarding",
+    href: "/onboarding/aviom",
     mobile: "온보딩",
     mobileOrder: 1
   },
@@ -328,7 +328,7 @@ function renderSong() {
     els.pdfFrame.innerHTML = "";
     const iframe = document.createElement("iframe");
     iframe.title = `${song.title} 악보 PDF`;
-    iframe.src = song.pdfData;
+    iframe.src = pdfFitToWidth(song.pdfData);
     els.pdfFrame.append(iframe);
   } else if (activeResource) {
     renderResourcePreview(activeResource, song);
@@ -354,12 +354,17 @@ function renderSong() {
   syncAdminFields();
 }
 
+function pdfFitToWidth(source) {
+  const separator = source.includes("#") ? "&" : "#";
+  return `${source}${separator}view=FitH&zoom=page-width`;
+}
+
 function renderResourcePreview(resource, song) {
   els.pdfFrame.innerHTML = "";
   if (resource.type === "PDF") {
     const iframe = document.createElement("iframe");
     iframe.title = `${song.title} ${resource.label} ${resource.type}`;
-    iframe.src = resource.href;
+    iframe.src = pdfFitToWidth(resource.href);
     els.pdfFrame.append(iframe);
     return;
   }
@@ -425,7 +430,7 @@ function setupNavigationState() {
 
   const normalizeHash = () => {
     if (window.location.hash === "#score-viewer") return "#songbook";
-    return window.location.hash || "#onboarding";
+    return window.location.hash;
   };
 
   const syncActive = () => {

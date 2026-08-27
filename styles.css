@@ -1373,10 +1373,23 @@ textarea:focus-visible {
   }
 
   .pdf-stage,
-  .pdf-stage iframe,
+  .pdf-stage iframe {
+    min-height: 0;
+  }
+
+  .pdf-stage {
+    aspect-ratio: 3 / 4;
+    height: auto;
+  }
+
+  .pdf-stage iframe {
+    height: 100%;
+  }
+
   .resource-preview-image {
-    height: clamp(600px, 82vh, 760px);
-    min-height: 600px;
+    height: auto;
+    min-height: 0;
+    padding: 14px;
   }
 
   .role-hero h1 {
