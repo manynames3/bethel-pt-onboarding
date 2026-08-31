@@ -308,13 +308,14 @@ window.ABCPRAISE_ROLES = [
     summary: "모든 파트가 같은 기준으로 개인 모니터를 빠르게 세팅할 수 있게 합니다.",
     focus: ["Low master", "CH 13", "Preset"],
     setup: [
-      "Master volume은 낮게 시작하고, 왜곡과 음질 저하를 피하기 위해 12시 방향을 넘기지 않는 것을 권장합니다.",
+      "음질 저하를 방지하기 위해 <strong>Master Volume은 12시 방향을 넘기지 않는 것을 권장합니다.</strong>",
       "매주 악기 출력 레벨이 동일하게 유지되도록 합니다.",
       "각 장비의 volume knob 기준 위치를 확인하고 예배 전 같은 위치로 맞춥니다.",
       "찬양 인도자, 클릭이나 tempo source, 본인 channel을 중심으로 믹스를 만듭니다.",
       "가운데 공간이 답답하지 않도록 관련 악기는 살짝 pan을 나눕니다.",
-      "선호 믹스는 Recall + Group + 원하는 channel number로 저장할 수 있습니다.",
-      "저장한 preset은 다음에 Recall + 저장할 때 사용한 channel number를 눌러 불러옵니다.",
+      "평소와 같은 출력 레벨로 연주하고 있는데도 자신의 소리가 잘 들리지 않는다면, <strong>모니터에서 본인의 채널 볼륨을 올려보세요.</strong>",
+      "혹시 max로 했는데도 본인이 잘 안 들리시면 sound engineer에게 알려주세요.",
+      "<strong>자신에게 잘 맞는 밸런스와 설정을 찾았다면</strong>, ‘Recall’과 ‘Group(Trim)’ 버튼을 동시에 누른 후 저장할 번호를 선택하여 개인 프리셋으로 저장해 두세요. 이전 사용자가 설정을 변경했더라도, 매주 저장된 프리셋을 불러오면 자신만의 설정으로 간편하게 복원할 수 있습니다.",
       "공용 routing을 바꾸거나 라벨이 붙은 cable을 뽑기 전에는 반드시 확인합니다."
     ],
     monitoring: [
