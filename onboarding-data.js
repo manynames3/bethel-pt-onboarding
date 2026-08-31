@@ -245,7 +245,7 @@ window.ABCPRAISE_ROLES = [
     focus: ["Channel", "Battery", "Blend"],
     setup: [
       "배정된 무선 마이크와 무선 인이어 수신기를 받고 channel label을 확인합니다.",
-      "라인 체크 전에 새 배터리 또는 충분한 충전 상태를 확인합니다.",
+      "라인 체크 전에 장비들이 충분히 충전된 상태인지 확인합니다.",
       "팩은 단단히 고정하고 안테나는 펴진 상태로 가리지 않습니다.",
       "요청이 있을 때만 mute하고, 기본 채널 관리는 FOH가 하도록 둡니다."
     ],
@@ -255,10 +255,10 @@ window.ABCPRAISE_ROLES = [
       "필요한 곡에서만 click을 작게 추가합니다."
     ],
     checklist: [
-      "마이크 번호 확인",
+      "마이크 channel label 확인 (brown, etc.)",
       "배터리 확인",
-      "팩 고정",
-      "보컬 blend 확인"
+      "바디팩 고정",
+      "모니터 balance 확인"
     ]
   },
   {
