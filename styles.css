@@ -704,6 +704,57 @@ textarea:focus-visible {
   padding: 46px 0 70px;
 }
 
+.closing-photo-section {
+  padding: 58px 0 72px;
+}
+
+.closing-photo {
+  margin: 0;
+}
+
+.closing-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2025 / 934;
+  object-fit: cover;
+  object-position: center 52%;
+  filter: saturate(0.88) contrast(0.98);
+}
+
+.closing-photo figcaption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 36px;
+  padding-top: 22px;
+}
+
+.closing-photo-copy {
+  display: grid;
+  gap: 10px;
+}
+
+.closing-photo-copy span,
+.closing-photo figcaption p {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 620;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.closing-photo-copy h2 {
+  font-family: Georgia, "Times New Roman", "Noto Serif KR", "AppleMyungjo", serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.closing-photo figcaption p {
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+
 .score-section-heading {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1414,6 +1465,30 @@ textarea:focus-visible {
   .score-viewer-section,
   .role-layout {
     padding: 38px 0;
+  }
+
+  .closing-photo-section {
+    padding: 38px 0 52px;
+  }
+
+  .closing-photo img {
+    height: 310px;
+    aspect-ratio: auto;
+    object-position: center center;
+  }
+
+  .closing-photo figcaption {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-top: 18px;
+  }
+
+  .closing-photo-copy h2 {
+    font-size: 28px;
+  }
+
+  .closing-photo figcaption p {
+    padding-bottom: 0;
   }
 
   .song-tab + .song-tab {
